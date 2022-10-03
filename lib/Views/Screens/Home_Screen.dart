@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                   vertical: 15.h,
                 ),
                 decoration: BoxDecoration(
-                    color: kSecondColor,
+                    color: kBackgroundColor,
                     borderRadius: BorderRadius.circular(20.r)),
               ),
             ],
