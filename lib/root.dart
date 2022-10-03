@@ -1,15 +1,21 @@
 import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
+import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
-    );
+    return ScreenUtilInit(builder: (context, child) {
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: true,
+        home: const HomeScreen(),
+        theme: myThemeData(),
+      );
+    });
   }
 }
