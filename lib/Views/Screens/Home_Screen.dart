@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
         title: Text(
           'قائمة اطباء',
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                   vertical: 15.h,
                 ),
                 decoration: BoxDecoration(
-                  color: kBackgroundColor,
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Column(
@@ -76,6 +76,28 @@ class HomeScreen extends StatelessWidget {
                           style: bodyTextStyle,
                         ),
                       ],
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const ListTile(
+                      leading: CircleAvatar(backgroundColor: Colors.white),
+                      subtitle: Text('Specialization'),
+                      trailing: Text('Open Time'),
+                      title: Text(
+                        'Doctor Name',
+                      ),
+                    ),
+                    Container(
+                      height: 50.h,
+                      width: 150.w,
+                      decoration: BoxDecoration(
+                        color: cardColors[2],
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
                     ),
                   ],
                 ),
