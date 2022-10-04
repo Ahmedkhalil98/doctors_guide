@@ -79,28 +79,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const ListTile(
-                      leading: CircleAvatar(backgroundColor: Colors.white),
-                      subtitle: Text('Specialization'),
-                      trailing: Text('Open Time'),
-                      title: Text(
-                        'Doctor Name',
-                      ),
-                    ),
-                    Container(
-                      height: 50.h,
-                      width: 150.w,
-                      decoration: BoxDecoration(
-                        color: cardColors[2],
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                    ),
-                  ],
-                ),
               ),
             ],
           ))
