@@ -1,4 +1,4 @@
-import 'package:doctors_guide/constants/colors.dart';
+import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
         title: const Text(
           'قائمة اطباء',
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                   vertical: 15.h,
                 ),
                 decoration: BoxDecoration(
-                  color: kBackgroundColor,
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(20.r),
                 ),
               ),

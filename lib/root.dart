@@ -1,4 +1,4 @@
-import 'package:doctors_guide/Views/Screens/home_screen.dart';
+import 'package:doctors_guide/Views/Screens/intro_Screen.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: (context, child) {
       return GetMaterialApp(
-        debugShowCheckedModeBanner: true,
-        home: const HomeScreen(),
+        debugShowCheckedModeBanner: false,
+        home: const IntroScreen(),
+        locale: Get.deviceLocale,
         theme: myThemeData(),
       );
     });
