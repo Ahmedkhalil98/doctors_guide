@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:doctors_guide/constants/colors.dart';
+import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,8 +13,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'قائمة اطباء',
+          style: titleTextStyle,
         ),
       ),
       body: SafeArea(
@@ -32,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 150.h,
+                height: 130.h,
                 margin: EdgeInsets.symmetric(
                   horizontal: 10.w,
                   vertical: 15.h,
@@ -53,13 +55,27 @@ class HomeScreen extends StatelessWidget {
                         'Doctor Name',
                       ),
                     ),
-                    Container(
-                      height: 50.h,
-                      width: 150.w,
-                      decoration: BoxDecoration(
-                        color: cardColors[2],
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          height: 30.h,
+                          width: 100.w,
+                          decoration: BoxDecoration(
+                            color: cardColors[colorIndex.nextInt(17)],
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'دهوك',
+                            style: bodyTextStyle,
+                          ),
+                        ),
+                        Text(
+                          'تقيم للدكتور',
+                          style: bodyTextStyle,
+                        ),
+                      ],
                     ),
                   ],
                 ),

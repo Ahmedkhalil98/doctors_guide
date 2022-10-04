@@ -21,3 +21,14 @@ ThemeData myThemeData() {
         )),
   );
 }
+
+TextStyle titleTextStyle = TextStyle(
+  color: kWhiteColor,
+  fontSize: 20.sp,
+  fontWeight: FontWeight.w600,
+);
+TextStyle bodyTextStyle = TextStyle(
+  color: kWhiteColor,
+  fontSize: 16.sp,
+  fontWeight: FontWeight.w400,
+);

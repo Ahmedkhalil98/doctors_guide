@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: HomeScreen(),
         theme: myThemeData(),
+        locale: const Locale(
+          "ar",
+        ),
       );
     });
   }
