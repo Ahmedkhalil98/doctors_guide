@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: (context, child) {
       return GetMaterialApp(
-        debugShowCheckedModeBanner: true,
-        home: const HomeScreen(),
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen(),
         theme: myThemeData(),
       );
     });
