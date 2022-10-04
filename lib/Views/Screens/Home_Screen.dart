@@ -1,4 +1,4 @@
-import 'package:doctors_guide/constants/Colors.dart';
+import 'package:doctors_guide/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,8 +35,9 @@ class HomeScreen extends StatelessWidget {
                   vertical: 15.h,
                 ),
                 decoration: BoxDecoration(
-                    color: kBackgroundColor,
-                    borderRadius: BorderRadius.circular(20.r)),
+                  color: kBackgroundColor,
+                  borderRadius: BorderRadius.circular(20.r),
+                ),
               ),
             ],
           ))
