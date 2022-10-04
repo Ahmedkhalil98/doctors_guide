@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
 
         // home: const IntroScreen(),
-        locale: Get.deviceLocale,
+        //  locale: Get.deviceLocale,
 
         home: HomeScreen(),
         theme: myThemeData(),
