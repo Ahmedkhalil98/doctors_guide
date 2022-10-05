@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
 
-        //home: IntroScreen(),
+        // home: const LogInAsADoctor(),
 
         home: HomeScreen(),
         theme: myThemeData(),
