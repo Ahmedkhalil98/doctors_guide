@@ -24,21 +24,23 @@ class MyTextFieldWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          padding: EdgeInsets.symmetric(horizontal: 6.w),
           child: TextFormField(
             //controller: controll,
             // keyboardType: typeinput,
             decoration: InputDecoration(
               hintText: hint,
               hintStyle: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 13.sp,
                 color: kgrayColor.withOpacity(0.6),
               ),
-              suffixStyle: const TextStyle(color: Colors.grey),
               helperStyle: const TextStyle(color: Colors.red),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(width: 1.w, color: kPrimaryColor)),
             ),
           ),
         ),

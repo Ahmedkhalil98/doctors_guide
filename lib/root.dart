@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
 
-        // home: const LogInAsADoctor(),
+        // home: RegisterDoctorInfo(),
 
         home: HomeScreen(),
         theme: myThemeData(),

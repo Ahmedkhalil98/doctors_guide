@@ -82,14 +82,14 @@ class IntroScreen extends StatelessWidget {
                                         isExpanded: true,
                                         underline: const SizedBox(),
                                         value:
-                                            loginController.dropdownvalue.value,
+                                            loginController.dropdownCity.value,
                                         items: iraqCities
                                             .map((e) => DropdownMenuItem(
                                                 value: e, child: Text('$e')))
                                             .toList(),
                                         onChanged: (newvalue) {
-                                          loginController
-                                              .setSelected(newvalue.toString());
+                                          loginController.setSelectedCity(
+                                              newvalue.toString());
                                         }),
                                   )),
                               GestureDetector(

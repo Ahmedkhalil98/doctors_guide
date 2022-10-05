@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
 
 class LogInDoctorController extends GetxController {
-  RxString dropdownvalue = 'بغداد'.obs;
+  RxString dropdownCity = 'بغداد'.obs;
+  RxString dropdownSpecialty = 'الطب العام'.obs;
 
-  void setSelected(String value) {
-    dropdownvalue.value = value;
+  void setSelectedCity(String value) {
+    dropdownCity.value = value;
+  }
+
+  void setSelectedSpecialty(String value) {
+    dropdownSpecialty.value = value;
   }
 }
