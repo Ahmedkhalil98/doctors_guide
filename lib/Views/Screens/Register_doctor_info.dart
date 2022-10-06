@@ -1,5 +1,7 @@
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
+import 'package:doctors_guide/Views/Screens/Register_doctor_Location.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
+import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/Iraq_Cities_and_Specialties.dart';
 import 'package:doctors_guide/constants/themes.dart';
@@ -19,6 +21,14 @@ class RegisterDoctorInfo extends StatelessWidget {
           "الدخول كطبيب",
           style: titleTextStyle,
         ),
+      ),
+      bottomSheet: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        child: GestureDetector(
+            onTap: () {
+              Get.to(const RegisterDoctorLocation());
+            },
+            child: MyButtonWidget(btntitle: "التالي", color: kPrimaryColor)),
       ),
       body: SingleChildScrollView(
           child: Column(
