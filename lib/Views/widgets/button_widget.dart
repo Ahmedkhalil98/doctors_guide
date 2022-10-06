@@ -22,10 +22,10 @@ class MyButtonWidget extends StatelessWidget {
           color: color,
           boxShadow: const [
             BoxShadow(
-                color: kgrayColor,
-                spreadRadius: 0.5,
-                blurRadius: 7,
-                offset: Offset(1, 2))
+              color: kgrayColor,
+              spreadRadius: 0.5,
+              blurRadius: 1,
+            )
           ],
           borderRadius: BorderRadius.circular(10.r)),
       child: Text(
