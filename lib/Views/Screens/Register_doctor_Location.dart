@@ -34,7 +34,7 @@ class RegisterDoctorLocation extends StatelessWidget {
             //! map
             Container(
               margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-              height: 400.h,
+              height: 300.h,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: kPrimaryColor,
