@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import 'package:doctors_guide/Views/Screens/home_screen.dart';
-=======
-import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
->>>>>>> 697cd3582c9e9f0ce8129b39e75c9c3464203508
+import 'package:doctors_guide/Views/Screens/intro_screen.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,11 +13,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
 
-<<<<<<< HEAD
-        //home: IntroScreen(),
-=======
-        home: RegisterDoctorInfo(),
->>>>>>> 697cd3582c9e9f0ce8129b39e75c9c3464203508
+        home: IntroScreen(),
 
         //  home: HomeScreen(),
         theme: myThemeData(),

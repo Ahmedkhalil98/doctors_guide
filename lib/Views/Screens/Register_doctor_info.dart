@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 import 'package:doctors_guide/Controllers/login_doctor_controller.dart';
-import 'package:doctors_guide/Views/widgets/text_field_widget.dart';
-=======
-import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_Location.dart';
-import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
->>>>>>> 697cd3582c9e9f0ce8129b39e75c9c3464203508
+import 'package:doctors_guide/Views/widgets/text_field_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:doctors_guide/constants/themes.dart';
