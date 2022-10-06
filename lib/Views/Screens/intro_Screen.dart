@@ -1,9 +1,9 @@
-import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
-import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
-import 'package:doctors_guide/Views/Screens/Login_as_Adoctor.dart';
+import 'package:doctors_guide/Controllers/login_doctor_controller.dart';
+import 'package:doctors_guide/Views/Screens/home_screen.dart';
+import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
-import 'package:doctors_guide/constants/Iraq_Cities_and_Specialties.dart';
+import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -83,7 +83,7 @@ class IntroScreen extends StatelessWidget {
                                         underline: const SizedBox(),
                                         value:
                                             loginController.dropdownCity.value,
-                                        items: iraqCities
+                                        items: iraq_cities
                                             .map((e) => DropdownMenuItem(
                                                 value: e, child: Text('$e')))
                                             .toList(),

@@ -1,4 +1,4 @@
-List iraqCities = [
+List iraq_cities = [
   'بغداد',
   'البصرة',
   'نينوى',
