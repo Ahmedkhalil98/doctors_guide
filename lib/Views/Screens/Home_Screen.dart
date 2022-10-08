@@ -17,6 +17,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading:
+              false, // to make sure that user can not back
           title: Text(
             'قائمة اطباء',
             style: titleTextStyle,
