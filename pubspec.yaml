@@ -38,6 +38,9 @@ dependencies:
   flutter_screenutil: ^5.5.4
   lottie: ^1.4.2
   url_launcher: ^6.1.6
+  flutter_multi_select_items: ^0.4.2
+  time_picker_sheet: ^0.0.2+1
+  
 
 dev_dependencies:
   flutter_test:

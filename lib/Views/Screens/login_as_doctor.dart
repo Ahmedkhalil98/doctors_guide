@@ -1,9 +1,11 @@
+import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class LogInAsADoctor extends StatelessWidget {
@@ -34,7 +36,12 @@ class LogInAsADoctor extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-              child: MyButtonWidget(btntitle: "الدخول", color: kPrimaryColor),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(RegisterDoctorInfo());
+                  },
+                  child:
+                      MyButtonWidget(btntitle: "الدخول", color: kPrimaryColor)),
             ),
             Center(
               child: Padding(

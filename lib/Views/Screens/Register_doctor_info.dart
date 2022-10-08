@@ -26,7 +26,7 @@ class RegisterDoctorInfo extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: GestureDetector(
             onTap: () {
-              Get.to(const RegisterDoctorLocation());
+              Get.to(RegisterDoctorLocation());
             },
             child: MyButtonWidget(btntitle: "التالي", color: kPrimaryColor)),
       ),

@@ -1,13 +1,19 @@
+import 'package:doctors_guide/Controllers/time_Controlller.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
+import 'package:doctors_guide/constants/Iraq_Cities_and_Specialties.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class RegisterDoctorLocation extends StatelessWidget {
-  const RegisterDoctorLocation({Key? key}) : super(key: key);
+  RegisterDoctorLocation({Key? key}) : super(key: key);
+
+  var timeController = Get.put(TimeController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +32,72 @@ class RegisterDoctorLocation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            textFieldTitle(subTitle: "أيام الدوام :"),
+            Container(
+              height: 80.h,
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 8.w),
+              padding: EdgeInsets.all(3.h),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: kPrimaryColor,
+                ),
+                borderRadius: BorderRadius.circular(20.r),
+              ),
+              child: MultiSelectContainer(
+                  itemsDecoration: MultiSelectDecorations(
+                      selectedDecoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.circular(40.r),
+                  )),
+                  items: weekDays
+                      .map((e) => MultiSelectCard(
+                            value: e,
+                            label: e,
+                          ))
+                      .toList(),
+                  highlightColor: kPrimaryColor,
+                  onChange: (allSelectedItems, selectedItem) {
+                    //ToDo: weekday
+                  }),
+            ),
+            Obx(
+              () => Container(
+                margin: EdgeInsets.symmetric(horizontal: 5.w),
+                width: double.infinity,
+                height: 60.h,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          timeController.openTimePickerSheet(
+                              context, timeController.fromTime.toString());
+                        },
+                        child: timeTextField(
+                            suTitle: "من",
+                            time: timeController.fromTime.toString())),
+                    GestureDetector(
+                        onTap: () {
+                          timeController.openTimePickerSheet(
+                              context, timeController.toTime.toString());
+                        },
+                        child: timeTextField(
+                            suTitle: "الى",
+                            time: timeController.toTime.toString())),
+                  ],
+                ),
+              ),
+            ),
+
             MyTextFieldWidget(
               hint: "اسم منطقة,اسم شارع,اسم مشفى او مجمع",
               title: "أدخل العنوان العيادة :",
             ),
             textFieldTitle(subTitle: "قم بتحديد موقع العيادة على الخريطة:"),
-            //! map
+            //ToDo: map
             Container(
               margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-              height: 300.h,
+              height: 230.h,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: kPrimaryColor,
@@ -46,4 +109,42 @@ class RegisterDoctorLocation extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget timeTextField({
+  required String suTitle,
+  required String time,
+}) {
+  return Row(
+    children: [
+      textFieldTitle(subTitle: suTitle),
+      Container(
+        alignment: Alignment.center,
+        width: 120.w,
+        height: 40.h,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: kgrayColor.withOpacity(0.9),
+          ),
+          borderRadius: BorderRadius.circular(20.r),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Icon(
+              Icons.schedule,
+              color: kgrayColor,
+            ),
+            SizedBox(
+              width: 5.w,
+            ),
+            Text(
+              time,
+              style: TextStyle(fontSize: 14.sp),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
 }
