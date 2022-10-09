@@ -1,14 +1,19 @@
+import 'package:doctors_guide/Controllers/time_Controlller.dart';
+import 'package:doctors_guide/Views/widgets/doctor_info_card.dart';
+import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class DoctorDetailsInfo extends StatelessWidget {
-  const DoctorDetailsInfo({super.key});
+  DoctorDetailsInfo({super.key});
+  var timeController = Get.put(TimeController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('معلومات الطبيب'),
+        title: const Text("تخصص"),
       ),
       body: ListView(
         children: [
@@ -41,6 +46,34 @@ class DoctorDetailsInfo extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          DoctorInfoCard(icon: const Icon(Icons.title), title: "تخصص"),
+          DoctorInfoCard(icon: const Icon(Icons.title), title: "رقم التلفون"),
+          Card(
+            color: kPrimaryColor,
+            child: ListTile(
+              leading: const Icon(Icons.timer_sharp),
+              title: const Text(
+                "اوقات الدوام",
+              ),
+              trailing: Text(
+                timeController.fromTime,
+              ),
+            ),
+          ),
+          const Card(
+            color: kPrimaryColor,
+            child: ListTile(
+              leading: Icon(Icons.location_pin),
+              title: Text(
+                "العنوان",
+              ),
+              trailing: Text('عنوان الكامل'),
+            ),
+          ),
+          DoctorInfoCard(
+            icon: const Icon(Icons.title),
+            title: "معلومات اكثر عن الدكتور",
           ),
         ],
       ),

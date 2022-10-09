@@ -103,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   ListTile(
                     onTap: () {
-                      Get.to(const DoctorDetailsInfo());
+                      Get.to(DoctorDetailsInfo());
                     },
                     leading: const CircleAvatar(backgroundColor: Colors.white),
                     subtitle: const Text('تخصص'),
