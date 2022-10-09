@@ -11,9 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class RegisterDoctorLocation extends StatelessWidget {
-  RegisterDoctorLocation({Key? key}) : super(key: key);
-
-  var timeController = Get.put(TimeController());
+  const RegisterDoctorLocation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +59,9 @@ class RegisterDoctorLocation extends StatelessWidget {
                     //ToDo: weekday
                   }),
             ),
-            Obx(
-              () => Container(
+            GetBuilder<TimeController>(
+              init: TimeController(),
+              builder: (timeController) => Container(
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
                 width: double.infinity,
                 height: 60.h,
@@ -70,16 +69,13 @@ class RegisterDoctorLocation extends StatelessWidget {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          timeController.openTimePickerSheet(
-                              context, timeController.fromTime.toString());
+                          timeController.openTimePicker4FromTime(context);
                         },
                         child: timeTextField(
-                            suTitle: "من",
-                            time: timeController.fromTime.toString())),
+                            suTitle: "من", time: timeController.fromTime)),
                     GestureDetector(
                         onTap: () {
-                          timeController.openTimePickerSheet(
-                              context, timeController.toTime.toString());
+                          timeController.openTimePicker4ToTime(context);
                         },
                         child: timeTextField(
                             suTitle: "الى",

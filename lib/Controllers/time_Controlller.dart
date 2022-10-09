@@ -6,10 +6,10 @@ import 'package:time_picker_sheet/widget/time_picker.dart';
 class TimeController extends GetxController {
   //ToDo:
 
-  RxString fromTime = "${DateTime.now().hour}:${DateTime.now().minute}".obs;
-  RxString toTime = "${DateTime.now().hour}:${DateTime.now().minute}".obs;
+  String fromTime = "${DateTime.now().hour}:${DateTime.now().minute}";
+  String toTime = "${DateTime.now().hour}:${DateTime.now().minute}";
 
-  void openTimePickerSheet(BuildContext context, String toOrFrom) async {
+  void openTimePicker4FromTime(BuildContext context) async {
     final result = await TimePicker.show<DateTime?>(
       context: context,
       sheet: TimePickerSheet(
@@ -19,10 +19,25 @@ class TimeController extends GetxController {
         saveButtonText: 'حفظ',
       ),
     );
-
     if (result != null) {
-      toOrFrom = "${result.hour}:${result.minute}";
-      print(toOrFrom);
+      fromTime = "${result.hour}:${result.minute}";
+      update();
+    }
+  }
+
+  void openTimePicker4ToTime(BuildContext context) async {
+    final result = await TimePicker.show<DateTime?>(
+      context: context,
+      sheet: TimePickerSheet(
+        sheetTitle: 'حدد الوقت',
+        minuteTitle: 'دقيقة',
+        hourTitle: 'ساعة',
+        saveButtonText: 'حفظ',
+      ),
+    );
+    if (result != null) {
+      toTime = "${result.hour}:${result.minute}";
+      update();
     }
   }
 }
