@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:doctors_guide/Controllers/login_doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
+import 'package:doctors_guide/Views/widgets/drawer_card.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:doctors_guide/constants/themes.dart';
@@ -24,15 +25,13 @@ class HomeScreen extends StatelessWidget {
               DrawerHeader(
                 child: Text('معلومات الشخصية'),
               ),
-              ListTile(
-                title: Text('ك طبيب'),
-              ),
-              ListTile(
-                leading: Icon(Icons.nightlight),
-                title: Text(
-                  'تغير الخلفية ',
-                ),
-              ),
+              DrawerCard(
+                  icon: Icon(Icons.app_registration), title: 'تسجيل ك طبيب'),
+              DrawerCard(icon: Icon(Icons.nightlight), title: 'تغير الخلفية'),
+              DrawerCard(icon: Icon(Icons.abc_outlined), title: 'حول التطبيق'),
+              DrawerCard(icon: Icon(Icons.cast_connected), title: 'تواصل معنا'),
+              DrawerCard(icon: Icon(Icons.nightlight), title: 'قييم التطبيق'),
+              DrawerCard(icon: Icon(Icons.info_outline), title: 'معلومات عنا'),
             ],
           ),
         ),
