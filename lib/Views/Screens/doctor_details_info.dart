@@ -1,6 +1,7 @@
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
 import 'package:doctors_guide/Views/widgets/doctor_info_card.dart';
 import 'package:doctors_guide/constants/Colors.dart';
+import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,10 @@ class DoctorDetailsInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("تخصص"),
+        title: Text(
+          "تفاصيل",
+          style: titleTextStyle,
+        ),
       ),
       body: ListView(
         children: [
@@ -37,22 +41,27 @@ class DoctorDetailsInfo extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
             color: kPrimaryColor,
             child: ListTile(
-              leading: const Text(
+              title: Text(
                 "اوقات الدوام :",
+                style: TextStyle(
+                  fontSize: 13.sp,
+                ),
               ),
-              title: Column(
+              subtitle: Column(
                 children: [
                   Text(
                     "السبت ,الاحد ,الاثنين,الثلاثاء,الاربعاء,الخميس",
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 13.sp,
+                      color: kBlackColor,
                     ),
                   ),
                   Text(
                     "متوفر من الساعة ${timeController.fromTime} الى الساعة"
                     " ${timeController.toTime}",
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 14.sp,
+                      color: kBlackColor,
                     ),
                   ),
                 ],
@@ -78,6 +87,7 @@ class DoctorDetailsInfo extends StatelessWidget {
               trailing: Icon(
                 Icons.phone,
                 size: 25.h,
+                color: kWhiteColor,
               ),
             ),
           )
