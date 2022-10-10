@@ -16,6 +16,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: Drawer(
+          elevation: 1.0,
+          // backgroundColor: kPrimaryColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: const [
+              DrawerHeader(
+                child: Text('معلومات الشخصية'),
+              ),
+              ListTile(
+                title: Text('ك طبيب'),
+              ),
+              ListTile(
+                leading: Icon(Icons.nightlight),
+                title: Text(
+                  'تغير الخلفية ',
+                ),
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           automaticallyImplyLeading:
               false, // to make sure that user can not back

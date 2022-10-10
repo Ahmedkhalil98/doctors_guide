@@ -1,4 +1,4 @@
-import 'package:doctors_guide/Views/Screens/intro_Screen.dart';
+import 'package:doctors_guide/Views/Screens/home_screen.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
 
-        home: IntroScreen(),
+        // home: IntroScreen(),
 
-        //  home: HomeScreen(),
+        home: HomeScreen(),
         theme: myThemeData(),
         locale: const Locale(
           "ar",

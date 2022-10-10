@@ -47,39 +47,51 @@ class DoctorDetailsInfo extends StatelessWidget {
               ),
             ],
           ),
-          DoctorInfoCard(icon: const Icon(Icons.title), title: "تخصص"),
-          DoctorInfoCard(icon: const Icon(Icons.title), title: "رقم التلفون"),
+          const DoctorInfoCard(icon: Icon(Icons.title), title: "تخصص"),
+          const DoctorInfoCard(
+              icon: Icon(Icons.local_phone_outlined), title: "رقم التلفون"),
           Card(
+            margin:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
             color: kPrimaryColor,
             child: ListTile(
               leading: const Icon(Icons.timer_sharp),
               title: const Text(
                 "اوقات الدوام",
               ),
-              trailing: Text(
-                timeController.fromTime,
+              subtitle: Text(
+                "متوفر من الساعة ${timeController.fromTime} الى الساعة"
+                " ${timeController.toTime}",
               ),
             ),
           ),
           const Card(
+            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
             color: kPrimaryColor,
             child: ListTile(
               leading: Icon(Icons.location_pin),
               title: Text(
                 "العنوان",
               ),
-              trailing: Text('عنوان الكامل'),
+              subtitle: Text('عنوان الكامل'),
             ),
           ),
-          DoctorInfoCard(
-            icon: const Icon(Icons.title),
-            title: "معلومات اكثر عن الدكتور",
+          const Card(
+            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+            color: kPrimaryColor,
+            child: ListTile(
+              leading: Icon(Icons.description),
+              title: Text(
+                "شهادات و خبرات",
+              ),
+              subtitle: Text('تفاصيل'),
+            ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.call),
+        child: const Icon(Icons.local_phone_outlined),
       ),
     );
   }

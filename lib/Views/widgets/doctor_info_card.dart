@@ -5,7 +5,7 @@ class DoctorInfoCard extends StatelessWidget {
   final Icon icon;
   final String title;
   final String? trailing;
-  DoctorInfoCard({
+  const DoctorInfoCard({
     Key? key,
     required this.icon,
     required this.title,
@@ -15,6 +15,7 @@ class DoctorInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       color: kPrimaryColor,
       child: ListTile(
         leading: icon,
