@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Container(
-              height: 130.h,
+              height: 110.h,
               margin: EdgeInsets.symmetric(
                 horizontal: 10.w,
                 vertical: 15.h,
@@ -124,7 +124,7 @@ class HomeScreen extends StatelessWidget {
                     },
                     leading: const CircleAvatar(backgroundColor: Colors.white),
                     subtitle: const Text('تخصص'),
-                    trailing: const Text('اوقات الدوام '),
+                    trailing: const Text('سعر '),
                     title: const Text(
                       'اسم الطبيب',
                     ),
@@ -141,13 +141,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                         alignment: Alignment.center,
                         child: Text(
-                          'دهوك',
+                          'السليمانية',
                           style: bodyTextStyle,
                         ),
-                      ),
-                      Text(
-                        'تقيم للدكتور',
-                        style: bodyTextStyle,
                       ),
                     ],
                   ),

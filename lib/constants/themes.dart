@@ -29,11 +29,11 @@ ThemeData myThemeData() {
 
 TextStyle titleTextStyle = TextStyle(
   color: kWhiteColor,
-  fontSize: 18.sp,
-  fontWeight: FontWeight.w600,
+  fontSize: 20.sp,
+  fontWeight: FontWeight.w700,
 );
 TextStyle bodyTextStyle = TextStyle(
   color: kWhiteColor,
-  fontSize: 16.sp,
-  fontWeight: FontWeight.w400,
+  fontSize: 18.sp,
+  fontWeight: FontWeight.w500,
 );
