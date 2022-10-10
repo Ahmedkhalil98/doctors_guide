@@ -1,8 +1,7 @@
 import 'dart:math';
-
 import 'package:doctors_guide/Controllers/login_doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
-import 'package:doctors_guide/constants/colors.dart';
+import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
                       border: Border.all(
-                        color: kgrayColor.withOpacity(0.8),
+                        color: kGrayColor.withOpacity(0.8),
                         width: 1.w,
                       ),
                     ),
@@ -84,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
                       border: Border.all(
-                        color: kgrayColor.withOpacity(0.8),
+                        color: kGrayColor.withOpacity(0.8),
                         width: 1.w,
                       ),
                     ),

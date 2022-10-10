@@ -119,7 +119,7 @@ Widget timeTextField({
         height: 40.h,
         decoration: BoxDecoration(
           border: Border.all(
-            color: kgrayColor.withOpacity(0.9),
+            color: kGrayColor.withOpacity(0.9),
           ),
           borderRadius: BorderRadius.circular(20.r),
         ),
@@ -128,7 +128,7 @@ Widget timeTextField({
           children: [
             const Icon(
               Icons.schedule,
-              color: kgrayColor,
+              color: kGrayColor,
             ),
             SizedBox(
               width: 5.w,

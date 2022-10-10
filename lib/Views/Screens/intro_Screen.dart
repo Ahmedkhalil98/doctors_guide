@@ -64,7 +64,7 @@ class IntroScreen extends StatelessWidget {
                                   "اختر محافظتك للبدء :",
                                   style: TextStyle(
                                     fontSize: 16.sp,
-                                    color: kgrayColor,
+                                    color: kGrayColor,
                                   ),
                                 ),
                               ),
@@ -73,7 +73,7 @@ class IntroScreen extends StatelessWidget {
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 20.w),
                                   decoration: BoxDecoration(
-                                      color: kgrayColor.withOpacity(0.5),
+                                      color: kGrayColor.withOpacity(0.5),
                                       borderRadius:
                                           BorderRadius.circular(10.r)),
                                   height: 40.h,

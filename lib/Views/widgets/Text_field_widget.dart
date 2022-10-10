@@ -19,7 +19,7 @@ class MyTextFieldWidget extends StatelessWidget {
             title,
             style: TextStyle(
               fontSize: 14.sp,
-              color: kgrayColor,
+              color: kGrayColor,
             ),
           ),
         ),
@@ -32,7 +32,7 @@ class MyTextFieldWidget extends StatelessWidget {
               hintText: hint,
               hintStyle: TextStyle(
                 fontSize: 13.sp,
-                color: kgrayColor.withOpacity(0.6),
+                color: kGrayColor.withOpacity(0.6),
               ),
               helperStyle: const TextStyle(color: Colors.red),
               border: OutlineInputBorder(

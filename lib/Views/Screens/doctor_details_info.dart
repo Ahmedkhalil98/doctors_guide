@@ -17,82 +17,76 @@ class DoctorDetailsInfo extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Stack(
-            children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    bottom: 10.0,
-                  ),
-                  margin: const EdgeInsets.only(
-                    bottom: 10.0,
-                  ),
-                  width: MediaQuery.of(context).size.width,
-                  height: 300.h,
-                  child: Image.asset('images/doctorimg.jpg'),
-                ),
-              ),
-              const Positioned(
-                top: 250,
-                right: 10,
-                child: Text(
-                  'اسم الطبيب',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10.h),
+            width: 150.w,
+            height: 150.h,
+            child: const CircleAvatar(
+              backgroundColor: Colors.red,
+              // backgroundImage: AssetImage(""),
+            ),
           ),
-          const DoctorInfoCard(icon: Icon(Icons.title), title: "تخصص"),
+          const DoctorInfoCard(titleVale: "الدكتور علي محمود", title: "الأسم"),
+          const DoctorInfoCard(titleVale: "جراحة العيون", title: "التخصص"),
+          const DoctorInfoCard(titleVale: "دهوك", title: "المحافظة"),
+          const DoctorInfoCard(titleVale: "دهوك,سميل و...", title: "العنوان"),
+          const DoctorInfoCard(titleVale: "15000 دينار", title: "سعر المعاينة"),
           const DoctorInfoCard(
-              icon: Icon(Icons.local_phone_outlined), title: "رقم التلفون"),
+              titleVale: "حاصل على شهادة عدد", title: "تفاصيل "),
           Card(
-            margin:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+            margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
             color: kPrimaryColor,
             child: ListTile(
-              leading: const Icon(Icons.timer_sharp),
-              title: const Text(
-                "اوقات الدوام",
+              leading: const Text(
+                "اوقات الدوام :",
               ),
-              subtitle: Text(
-                "متوفر من الساعة ${timeController.fromTime} الى الساعة"
-                " ${timeController.toTime}",
+              title: Column(
+                children: [
+                  Text(
+                    "السبت ,الاحد ,الاثنين,الثلاثاء,الاربعاء,الخميس",
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                    ),
+                  ),
+                  Text(
+                    "متوفر من الساعة ${timeController.fromTime} الى الساعة"
+                    " ${timeController.toTime}",
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          const Card(
-            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-            color: kPrimaryColor,
-            child: ListTile(
-              leading: Icon(Icons.location_pin),
-              title: Text(
-                "العنوان",
-              ),
-              subtitle: Text('عنوان الكامل'),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+            decoration: BoxDecoration(
+              color: kSecondColor,
+              borderRadius: BorderRadius.circular(30.r),
             ),
-          ),
-          const Card(
-            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-            color: kPrimaryColor,
             child: ListTile(
-              leading: Icon(Icons.description),
-              title: Text(
-                "شهادات و خبرات",
+              title: Center(
+                  child: Text(
+                textDirection: TextDirection.ltr,
+                "0750 456 4596",
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: kWhiteColor,
+                ),
+              )),
+              trailing: Icon(
+                Icons.phone,
+                size: 25.h,
               ),
-              subtitle: Text('تفاصيل'),
             ),
-          ),
+          )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.local_phone_outlined),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   child: const Icon(Icons.local_phone_outlined),
+      // ),
     );
   }
 }

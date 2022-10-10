@@ -26,7 +26,7 @@ class RegisterDoctorInfo extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: GestureDetector(
             onTap: () {
-              Get.to(RegisterDoctorLocation());
+              Get.to(const RegisterDoctorLocation());
             },
             child: MyButtonWidget(btntitle: "التالي", color: kPrimaryColor)),
       ),
@@ -45,7 +45,7 @@ class RegisterDoctorInfo extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
                 border: Border.all(
-                  color: kgrayColor.withOpacity(0.8),
+                  color: kGrayColor.withOpacity(0.8),
                   width: 1.w,
                 ),
               ),
@@ -70,7 +70,7 @@ class RegisterDoctorInfo extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
                 border: Border.all(
-                  color: kgrayColor.withOpacity(0.8),
+                  color: kGrayColor.withOpacity(0.8),
                   width: 1.w,
                 ),
               ),
@@ -109,7 +109,7 @@ Widget textFieldTitle({required String subTitle}) {
       subTitle,
       style: TextStyle(
         fontSize: 14.sp,
-        color: kgrayColor,
+        color: kGrayColor,
       ),
     ),
   );
