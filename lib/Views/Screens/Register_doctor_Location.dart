@@ -84,7 +84,6 @@ class RegisterDoctorLocation extends StatelessWidget {
                 ),
               ),
             ),
-
             MyTextFieldWidget(
               hint: "اسم منطقة,اسم شارع,اسم مشفى او مجمع",
               title: "أدخل العنوان العيادة :",

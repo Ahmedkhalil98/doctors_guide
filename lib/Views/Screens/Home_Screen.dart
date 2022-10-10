@@ -38,8 +38,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          automaticallyImplyLeading:
-              false, // to make sure that user can not back
           title: Text(
             'قائمة اطباء',
             style: titleTextStyle,
