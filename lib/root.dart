@@ -1,5 +1,6 @@
 import 'package:doctors_guide/Views/Screens/intro_Screen.dart';
 import 'package:doctors_guide/constants/themes.dart';
+import 'package:doctors_guide/utils/my_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: IntroScreen(),
+        initialBinding: MyBindings(),
         theme: myThemeData(),
         locale: const Locale(
           "ar",

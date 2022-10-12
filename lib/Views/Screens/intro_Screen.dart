@@ -1,4 +1,3 @@
-import 'package:doctors_guide/Controllers/login_doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/home_screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
@@ -11,7 +10,7 @@ import 'package:get/get.dart';
 class IntroScreen extends StatelessWidget {
   IntroScreen({Key? key}) : super(key: key);
 
-  var loginController = Get.put(LogInDoctorController());
+  var loginController = Get.find();
 
   @override
   Widget build(BuildContext context) {
