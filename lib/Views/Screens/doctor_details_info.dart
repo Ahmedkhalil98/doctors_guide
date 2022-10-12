@@ -68,30 +68,32 @@ class DoctorDetailsInfo extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-            decoration: BoxDecoration(
-              color: kSecondColor,
-              borderRadius: BorderRadius.circular(30.r),
-            ),
-            child: ListTile(
-              title: Center(
-                  child: Text(
-                textDirection: TextDirection.ltr,
-                "0750 456 4596",
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  color: kWhiteColor,
-                ),
-              )),
-              trailing: Icon(
-                Icons.phone,
-                size: 25.h,
-                color: kWhiteColor,
-              ),
-            ),
-          )
         ],
+      ),
+      bottomNavigationBar: Container(
+        width: MediaQuery.of(context).size.width * 90,
+        height: MediaQuery.of(context).size.height * 0.08,
+        margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+        decoration: BoxDecoration(
+          color: kSecondColor,
+          borderRadius: BorderRadius.circular(30.r),
+        ),
+        child: ListTile(
+          title: Center(
+              child: Text(
+            textDirection: TextDirection.ltr,
+            "0750 456 4596",
+            style: TextStyle(
+              fontSize: 16.sp,
+              color: kWhiteColor,
+            ),
+          )),
+          trailing: Icon(
+            Icons.phone,
+            size: 25.h,
+            color: kWhiteColor,
+          ),
+        ),
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {},
