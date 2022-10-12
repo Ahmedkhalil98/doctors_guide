@@ -1,8 +1,8 @@
-import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DrawerCard extends StatelessWidget {
-  final Icon icon;
+  final IconData icon;
   final String title;
   const DrawerCard({
     Key? key,
@@ -12,11 +12,16 @@ class DrawerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10.h),
       child: ListTile(
-        tileColor: kPrimaryColor,
-        leading: icon,
-        title: Text(title),
+        leading: Icon(icon),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontSize: 14.sp,
+          ),
+        ),
       ),
     );
   }
