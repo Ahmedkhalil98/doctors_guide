@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyTextFieldWidget extends StatelessWidget {
-  MyTextFieldWidget({Key? key, required this.hint, required this.title})
+  MyTextFieldWidget(
+      {Key? key, required this.hint, required this.title, this.helpText})
       : super(key: key);
   String hint;
   String title;
+  String? helpText;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class MyTextFieldWidget extends StatelessWidget {
                 color: kGrayColor.withOpacity(0.6),
               ),
               helperStyle: const TextStyle(color: Colors.red),
+              suffix: Text(helpText ?? " "),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
