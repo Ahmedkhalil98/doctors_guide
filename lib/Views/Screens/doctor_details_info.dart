@@ -35,8 +35,6 @@ class DoctorDetailsInfo extends StatelessWidget {
           const DoctorInfoCard(titleVale: "دهوك", title: "المحافظة"),
           const DoctorInfoCard(titleVale: "دهوك,سميل و...", title: "العنوان"),
           const DoctorInfoCard(titleVale: "15000 دينار", title: "سعر المعاينة"),
-          const DoctorInfoCard(
-              titleVale: "حاصل على شهادة عدد", title: "تفاصيل "),
           Card(
             margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
             color: kPrimaryColor,

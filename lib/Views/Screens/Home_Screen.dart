@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Container(
-              height: 110.h,
+              height: 80.h,
               margin: EdgeInsets.symmetric(
                 horizontal: 10.w,
                 vertical: 15.h,
@@ -121,30 +121,33 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       Get.to(DoctorDetailsInfo());
                     },
-                    leading: const CircleAvatar(backgroundColor: Colors.white),
+                    leading: Container(
+                      width: 50.w,
+                      height: 100.h,
+                      decoration: BoxDecoration(
+                        color: kWhiteColor,
+                        borderRadius: BorderRadius.circular(30.r),
+                        //ToDo : doctor Image
+                      ),
+                    ),
                     subtitle: const Text('تخصص'),
-                    trailing: const Text('سعر '),
+                    trailing: Container(
+                      padding: EdgeInsets.all(8.w),
+                      decoration: BoxDecoration(
+                        //color: cardColors[colorIndex.nextInt(17)],
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
+                      child: Text(
+                        'دهوك',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: kBlackColor,
+                        ),
+                      ),
+                    ),
                     title: const Text(
                       'اسم الطبيب',
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        height: 30.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          color: cardColors[colorIndex.nextInt(17)],
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          'السليمانية',
-                          style: bodyTextStyle,
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),
