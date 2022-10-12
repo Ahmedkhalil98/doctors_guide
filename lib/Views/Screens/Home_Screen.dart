@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
 import 'package:doctors_guide/constants/Colors.dart';
@@ -10,7 +11,7 @@ import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-  var loginController = Get.find();
+  final loginController = Get.put(LogInDoctorController());
   Random colorIndex = Random();
   @override
   Widget build(BuildContext context) {

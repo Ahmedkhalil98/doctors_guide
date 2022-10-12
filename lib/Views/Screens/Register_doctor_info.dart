@@ -1,3 +1,4 @@
+import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_Location.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
@@ -11,7 +12,7 @@ import 'package:get/get.dart';
 class RegisterDoctorInfo extends StatelessWidget {
   RegisterDoctorInfo({Key? key}) : super(key: key);
 
-  var loginController = Get.find();
+  final loginController = Get.put(LogInDoctorController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
