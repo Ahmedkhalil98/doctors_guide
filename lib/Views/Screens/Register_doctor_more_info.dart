@@ -1,3 +1,4 @@
+import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
@@ -11,8 +12,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class RegisterDoctorLocation extends StatelessWidget {
-  const RegisterDoctorLocation({Key? key}) : super(key: key);
+  RegisterDoctorLocation({Key? key}) : super(key: key);
 
+  final logInDoctor = Get.put(LogInDoctorController(), permanent: true);
+  final timeController = Get.put(TimeController(), permanent: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,21 @@ class RegisterDoctorLocation extends StatelessWidget {
       ),
       bottomSheet: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
-        child: MyButtonWidget(btntitle: "حفظ", color: kPrimaryColor),
+        child: GestureDetector(
+            onTap: () {
+              //ToDo: check if textfield empty
+              logInDoctor.addNewDoctorData(
+                  fullName: logInDoctor.fullName.text,
+                  city: logInDoctor.dropdownCity.toString(),
+                  specialty: logInDoctor.dropdownSpecialty.toString(),
+                  previewPrice: int.parse(logInDoctor.price.text),
+                  phoneNumber: int.parse(logInDoctor.phoneNumber.text),
+                  workingDays: logInDoctor.workingDays,
+                  fromTime: timeController.fromTime,
+                  toTime: timeController.toTime,
+                  address: logInDoctor.address.text);
+            },
+            child: MyButtonWidget(btntitle: "حفظ", color: kPrimaryColor)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -56,11 +73,10 @@ class RegisterDoctorLocation extends StatelessWidget {
                       .toList(),
                   highlightColor: kPrimaryColor,
                   onChange: (allSelectedItems, selectedItem) {
-                    //ToDo: weekday
+                    logInDoctor.workingDays = allSelectedItems;
                   }),
             ),
             GetBuilder<TimeController>(
-              init: TimeController(),
               builder: (timeController) => Container(
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
                 width: double.infinity,
@@ -85,6 +101,7 @@ class RegisterDoctorLocation extends StatelessWidget {
               ),
             ),
             MyTextFieldWidget(
+              controller: logInDoctor.address,
               hint: "اسم منطقة,اسم شارع,اسم مشفى او مجمع",
               title: "أدخل العنوان العيادة :",
             ),

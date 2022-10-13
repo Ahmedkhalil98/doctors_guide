@@ -1,5 +1,5 @@
+import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
-import 'package:doctors_guide/Views/widgets/text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/themes.dart';
@@ -8,9 +8,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-class LogInAsADoctor extends StatelessWidget {
-  const LogInAsADoctor({Key? key}) : super(key: key);
+import '../widgets/Text_field_widget.dart';
 
+class LogInAsADoctor extends StatelessWidget {
+  LogInAsADoctor({Key? key}) : super(key: key);
+
+  final loginController = Get.put(LogInDoctorController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +34,7 @@ class LogInAsADoctor extends StatelessWidget {
               child: Lottie.asset("images/doctorCard.json"),
             ),
             MyTextFieldWidget(
+              controller: loginController.code,
               hint: "الكود",
               title: "الرجاء أدخال الكود خاص بالطبيب هنا :",
             ),

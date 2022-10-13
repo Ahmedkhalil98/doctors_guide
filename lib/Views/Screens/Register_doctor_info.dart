@@ -1,5 +1,5 @@
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
-import 'package:doctors_guide/Views/Screens/Register_doctor_Location.dart';
+import 'package:doctors_guide/Views/Screens/Register_doctor_more_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 class RegisterDoctorInfo extends StatelessWidget {
   RegisterDoctorInfo({Key? key}) : super(key: key);
 
-  final loginController = Get.put(LogInDoctorController());
+  final loginController = Get.put(LogInDoctorController(), permanent: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class RegisterDoctorInfo extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: GestureDetector(
             onTap: () {
-              Get.to(const RegisterDoctorLocation());
+              Get.to(RegisterDoctorLocation());
             },
             child: MyButtonWidget(btntitle: "التالي", color: kPrimaryColor)),
       ),
@@ -35,6 +35,7 @@ class RegisterDoctorInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyTextFieldWidget(
+            controller: loginController.fullName,
             hint: "اسم الطيب",
             title: "أدخل أسم الثلاثي للطبيب :",
           ),
@@ -89,10 +90,12 @@ class RegisterDoctorInfo extends StatelessWidget {
                     }),
               )),
           MyTextFieldWidget(
+            controller: loginController.phoneNumber,
             hint: "075XXXXXXXX",
             title: "رقم العيادة",
           ),
           MyTextFieldWidget(
+            controller: loginController.price,
             hint: "ادخل مبلغ بالدينار",
             title: "سعر معاينة",
             helpText: "IQD",

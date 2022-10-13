@@ -4,11 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyTextFieldWidget extends StatelessWidget {
   MyTextFieldWidget(
-      {Key? key, required this.hint, required this.title, this.helpText})
+      {Key? key,
+      required this.hint,
+      required this.title,
+      this.helpText,
+      required this.controller})
       : super(key: key);
   String hint;
   String title;
   String? helpText;
+  TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class MyTextFieldWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 6.w),
           child: TextFormField(
-            //controller: controll,
+            controller: controller,
             // keyboardType: typeinput,
             decoration: InputDecoration(
               hintText: hint,
