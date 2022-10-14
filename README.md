@@ -19,6 +19,10 @@ A new Flutter project.
 - [ ] add image in register information page
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
 - [ ] 
+- [ ]
+- [ ]
+- [ ]
+- [ ]
 
 
 
