@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
 import 'package:doctors_guide/Views/widgets/doctor_info_card.dart';
+import 'package:doctors_guide/Views/widgets/doctor_location.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
@@ -75,17 +76,7 @@ class DoctorDetailsInfo extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: 200,
-            height: 200,
-            child: GoogleMap(
-              mapType: MapType.hybrid,
-              initialCameraPosition: _kGooglePlex,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-            ),
-          ),
+          const DoctorLocationMap(),
         ],
       ),
       bottomNavigationBar: Container(

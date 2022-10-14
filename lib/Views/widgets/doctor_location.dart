@@ -74,41 +74,33 @@ class _DoctorLocationMapState extends State<DoctorLocationMap> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.all(10),
-          child: Text(Address),
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width * 0.8,
-          height: MediaQuery.of(context).size.height * 0.3,
-          decoration: BoxDecoration(
-            border: Border.all(
-                color: Colors.black, width: 2, style: BorderStyle.solid),
-          ),
-          child: kGooglePlex == null
-              ? const Placeholder()
-              : GoogleMap(
-                  onCameraMove: (CameraPosition cameraPosition) {
-                    print(cameraPosition.zoom);
-                  },
-                  markers: currentmarker,
-                  initialCameraPosition: kGooglePlex!,
-                  zoomControlsEnabled: true,
-                  mapType: MapType.normal,
-                  onTap: (newLatLng) {
-                    currentmarker.remove(const Marker(markerId: MarkerId("1")));
-                    currentmarker.add(Marker(
-                        markerId: const MarkerId("1"), position: newLatLng));
-                    setState(() {});
-                    getAddress(newLatLng.latitude, newLatLng.longitude);
-                  },
-                  onMapCreated: (GoogleMapController c) {
-                    controller.complete(c);
-                  }),
-        ),
-      ],
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.99,
+      height: MediaQuery.of(context).size.height * 0.4,
+      decoration: BoxDecoration(
+        border:
+            Border.all(color: Colors.black, width: 2, style: BorderStyle.solid),
+      ),
+      child: kGooglePlex == null
+          ? const Placeholder()
+          : GoogleMap(
+              onCameraMove: (CameraPosition cameraPosition) {
+                print(cameraPosition.zoom);
+              },
+              markers: currentmarker,
+              initialCameraPosition: kGooglePlex!,
+              zoomControlsEnabled: true,
+              mapType: MapType.normal,
+              onTap: (newLatLng) {
+                currentmarker.remove(const Marker(markerId: MarkerId("1")));
+                currentmarker.add(
+                    Marker(markerId: const MarkerId("1"), position: newLatLng));
+                setState(() {});
+                getAddress(newLatLng.latitude, newLatLng.longitude);
+              },
+              onMapCreated: (GoogleMapController c) {
+                controller.complete(c);
+              }),
     );
   }
 }

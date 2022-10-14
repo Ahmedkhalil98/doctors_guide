@@ -3,6 +3,7 @@ import 'package:doctors_guide/Controllers/time_Controlller.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
+import 'package:doctors_guide/Views/widgets/doctor_location.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/Iraq_Cities_and_Specialties.dart';
 import 'package:doctors_guide/constants/themes.dart';
@@ -107,15 +108,16 @@ class RegisterDoctorLocation extends StatelessWidget {
             ),
             textFieldTitle(subTitle: "قم بتحديد موقع العيادة على الخريطة:"),
             //ToDo: map
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-              height: 230.h,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: kPrimaryColor,
-                ),
-              ),
-            )
+            // Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+            //   height: 230.h,
+            //   decoration: BoxDecoration(
+            //     border: Border.all(
+            //       color: kPrimaryColor,
+            //     ),
+            //   ),
+            // )
+            const DoctorLocationMap(),
           ],
         ),
       ),
