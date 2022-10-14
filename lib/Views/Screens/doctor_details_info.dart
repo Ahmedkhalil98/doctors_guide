@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
 import 'package:doctors_guide/Views/widgets/doctor_info_card.dart';
 import 'package:doctors_guide/constants/Colors.dart';
@@ -5,10 +7,17 @@ import 'package:doctors_guide/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DoctorDetailsInfo extends StatelessWidget {
   DoctorDetailsInfo({super.key});
   var timeController = Get.put(TimeController());
+  final Completer<GoogleMapController> _controller = Completer();
+
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +73,17 @@ class DoctorDetailsInfo extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ),
+          SizedBox(
+            width: 200,
+            height: 200,
+            child: GoogleMap(
+              mapType: MapType.hybrid,
+              initialCameraPosition: _kGooglePlex,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
             ),
           ),
         ],

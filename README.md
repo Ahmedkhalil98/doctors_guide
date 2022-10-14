@@ -4,8 +4,8 @@ A new Flutter project.
 
 ## Task
 
-- [ ] add API key for google map with setting
-- [ ] show map and get current location 
+- [ X ] add API key for google map with setting
+- [ X ] show map and get current location 
 - [ ] add function for check TextField is empty or not
 - [ ] show all doctor data in Home Screen 
 - [ ] Search by city or specialty in home Screen
