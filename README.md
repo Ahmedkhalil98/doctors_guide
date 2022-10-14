@@ -2,15 +2,23 @@
 
 A new Flutter project.
 
-## Getting Started
+## Task
 
-This project is a starting point for a Flutter application.
+- [ ] add API key for google map with setting
+- [ ] show map and get current location 
+- [ ] add function for check TextField is empty or not
+- [ ] show all doctor data in Home Screen 
+- [ ] Search by city or specialty in home Screen
+- [ ] register Doctor with code for one time
+- [ ] login doctor with phone number and password
+- [ ] show intro_Screen only one time
+- [ ] dark theme and light theme
+- [ ] add kurdish and Arabic language
+- [ ] Drawer
+- [ ] after doctor register crater screen for can update his data
+- [ ] add image in register information page
+- [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
+- [ ] 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
