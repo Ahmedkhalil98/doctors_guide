@@ -10,7 +10,6 @@ A new Flutter project.
 - [ ] show all doctor data in Home Screen 
 - [ ] Search by city or specialty in home Screen
 - [ ] register Doctor with code for one time
-- [ ] login doctor with phone number and password
 - [ ] show intro_Screen only one time
 - [ ] dark theme and light theme
 - [ ] add kurdish and Arabic language
@@ -18,8 +17,8 @@ A new Flutter project.
 - [ ] after doctor register crater screen for can update his data
 - [ ] add image in register information page
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
-- [ X ] go to regester doctor from drawer 
-- [ ]
+- [X] go to register doctor from drawer 
+- [ ] scroll in register screen
 - [ ]
 - [ ]
 - [ ]
