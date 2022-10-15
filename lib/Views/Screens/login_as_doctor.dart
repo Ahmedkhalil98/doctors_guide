@@ -3,6 +3,7 @@ import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/themes.dart';
+import 'package:doctors_guide/utils/valid_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -34,6 +35,10 @@ class LogInAsADoctor extends StatelessWidget {
               child: Lottie.asset("images/doctorCard.json"),
             ),
             MyTextFieldWidget(
+              valid: (value) {
+                validInput(value!, 15, "code");
+                return null;
+              },
               controller: loginController.code,
               hint: "الكود",
               title: "الرجاء أدخال الكود خاص بالطبيب هنا :",

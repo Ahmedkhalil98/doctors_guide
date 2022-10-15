@@ -26,6 +26,9 @@ class _DoctorLocationMapState extends State<DoctorLocationMap> {
         child: GetBuilder<LocationController>(
             init: LocationController(),
             builder: (mapController) {
+              if (mapController.kGooglePlex == null) {
+                return const Center(child: CircularProgressIndicator());
+              }
               return GoogleMap(
                   markers: mapController.currentmarker,
                   initialCameraPosition: mapController.kGooglePlex!,
