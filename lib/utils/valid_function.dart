@@ -6,5 +6,6 @@ String? validInput(String val, int max, String type) {
   if (val.length > max) {
     return "لا يمكن أن يكون أكبر من 10 أرقام";
   }
+
   return null;
 }

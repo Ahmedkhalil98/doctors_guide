@@ -97,7 +97,7 @@ class RegisterDoctorInfo extends StatelessWidget {
                 )),
             MyTextFieldWidget(
               valid: (value) {
-                return validInput(value!, 10, "phone");
+                return validInput(value!, 11, "phone");
               },
               controller: loginController.phoneNumber,
               hint: "075XXXXXXXX",

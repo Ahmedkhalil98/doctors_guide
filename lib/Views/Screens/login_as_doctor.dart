@@ -47,7 +47,7 @@ class LogInAsADoctor extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
               child: GestureDetector(
                   onTap: () {
-                    Get.to(RegisterDoctorInfo());
+                    Get.to(() => RegisterDoctorInfo());
                   },
                   child:
                       MyButtonWidget(btntitle: "الدخول", color: kPrimaryColor)),

@@ -94,7 +94,7 @@ class IntroScreen extends StatelessWidget {
                                   )),
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(HomeScreen());
+                                  Get.to(() => HomeScreen());
                                 },
                                 child: MyButtonWidget(
                                   btntitle: "دخول",
@@ -103,7 +103,7 @@ class IntroScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(LogInAsADoctor());
+                                  Get.to(() => LogInAsADoctor());
                                 },
                                 child: MyButtonWidget(
                                   btntitle: "الدخول كطبيب",
