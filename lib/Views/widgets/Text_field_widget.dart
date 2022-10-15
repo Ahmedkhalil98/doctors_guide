@@ -14,7 +14,7 @@ class MyTextFieldWidget extends StatelessWidget {
   String title;
   String? helpText;
   TextEditingController controller;
-
+  GlobalKey formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,23 +32,32 @@ class MyTextFieldWidget extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 6.w),
-          child: TextFormField(
-            controller: controller,
-            // keyboardType: typeinput,
-            decoration: InputDecoration(
-              hintText: hint,
-              hintStyle: TextStyle(
-                fontSize: 13.sp,
-                color: kGrayColor.withOpacity(0.6),
-              ),
-              helperStyle: const TextStyle(color: Colors.red),
-              suffix: Text(helpText ?? " "),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedBorder: OutlineInputBorder(
+          child: Form(
+            key: formKey,
+            child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'الحقل مطلوب يجب ملئ';
+                }
+                return null;
+              },
+              controller: controller,
+              // keyboardType: typeinput,
+              decoration: InputDecoration(
+                hintText: hint,
+                hintStyle: TextStyle(
+                  fontSize: 13.sp,
+                  color: kGrayColor.withOpacity(0.6),
+                ),
+                helperStyle: const TextStyle(color: Colors.red),
+                suffix: Text(helpText ?? " "),
+                border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(width: 1.w, color: kPrimaryColor)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 1.w, color: kPrimaryColor)),
+              ),
             ),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
+import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
@@ -21,15 +22,20 @@ class HomeScreen extends StatelessWidget {
           elevation: 1.0,
           child: ListView(
             padding: EdgeInsets.zero,
-            children: const [
-              DrawerHeader(
+            children: [
+              const DrawerHeader(
                 child: Text('معلومات الشخصية'),
               ),
-              DrawerCard(icon: Icons.app_registration, title: 'تسجيل كطبيب'),
-              DrawerCard(icon: Icons.nightlight, title: 'تغير الوان'),
-              DrawerCard(icon: Icons.call, title: 'تواصل معنا'),
-              DrawerCard(icon: Icons.info, title: 'حول التطبيق'),
-              DrawerCard(icon: Icons.star, title: 'تقيم التطبيق'),
+              GestureDetector(
+                  onTap: () {
+                    Get.to(LogInAsADoctor());
+                  },
+                  child: const DrawerCard(
+                      icon: Icons.app_registration, title: 'تسجيل كطبيب')),
+              const DrawerCard(icon: Icons.nightlight, title: 'تغير الوان'),
+              const DrawerCard(icon: Icons.call, title: 'تواصل معنا'),
+              const DrawerCard(icon: Icons.info, title: 'حول التطبيق'),
+              const DrawerCard(icon: Icons.star, title: 'تقيم التطبيق'),
             ],
           ),
         ),

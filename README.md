@@ -18,7 +18,7 @@ A new Flutter project.
 - [ ] after doctor register crater screen for can update his data
 - [ ] add image in register information page
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
-- [ ] 
+- [ X ] go to regester doctor from drawer 
 - [ ]
 - [ ]
 - [ ]
