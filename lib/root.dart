@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: "/", page: () => IntroScreen()),
         ],
         initialBinding: MyBindings(),
-        theme: myThemeData(),
+        theme: DoctorTheme.customLight,
         locale: const Locale(
           "ar",
         ),

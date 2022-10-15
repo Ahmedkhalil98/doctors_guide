@@ -27,13 +27,28 @@ class HomeScreen extends StatelessWidget {
                 child: Text('معلومات الشخصية'),
               ),
               GestureDetector(
-                  onTap: () {
-                    Get.to(LogInAsADoctor());
-                  },
-                  child: const DrawerCard(
-                      icon: Icons.app_registration, title: 'تسجيل كطبيب')),
-              const DrawerCard(icon: Icons.nightlight, title: 'تغير الوان'),
-              const DrawerCard(icon: Icons.call, title: 'تواصل معنا'),
+                onTap: () {
+                  Get.to(() => LogInAsADoctor());
+                },
+                child: const DrawerCard(
+                  icon: Icons.app_registration,
+                  title: 'تسجيل كطبيب',
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  DoctorTheme theme = DoctorTheme();
+                  theme.changeDoctorTheme();
+                },
+                child: const DrawerCard(
+                  icon: Icons.nightlight,
+                  title: 'تغير الوان',
+                ),
+              ),
+              const DrawerCard(
+                icon: Icons.call,
+                title: 'تواصل معنا',
+              ),
               const DrawerCard(icon: Icons.info, title: 'حول التطبيق'),
               const DrawerCard(icon: Icons.star, title: 'تقيم التطبيق'),
             ],
@@ -139,13 +154,14 @@ class HomeScreen extends StatelessWidget {
                     trailing: Container(
                       padding: EdgeInsets.all(8.w),
                       decoration: BoxDecoration(
+                        color: cardColors[colorIndex.nextInt(17)],
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: Text(
                         'دهوك',
                         style: TextStyle(
-                          fontSize: 12.sp,
-                          color: cardColors[colorIndex.nextInt(17)],
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
