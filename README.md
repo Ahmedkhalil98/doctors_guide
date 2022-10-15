@@ -11,7 +11,7 @@ A new Flutter project.
 - [ ] Search by city or specialty in home Screen
 - [ ] register Doctor with code for one time
 - [ ] show intro_Screen only one time
-- [ ] dark theme and light theme
+- [x] dark theme and light theme
 - [ ] add kurdish and Arabic language
 - [ ] Drawer
 - [ ] after doctor register crater screen for can update his data

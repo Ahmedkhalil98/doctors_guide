@@ -24,7 +24,6 @@ class RegisterDoctorLocation extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "الدخول كطبيب",
-          style: titleTextStyle,
         ),
       ),
       bottomSheet: Padding(

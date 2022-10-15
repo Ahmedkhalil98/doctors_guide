@@ -26,7 +26,6 @@ class DoctorDetailsInfo extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "تفاصيل",
-          style: titleTextStyle,
         ),
       ),
       body: ListView(

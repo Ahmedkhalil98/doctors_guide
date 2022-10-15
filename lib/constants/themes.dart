@@ -35,7 +35,7 @@ class DoctorTheme {
       elevation: 0,
       toolbarHeight: 50.h,
       titleTextStyle: TextStyle(
-        color: kBlackColor,
+        color: kWhiteColor,
         fontSize: 16.sp,
         fontWeight: FontWeight.w700,
       ),
@@ -43,7 +43,7 @@ class DoctorTheme {
     textTheme: TextTheme(
       bodyLarge: TextStyle(
         fontSize: 18.sp,
-        color: kBlackColor,
+        color: kWhiteColor,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -56,14 +56,3 @@ class DoctorTheme {
     }
   }
 }
-
-TextStyle titleTextStyle = TextStyle(
-  color: kWhiteColor,
-  fontSize: 20.sp,
-  fontWeight: FontWeight.w700,
-);
-TextStyle bodyTextStyle = TextStyle(
-  color: kWhiteColor,
-  fontSize: 18.sp,
-  fontWeight: FontWeight.w500,
-);

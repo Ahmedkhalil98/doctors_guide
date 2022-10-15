@@ -21,7 +21,6 @@ class LogInAsADoctor extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "الدخول كطبيب",
-          style: titleTextStyle,
         ),
       ),
       body: SingleChildScrollView(

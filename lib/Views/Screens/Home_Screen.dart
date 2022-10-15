@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
+import 'package:doctors_guide/Views/Screens/about_app_screen.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
@@ -23,8 +24,13 @@ class HomeScreen extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
-                child: Text('معلومات الشخصية'),
+              DrawerHeader(
+                child: Text(
+                  'معلومات الشخصية',
+                ),
+              ),
+              const Divider(
+                height: 2,
               ),
               GestureDetector(
                 onTap: () {
@@ -34,6 +40,9 @@ class HomeScreen extends StatelessWidget {
                   icon: Icons.app_registration,
                   title: 'تسجيل كطبيب',
                 ),
+              ),
+              const Divider(
+                height: 2,
               ),
               GestureDetector(
                 onTap: () {
@@ -45,11 +54,27 @@ class HomeScreen extends StatelessWidget {
                   title: 'تغير الوان',
                 ),
               ),
+              const Divider(
+                height: 2,
+              ),
               const DrawerCard(
                 icon: Icons.call,
                 title: 'تواصل معنا',
               ),
-              const DrawerCard(icon: Icons.info, title: 'حول التطبيق'),
+              const Divider(
+                height: 2,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => const AboutAppScreen(),
+                  );
+                },
+                child: const DrawerCard(icon: Icons.info, title: 'حول التطبيق'),
+              ),
+              const Divider(
+                height: 2,
+              ),
               const DrawerCard(icon: Icons.star, title: 'تقيم التطبيق'),
             ],
           ),
@@ -57,7 +82,6 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             'قائمة اطباء',
-            style: titleTextStyle,
           ),
         ),
         body: SafeArea(
