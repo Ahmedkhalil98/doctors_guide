@@ -108,15 +108,6 @@ class RegisterDoctorLocation extends StatelessWidget {
             ),
             textFieldTitle(subTitle: "قم بتحديد موقع العيادة على الخريطة:"),
             //ToDo: map
-            // Container(
-            //   margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-            //   height: 230.h,
-            //   decoration: BoxDecoration(
-            //     border: Border.all(
-            //       color: kPrimaryColor,
-            //     ),
-            //   ),
-            // )
             const DoctorLocationMap(),
           ],
         ),
