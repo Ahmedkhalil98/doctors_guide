@@ -1,9 +1,10 @@
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
-import 'package:doctors_guide/Views/Screens/home_screen.dart';
+import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
+import 'package:doctors_guide/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -94,6 +95,8 @@ class IntroScreen extends StatelessWidget {
                                   )),
                               GestureDetector(
                                 onTap: () {
+                                  //ToDo:
+                                  localStorage!.setString("role", "user");
                                   Get.to(() => HomeScreen());
                                 },
                                 child: MyButtonWidget(

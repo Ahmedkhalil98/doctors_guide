@@ -9,8 +9,8 @@ A new Flutter project.
 - [x] add function for check TextField is empty or not
 - [ ] show all doctor data in Home Screen 
 - [ ] Search by city or specialty in home Screen
-- [ ] register Doctor with code for one time
-- [ ] show intro_Screen only one time
+- [x] register Doctor with code for one time
+- [x] show intro_Screen only one time
 - [x] dark theme and light theme
 - [ ] add kurdish and Arabic language
 - [ ] Drawer
@@ -19,7 +19,7 @@ A new Flutter project.
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
 - [X] go to register doctor from drawer 
 - [ ] scroll in register screen
-- [ ]
+- [ ] 
 - [ ]
 - [ ]
 

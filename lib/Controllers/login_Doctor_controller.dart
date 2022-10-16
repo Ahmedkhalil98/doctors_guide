@@ -1,5 +1,7 @@
 import 'package:doctors_guide/Models/doctor_info_Model.dart';
+import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_more_info.dart';
+import 'package:doctors_guide/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +17,7 @@ class LogInDoctorController extends GetxController {
   TextEditingController address = TextEditingController();
   GlobalKey<FormState> doctorFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> addressFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> codeFormKey = GlobalKey<FormState>();
   List workingDays = [];
 
   void setSelectedCity(String value) {
@@ -62,5 +65,30 @@ class LogInDoctorController extends GetxController {
     if (formData!.validate()) {
       Get.to(RegisterDoctorLocation());
     } else {}
+  }
+
+  CheckCode(String code) {
+    if (codeFormKey.currentState!.validate()) {
+      _firestore
+          .collection('doctorsCodes')
+          .where('code', isEqualTo: code)
+          .get()
+          .then((QuerySnapshot value) {
+        if (value.docs.isEmpty) {
+          Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
+        } else {
+          for (var element in value.docs) {
+            // print(element['code']);
+            // print(element['isLogin']);
+
+            _firestore.collection("doctorsCodes").doc(element['code']).update({
+              'isLogin': true,
+            });
+            localStorage!.setString("role", "adminInRegister");
+          }
+          Get.to(() => RegisterDoctorInfo());
+        }
+      });
+    }
   }
 }

@@ -8,6 +8,7 @@ import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/Views/widgets/doctor_location.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/Iraq_Cities_and_Specialties.dart';
+import 'package:doctors_guide/main.dart';
 import 'package:doctors_guide/utils/valid_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
@@ -45,7 +46,7 @@ class RegisterDoctorLocation extends StatelessWidget {
                     address: logInDoctor.address.text,
                     latLong:
                         "${mapController.latLng.latitude.toString()},${mapController.latLng.longitude.toString()}");
-
+                localStorage!.setString("role", "admin");
                 Get.to(() => HomeScreen());
               } else {}
             },
