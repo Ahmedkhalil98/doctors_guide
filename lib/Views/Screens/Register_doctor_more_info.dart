@@ -1,12 +1,13 @@
+import 'package:doctors_guide/Controllers/location_controller.dart';
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
+import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/Views/widgets/doctor_location.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/Iraq_Cities_and_Specialties.dart';
-import 'package:doctors_guide/constants/themes.dart';
 import 'package:doctors_guide/utils/valid_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
@@ -18,11 +19,12 @@ class RegisterDoctorLocation extends StatelessWidget {
 
   final logInDoctor = Get.put(LogInDoctorController(), permanent: true);
   final timeController = Get.put(TimeController(), permanent: true);
+  final mapController = Get.put(LocationController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "الدخول كطبيب",
         ),
       ),
@@ -40,7 +42,11 @@ class RegisterDoctorLocation extends StatelessWidget {
                     workingDays: logInDoctor.workingDays,
                     fromTime: timeController.fromTime,
                     toTime: timeController.toTime,
-                    address: logInDoctor.address.text);
+                    address: logInDoctor.address.text,
+                    latLong:
+                        "${mapController.latLng.latitude.toString()},${mapController.latLng.longitude.toString()}");
+
+                Get.to(() => HomeScreen());
               } else {}
             },
             child: MyButtonWidget(btntitle: "حفظ", color: kPrimaryColor)),

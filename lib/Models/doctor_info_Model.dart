@@ -1,7 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class DoctorInfoModel {
   final String fullName;
@@ -13,6 +14,7 @@ class DoctorInfoModel {
   final String fromTime;
   final String toTime;
   final String address;
+  final String latLong;
   DoctorInfoModel({
     required this.fullName,
     required this.city,
@@ -23,6 +25,7 @@ class DoctorInfoModel {
     required this.fromTime,
     required this.toTime,
     required this.address,
+    required this.latLong,
   });
 
   DoctorInfoModel copyWith({
@@ -35,6 +38,7 @@ class DoctorInfoModel {
     String? fromTime,
     String? toTime,
     String? address,
+    String? latLong,
   }) {
     return DoctorInfoModel(
       fullName: fullName ?? this.fullName,
@@ -46,6 +50,7 @@ class DoctorInfoModel {
       fromTime: fromTime ?? this.fromTime,
       toTime: toTime ?? this.toTime,
       address: address ?? this.address,
+      latLong: latLong ?? this.latLong,
     );
   }
 
@@ -60,6 +65,7 @@ class DoctorInfoModel {
       'fromTime': fromTime,
       'toTime': toTime,
       'address': address,
+      'latLong': latLong,
     };
   }
 
@@ -74,6 +80,7 @@ class DoctorInfoModel {
       fromTime: map['fromTime'] as String,
       toTime: map['toTime'] as String,
       address: map['address'] as String,
+      latLong: map['latLong'] as String,
     );
   }
 
@@ -84,7 +91,7 @@ class DoctorInfoModel {
 
   @override
   String toString() {
-    return 'DoctorInfoModel(fullName: $fullName, city: $city, specialty: $specialty, previewPrice: $previewPrice, phoneNumber: $phoneNumber, workingDays: $workingDays, fromTime: $fromTime, toTime: $toTime, address: $address)';
+    return 'DoctorInfoModel(fullName: $fullName, city: $city, specialty: $specialty, previewPrice: $previewPrice, phoneNumber: $phoneNumber, workingDays: $workingDays, fromTime: $fromTime, toTime: $toTime, address: $address, latLong: $latLong)';
   }
 
   @override
@@ -99,7 +106,8 @@ class DoctorInfoModel {
         listEquals(other.workingDays, workingDays) &&
         other.fromTime == fromTime &&
         other.toTime == toTime &&
-        other.address == address;
+        other.address == address &&
+        other.latLong == latLong;
   }
 
   @override
@@ -112,6 +120,7 @@ class DoctorInfoModel {
         workingDays.hashCode ^
         fromTime.hashCode ^
         toTime.hashCode ^
-        address.hashCode;
+        address.hashCode ^
+        latLong.hashCode;
   }
 }

@@ -35,17 +35,20 @@ class LogInDoctorController extends GetxController {
     required String fromTime,
     required String toTime,
     required String address,
+    required String latLong,
   }) {
     DoctorInfoModel doctorData = DoctorInfoModel(
-        fullName: fullName,
-        city: city,
-        specialty: specialty,
-        previewPrice: previewPrice,
-        phoneNumber: phoneNumber,
-        workingDays: workingDays,
-        fromTime: fromTime,
-        toTime: toTime,
-        address: address);
+      fullName: fullName,
+      city: city,
+      specialty: specialty,
+      previewPrice: previewPrice,
+      phoneNumber: phoneNumber,
+      workingDays: workingDays,
+      fromTime: fromTime,
+      toTime: toTime,
+      address: address,
+      latLong: latLong,
+    );
 
     return _firestore
         .collection("DoctorInformation")
