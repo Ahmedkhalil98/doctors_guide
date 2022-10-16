@@ -67,26 +67,34 @@ class LogInDoctorController extends GetxController {
     } else {}
   }
 
-  CheckCode(String code) {
+  CheckCode(String inputCode) {
     if (codeFormKey.currentState!.validate()) {
       _firestore
           .collection('doctorsCodes')
-          .where('code', isEqualTo: code)
+          .where('code', isEqualTo: inputCode)
           .get()
           .then((QuerySnapshot value) {
         if (value.docs.isEmpty) {
           Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
+          code.clear();
         } else {
           for (var element in value.docs) {
             // print(element['code']);
             // print(element['isLogin']);
-
-            _firestore.collection("doctorsCodes").doc(element['code']).update({
-              'isLogin': true,
-            });
-            localStorage!.setString("role", "adminInRegister");
+            if (element['isLogin']) {
+              Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
+              code.clear();
+            } else {
+              _firestore
+                  .collection("doctorsCodes")
+                  .doc(element['code'])
+                  .update({
+                'isLogin': true,
+              });
+              localStorage!.setString("role", "adminInRegister");
+              Get.to(() => RegisterDoctorInfo());
+            }
           }
-          Get.to(() => RegisterDoctorInfo());
         }
       });
     }

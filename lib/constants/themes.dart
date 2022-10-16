@@ -15,7 +15,7 @@ class DoctorTheme {
       elevation: 0,
       toolbarHeight: 50.h,
       titleTextStyle: TextStyle(
-        color: kBlackColor,
+        color: kWhiteColor,
         fontSize: 16.sp,
         fontWeight: FontWeight.w700,
       ),
