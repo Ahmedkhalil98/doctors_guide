@@ -26,6 +26,10 @@ class DoctorTheme {
         color: kBlackColor,
         fontWeight: FontWeight.bold,
       ),
+      bodySmall: TextStyle(
+        fontSize: 12.sp,
+        color: kGrayColor.withOpacity(0.5),
+      ),
     ),
   );
   static ThemeData customDark = ThemeData.dark().copyWith(

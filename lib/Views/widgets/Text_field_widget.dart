@@ -41,10 +41,7 @@ class MyTextFieldWidget extends StatelessWidget {
             // keyboardType: typeinput,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: TextStyle(
-                fontSize: 13.sp,
-                color: kGrayColor.withOpacity(0.6),
-              ),
+              hintStyle: Theme.of(context).textTheme.bodySmall,
               helperStyle: const TextStyle(color: Colors.red),
               suffix: Text(helpText ?? " "),
               border: OutlineInputBorder(
