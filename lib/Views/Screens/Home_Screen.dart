@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              DrawerHeader(
+              const DrawerHeader(
                 child: Text(
                   'معلومات الشخصية',
                 ),
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'قائمة اطباء',
           ),
         ),
@@ -109,8 +109,14 @@ class HomeScreen extends StatelessWidget {
                           underline: const SizedBox(),
                           value: loginController.dropdownCity.value,
                           items: iraq_cities
-                              .map((e) =>
-                                  DropdownMenuItem(value: e, child: Text('$e')))
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    '$e',
+                                  ),
+                                ),
+                              )
                               .toList(),
                           onChanged: (newvalue) {
                             loginController
@@ -135,8 +141,14 @@ class HomeScreen extends StatelessWidget {
                           underline: const SizedBox(),
                           value: loginController.dropdownSpecialty.value,
                           items: specialties
-                              .map((e) =>
-                                  DropdownMenuItem(value: e, child: Text('$e')))
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    '$e',
+                                  ),
+                                ),
+                              )
                               .toList(),
                           onChanged: (newvalue) {
                             loginController
@@ -181,12 +193,12 @@ class HomeScreen extends StatelessWidget {
                         color: cardColors[colorIndex.nextInt(17)],
                         borderRadius: BorderRadius.circular(10.r),
                       ),
-                      child: Text(
+                      child: const Text(
                         'دهوك',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        // style: TextStyle(
+                        //   fontSize: 14.sp,
+                        //   fontWeight: FontWeight.w600,
+                        // ),
                       ),
                     ),
                     title: const Text(
