@@ -18,7 +18,7 @@ A new Flutter project.
 - [ ] add image in register information page
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
 - [X] go to register doctor from drawer 
-- [ ] scroll in register screen
+- [x] scroll in register screen
 - [ ] 
 - [ ]
 - [ ]

@@ -53,6 +53,7 @@ class RegisterDoctorLocation extends StatelessWidget {
             child: MyButtonWidget(btntitle: "حفظ", color: kPrimaryColor)),
       ),
       body: SingleChildScrollView(
+        reverse: true,
         child: Form(
           key: logInDoctor.addressFormKey,
           child: Column(
