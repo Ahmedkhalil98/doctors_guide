@@ -27,8 +27,8 @@ class DoctorTheme {
         fontWeight: FontWeight.bold,
       ),
       bodySmall: TextStyle(
-        fontSize: 12.sp,
-        color: kGrayColor.withOpacity(0.5),
+        fontSize: 14.sp,
+        color: Colors.black.withOpacity(0.8),
       ),
     ),
   );
@@ -49,6 +49,10 @@ class DoctorTheme {
         fontSize: 18.sp,
         color: kWhiteColor,
         fontWeight: FontWeight.bold,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 14.sp,
+        color: kWhiteColor,
       ),
     ),
   );

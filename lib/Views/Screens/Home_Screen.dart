@@ -80,8 +80,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: const Text(
+          title: Text(
             'قائمة اطباء',
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
         body: SafeArea(
@@ -114,6 +115,8 @@ class HomeScreen extends StatelessWidget {
                                   value: e,
                                   child: Text(
                                     '$e',
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
                                   ),
                                 ),
                               )
@@ -146,6 +149,8 @@ class HomeScreen extends StatelessWidget {
                                   value: e,
                                   child: Text(
                                     '$e',
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
                                   ),
                                 ),
                               )
@@ -201,8 +206,9 @@ class HomeScreen extends StatelessWidget {
                         // ),
                       ),
                     ),
-                    title: const Text(
+                    title: Text(
                       'اسم الطبيب',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                 ],
