@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:doctors_guide/Models/doctor_info_Model.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_more_info.dart';
 import 'package:doctors_guide/main.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 
 class LogInDoctorController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -19,6 +23,7 @@ class LogInDoctorController extends GetxController {
   GlobalKey<FormState> addressFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> codeFormKey = GlobalKey<FormState>();
   List workingDays = [];
+  XFile? image;
 
   void setSelectedCity(String value) {
     dropdownCity.value = value;
@@ -26,6 +31,13 @@ class LogInDoctorController extends GetxController {
 
   void setSelectedSpecialty(String value) {
     dropdownSpecialty.value = value;
+  }
+
+  uploadImage() async {
+    final imagePiker = ImagePicker();
+    image = await imagePiker.pickImage(source: ImageSource.gallery);
+    print(image!.name.toString());
+    update();
   }
 
   Future<void> addNewDoctorData({
@@ -52,6 +64,12 @@ class LogInDoctorController extends GetxController {
       address: address,
       latLong: latLong,
     );
+    if (image != null) {
+      File file = File(image!.path);
+      var refStorage =
+          FirebaseStorage.instance.ref("DoctorsImages/$phoneNumber");
+      refStorage.putFile(file);
+    }
 
     return _firestore
         .collection("DoctorInformation")

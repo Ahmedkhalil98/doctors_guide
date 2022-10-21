@@ -7,6 +7,7 @@ import 'package:doctors_guide/utils/valid_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:path/path.dart';
 
 class RegisterDoctorInfo extends StatelessWidget {
   RegisterDoctorInfo({Key? key}) : super(key: key);
@@ -114,9 +115,43 @@ class RegisterDoctorInfo extends StatelessWidget {
                   title: "سعر معاينة",
                   helpText: "IQD",
                 ),
-                SizedBox(
-                  height: 100.h,
-                ),
+                textFieldTitle(subTitle: "قم برفع صورتك الشخصية :"),
+                Container(
+                  height: 50.h,
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.r),
+                      border: Border.all(width: 1.w, color: kGrayColor)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                          width: 250.w,
+                          padding: EdgeInsets.only(right: 5.w),
+                          child: GetBuilder<LogInDoctorController>(
+                            builder: (imageController) => Text(
+                              loginController.image == null
+                                  ? "لم يتم رفع أي صورة بعد"
+                                  : basename(imageController.image!.path),
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: kGrayColor.withOpacity(0.6),
+                                fontSize: 12.sp,
+                              ),
+                            ),
+                          )),
+                      GestureDetector(
+                        onTap: () {
+                          loginController.uploadImage();
+                        },
+                        child: SizedBox(
+                            width: 50.w,
+                            height: 50.h,
+                            child: Image.asset("images/uploadImage.png")),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           )),
