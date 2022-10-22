@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         // home: RegisterDoctorInfo(),
-        initialRoute: '/',
+        initialRoute: '/adminInRegister',
         getPages: [
           GetPage(
             name: "/",

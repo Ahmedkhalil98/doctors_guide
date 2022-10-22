@@ -15,6 +15,7 @@ class DoctorInfoModel {
   final String toTime;
   final String address;
   final String latLong;
+  final String imageUrl;
   DoctorInfoModel({
     required this.fullName,
     required this.city,
@@ -26,6 +27,7 @@ class DoctorInfoModel {
     required this.toTime,
     required this.address,
     required this.latLong,
+    required this.imageUrl,
   });
 
   DoctorInfoModel copyWith({
@@ -39,6 +41,7 @@ class DoctorInfoModel {
     String? toTime,
     String? address,
     String? latLong,
+    String? imageUrl,
   }) {
     return DoctorInfoModel(
       fullName: fullName ?? this.fullName,
@@ -51,6 +54,7 @@ class DoctorInfoModel {
       toTime: toTime ?? this.toTime,
       address: address ?? this.address,
       latLong: latLong ?? this.latLong,
+      imageUrl: imageUrl ?? this.imageUrl,
     );
   }
 
@@ -66,6 +70,7 @@ class DoctorInfoModel {
       'toTime': toTime,
       'address': address,
       'latLong': latLong,
+      'imageUrl': imageUrl,
     };
   }
 
@@ -81,6 +86,7 @@ class DoctorInfoModel {
       toTime: map['toTime'] as String,
       address: map['address'] as String,
       latLong: map['latLong'] as String,
+      imageUrl: '',
     );
   }
 

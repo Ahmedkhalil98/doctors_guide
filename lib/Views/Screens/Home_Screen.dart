@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
+import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
 import 'package:doctors_guide/Views/widgets/drawer_Widgets.dart';
 import 'package:doctors_guide/constants/Colors.dart';
@@ -12,7 +13,7 @@ import 'package:get/get.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   final loginController = Get.put(LogInDoctorController());
-
+  final showDoctorInfo = Get.put(ShowDInfo());
   Random colorIndex = Random();
   @override
   Widget build(BuildContext context) {
@@ -147,24 +148,28 @@ class HomeScreen extends StatelessWidget {
                                 width: 50.w,
                                 height: 100.h,
                                 decoration: BoxDecoration(
-                                  color: kWhiteColor,
-                                  borderRadius: BorderRadius.circular(30.r),
-                                  //ToDo : doctor Image
-                                ),
+                                    //color: kWhiteColor,
+                                    borderRadius: BorderRadius.circular(30.r),
+                                    //ToDo : doctor Image
+                                    image: DecorationImage(
+                                        image: NetworkImage(snapshot
+                                            .data!.docs[index]['imageUrl']),
+                                        fit: BoxFit.cover)),
                               ),
-                              subtitle: const Text('تخصص'),
+                              subtitle:
+                                  Text(snapshot.data!.docs[index]['specialty']),
                               trailing: Container(
                                 padding: EdgeInsets.all(8.w),
                                 decoration: BoxDecoration(
                                   color: cardColors[colorIndex.nextInt(17)],
                                   borderRadius: BorderRadius.circular(10.r),
                                 ),
-                                child: const Text(
-                                  'دهوك',
+                                child: Text(
+                                  snapshot.data!.docs[index]['city'],
                                 ),
                               ),
                               title: Text(
-                                'اسم الطبيب',
+                                snapshot.data!.docs[index]['fullName'],
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ),

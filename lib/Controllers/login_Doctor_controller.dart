@@ -35,8 +35,11 @@ class LogInDoctorController extends GetxController {
 
   uploadImage() async {
     final imagePiker = ImagePicker();
+
     image = await imagePiker.pickImage(source: ImageSource.gallery);
-    print(image!.name.toString());
+    File file = File(image!.path);
+    var refStorage = FirebaseStorage.instance.ref("DoctorsImages/$phoneNumber");
+
     update();
   }
 
@@ -51,31 +54,34 @@ class LogInDoctorController extends GetxController {
     required String toTime,
     required String address,
     required String latLong,
-  }) {
-    DoctorInfoModel doctorData = DoctorInfoModel(
-      fullName: fullName,
-      city: city,
-      specialty: specialty,
-      previewPrice: previewPrice,
-      phoneNumber: phoneNumber,
-      workingDays: workingDays,
-      fromTime: fromTime,
-      toTime: toTime,
-      address: address,
-      latLong: latLong,
-    );
+  }) async {
+    DoctorInfoModel doctorData;
     if (image != null) {
       File file = File(image!.path);
       var refStorage =
           FirebaseStorage.instance.ref("DoctorsImages/$phoneNumber");
-      refStorage.putFile(file);
+      await refStorage.putFile(file);
+      refStorage.getDownloadURL().then((imageUrl) {
+        doctorData = DoctorInfoModel(
+          fullName: fullName,
+          city: city,
+          specialty: specialty,
+          previewPrice: previewPrice,
+          phoneNumber: phoneNumber,
+          workingDays: workingDays,
+          fromTime: fromTime,
+          toTime: toTime,
+          address: address,
+          latLong: latLong,
+          imageUrl: imageUrl,
+        );
+        return _firestore
+            .collection("DoctorInformation")
+            .add(doctorData.toMap())
+            .then((value) => print("New doctor add"))
+            .catchError((e) => print("Failed to add and Error : $e ?"));
+      });
     }
-
-    return _firestore
-        .collection("DoctorInformation")
-        .add(doctorData.toMap())
-        .then((value) => print("New doctor add"))
-        .catchError((e) => print("Failed to add and Error : $e ?"));
   }
 
   nextForm() {
