@@ -1,4 +1,5 @@
 import 'package:doctors_guide/Views/Screens/about_app_screen.dart';
+import 'package:doctors_guide/Views/Screens/doctor_editable_screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
 import 'package:doctors_guide/constants/themes.dart';
@@ -15,9 +16,14 @@ class DrawerWidgets extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            child: Text(
-              'معلومات الشخصية',
+          GestureDetector(
+            onTap: () {
+              Get.to(() => const DoctorEditableScreen());
+            },
+            child: const DrawerHeader(
+              child: Text(
+                'تعديل معلومات الشخصية',
+              ),
             ),
           ),
           const Divider(

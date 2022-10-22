@@ -14,7 +14,7 @@ A new Flutter project.
 - [x] dark theme and light theme
 - [ ] add kurdish and Arabic language
 - [ ] Drawer
-- [ ] after doctor register crater screen for can update his data
+- [ ] after doctor register create screen for can update his data
 - [x] add image in register information page
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
 - [X] go to register doctor from drawer 

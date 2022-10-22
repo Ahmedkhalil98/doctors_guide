@@ -38,6 +38,7 @@ class MyTextFieldWidget extends StatelessWidget {
           child: TextFormField(
             validator: valid,
             controller: controller,
+            style: Theme.of(context).textTheme.bodySmall,
             // keyboardType: typeinput,
             decoration: InputDecoration(
               hintText: hint,

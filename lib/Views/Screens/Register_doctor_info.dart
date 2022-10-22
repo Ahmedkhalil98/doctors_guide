@@ -63,8 +63,16 @@ class RegisterDoctorInfo extends StatelessWidget {
                           underline: const SizedBox(),
                           value: loginController.dropdownCity.value,
                           items: iraq_cities
-                              .map((e) =>
-                                  DropdownMenuItem(value: e, child: Text('$e')))
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    '$e',
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
+                                  ),
+                                ),
+                              )
                               .toList(),
                           onChanged: (newvalue) {
                             loginController
@@ -90,8 +98,16 @@ class RegisterDoctorInfo extends StatelessWidget {
                           underline: const SizedBox(),
                           value: loginController.dropdownSpecialty.value,
                           items: specialties
-                              .map((e) =>
-                                  DropdownMenuItem(value: e, child: Text('$e')))
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    '$e',
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
+                                  ),
+                                ),
+                              )
                               .toList(),
                           onChanged: (newvalue) {
                             loginController

@@ -100,12 +100,15 @@ class RegisterDoctorLocation extends StatelessWidget {
                             timeController.openTimePicker4FromTime(context);
                           },
                           child: timeTextField(
-                              suTitle: "من", time: timeController.fromTime)),
+                              context: context,
+                              suTitle: "من",
+                              time: timeController.fromTime)),
                       GestureDetector(
                           onTap: () {
                             timeController.openTimePicker4ToTime(context);
                           },
                           child: timeTextField(
+                              context: context,
                               suTitle: "الى",
                               time: timeController.toTime.toString())),
                     ],
@@ -132,6 +135,7 @@ class RegisterDoctorLocation extends StatelessWidget {
 }
 
 Widget timeTextField({
+  required BuildContext context,
   required String suTitle,
   required String time,
 }) {
@@ -160,7 +164,7 @@ Widget timeTextField({
             ),
             Text(
               time,
-              style: TextStyle(fontSize: 14.sp),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
         ),
