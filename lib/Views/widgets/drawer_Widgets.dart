@@ -16,13 +16,33 @@ class DrawerWidgets extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          GestureDetector(
-            onTap: () {
-              Get.to(() => const DoctorEditableScreen());
+          UserAccountsDrawerHeader(
+            onDetailsPressed: () {
+              Get.to(() => DoctorEditableScreen());
             },
-            child: const DrawerHeader(
-              child: Text(
-                'تعديل معلومات الشخصية',
+            accountEmail: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'تعديل المعلومات',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
+            ),
+            accountName: Text(
+              'اسم الطبيب',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            // decoration: const BoxDecoration(
+            //   image: DecorationImage(
+            //     image: ExactAssetImage(
+            //       'images/doctorimg.jpg',
+            //     ),
+            //   ),
+            // ),
+            currentAccountPicture: CircleAvatar(
+              child: Image.asset(
+                'images/doctorimg.jpg',
               ),
             ),
           ),
