@@ -3,7 +3,6 @@ import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
-import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +23,7 @@ class IntroScreen extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                  height: 310.h,
+                  height: 400.h,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.fill,
@@ -33,7 +32,7 @@ class IntroScreen extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(
-                      height: 290.h,
+                      height: 350.h,
                     ),
                     Expanded(
                       child: Container(
@@ -58,41 +57,9 @@ class IntroScreen extends StatelessWidget {
                                 "مرحبا بك في طبيبي",
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(top: 15.h, bottom: 10.h),
-                                child: Text(
-                                  "اختر محافظتك للبدء :",
-                                  style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: kGrayColor,
-                                  ),
-                                ),
+                              SizedBox(
+                                height: 30.h,
                               ),
-                              Container(
-                                  margin: EdgeInsets.only(bottom: 10.h),
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 20.w),
-                                  decoration: BoxDecoration(
-                                      color: kGrayColor.withOpacity(0.5),
-                                      borderRadius:
-                                          BorderRadius.circular(10.r)),
-                                  height: 40.h,
-                                  child: Obx(
-                                    () => DropdownButton(
-                                        isExpanded: true,
-                                        underline: const SizedBox(),
-                                        value:
-                                            loginController.dropdownCity.value,
-                                        items: iraq_cities
-                                            .map((e) => DropdownMenuItem(
-                                                value: e, child: Text('$e')))
-                                            .toList(),
-                                        onChanged: (newvalue) {
-                                          loginController.setSelectedCity(
-                                              newvalue.toString());
-                                        }),
-                                  )),
                               GestureDetector(
                                 onTap: () {
                                   //ToDo:

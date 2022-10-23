@@ -7,7 +7,7 @@ A new Flutter project.
 - [X] add API key for google map with setting
 - [X] show map and get current location 
 - [x] add function for check TextField is empty or not
-- [ ] show all doctor data in Home Screen 
+- [X] show all doctor data in Home Screen 
 - [ ] Search by city or specialty in home Screen
 - [x] register Doctor with code for one time
 - [x] show intro_Screen only one time
@@ -19,9 +19,9 @@ A new Flutter project.
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
 - [X] go to register doctor from drawer 
 - [x] scroll in register screen
-- [ ] create Loading... widget
+- [x] create Loading... widget
+- [ ] add loading widget in code page & register page
 - [ ] 
-- [ ]
 
 
 

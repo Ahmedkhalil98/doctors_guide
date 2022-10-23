@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(builder: (context, child) {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        // home: RegisterDoctorInfo(),
+        // home: const LoadingWidget(),
         initialRoute: '/',
         getPages: [
           GetPage(

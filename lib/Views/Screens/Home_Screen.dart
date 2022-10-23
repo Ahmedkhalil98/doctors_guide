@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
 import 'package:doctors_guide/Views/widgets/drawer_Widgets.dart';
+import 'package:doctors_guide/Views/widgets/loading_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-  final loginController = Get.put(LogInDoctorController());
+
   final showDoctorInfo = Get.put(ShowDInfo());
   Random colorIndex = Random();
   @override
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                       child: Obx(
                         () => DropdownButton(
                             underline: const SizedBox(),
-                            value: loginController.dropdownCity.value,
+                            value: showDoctorInfo.dropdownCity.value,
                             items: iraq_cities
                                 .map(
                                   (e) => DropdownMenuItem(
@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                                 )
                                 .toList(),
                             onChanged: (newvalue) {
-                              loginController
+                              showDoctorInfo
                                   .setSelectedCity(newvalue.toString());
                             }),
                       ),
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                       child: Obx(
                         () => DropdownButton(
                             underline: const SizedBox(),
-                            value: loginController.dropdownSpecialty.value,
+                            value: showDoctorInfo.dropdownSpecialty.value,
                             items: specialties
                                 .map(
                                   (e) => DropdownMenuItem(
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                                 )
                                 .toList(),
                             onChanged: (newvalue) {
-                              loginController
+                              showDoctorInfo
                                   .setSelectedSpecialty(newvalue.toString());
                             }),
                       ),
@@ -105,79 +105,86 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection("DoctorInformation")
-                    .snapshots(),
+              FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                future: showDoctorInfo.showDoctors(),
                 builder: (context, snapshot) {
+                  showDoctorInfo.isLoading = true;
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    //ToDo : change to my loading widget
-                    return const Center(
-                      child: Text("loading.."),
-                    );
+                    return const LoadingWidget();
                   }
                   if (snapshot.data == null) {
                     //ToDo
                     return const Text("no data");
                   }
+                  List<QueryDocumentSnapshot<Map<String, dynamic>>> doctors =
+                      snapshot.data!.docs;
+                  showDoctorInfo.isLoading = false;
 
-                  return ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 80.h,
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 10.w,
-                          vertical: 15.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ListTile(
-                              onTap: () {
-                                Get.to(DoctorDetailsInfo());
-                              },
-                              leading: Container(
-                                width: 50.w,
-                                height: 100.h,
-                                decoration: BoxDecoration(
-                                    //color: kWhiteColor,
-                                    borderRadius: BorderRadius.circular(30.r),
-                                    //ToDo : doctor Image
-                                    image: DecorationImage(
-                                        image: NetworkImage(snapshot
-                                            .data!.docs[index]['imageUrl']),
-                                        fit: BoxFit.cover)),
+                  return showDoctorInfo.isLoading
+                      ? const LoadingWidget()
+                      : ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: doctors.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: 80.h,
+                              margin: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                                vertical: 4.h,
                               ),
-                              subtitle:
-                                  Text(snapshot.data!.docs[index]['specialty']),
-                              trailing: Container(
-                                padding: EdgeInsets.all(8.w),
-                                decoration: BoxDecoration(
-                                  color: cardColors[colorIndex.nextInt(17)],
-                                  borderRadius: BorderRadius.circular(10.r),
-                                ),
-                                child: Text(
-                                  snapshot.data!.docs[index]['city'],
-                                ),
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.circular(20.r),
                               ),
-                              title: Text(
-                                snapshot.data!.docs[index]['fullName'],
-                                style: Theme.of(context).textTheme.bodySmall,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ListTile(
+                                    onTap: () {
+                                      Get.to(DoctorDetailsInfo(
+                                        phoneNumber: doctors[index]
+                                            ['phoneNumber'],
+                                        doctorName: doctors[index]['fullName'],
+                                      ));
+                                    },
+                                    leading: Container(
+                                      width: 50.w,
+                                      height: 100.h,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(30.r),
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                                  doctors[index]['imageUrl']),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    subtitle: Text(doctors[index]['specialty']),
+                                    trailing: Container(
+                                      padding: EdgeInsets.all(8.w),
+                                      decoration: BoxDecoration(
+                                        color:
+                                            cardColors[colorIndex.nextInt(17)],
+                                        borderRadius:
+                                            BorderRadius.circular(10.r),
+                                      ),
+                                      child: Text(
+                                        doctors[index]['city'],
+                                      ),
+                                    ),
+                                    title: Text(
+                                      doctors[index]['fullName'],
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
+                            );
+                          },
+                        );
                 },
               ),
             ],

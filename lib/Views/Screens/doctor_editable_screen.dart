@@ -258,7 +258,7 @@ class DoctorEditableScreen extends StatelessWidget {
                 ),
                 textFieldTitle(subTitle: "قم بتحديد موقع العيادة على الخريطة:"),
                 //ToDo: map
-                const DoctorLocationMap(),
+                DoctorLocationMap(),
               ],
             ),
           )),
