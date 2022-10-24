@@ -22,6 +22,7 @@ A new Flutter project.
 - [x] create Loading... widget
 - [ ] add loading widget in code page & register page
 - [ ] login doctor again after delete app then download ???
+- [ ] when search is empty
 
 
 

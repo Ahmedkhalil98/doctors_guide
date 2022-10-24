@@ -105,88 +105,97 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                future: showDoctorInfo.showDoctors(),
-                builder: (context, snapshot) {
-                  showDoctorInfo.isLoading = true;
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const LoadingWidget();
-                  }
-                  if (snapshot.data == null) {
-                    //ToDo
-                    return const Text("no data");
-                  }
-                  List<QueryDocumentSnapshot<Map<String, dynamic>>> doctors =
-                      snapshot.data!.docs;
-                  showDoctorInfo.isLoading = false;
+              GetBuilder<ShowDInfo>(
+                builder: (controller) {
+                  return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                    future: showDoctorInfo.showDoctors(),
+                    builder: (context, snapshot) {
+                      showDoctorInfo.isLoading = true;
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const LoadingWidget();
+                      }
+                      if (snapshot.data == null) {
+                        //ToDo
+                        return const Text("no data");
+                      }
+                      List<QueryDocumentSnapshot<Map<String, dynamic>>>
+                          doctors = snapshot.data!.docs;
+                      showDoctorInfo.isLoading = false;
 
-                  return showDoctorInfo.isLoading
-                      ? const LoadingWidget()
-                      : ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: doctors.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              height: 80.h,
-                              margin: EdgeInsets.symmetric(
-                                horizontal: 10.w,
-                                vertical: 4.h,
-                              ),
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.circular(20.r),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ListTile(
-                                    onTap: () {
-                                      Get.to(DoctorDetailsInfo(
-                                        phoneNumber: doctors[index]
-                                            ['phoneNumber'],
-                                        doctorName: doctors[index]['fullName'],
-                                      ));
-                                    },
-                                    leading: Container(
-                                      width: 50.w,
-                                      height: 100.h,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30.r),
-                                          image: DecorationImage(
-                                              image: NetworkImage(
-                                                  doctors[index]['imageUrl']),
-                                              fit: BoxFit.cover)),
-                                    ),
-                                    subtitle: Text(doctors[index]['specialty']),
-                                    trailing: Container(
-                                      padding: EdgeInsets.all(8.w),
-                                      decoration: BoxDecoration(
-                                        color:
-                                            cardColors[colorIndex.nextInt(17)],
-                                        borderRadius:
-                                            BorderRadius.circular(10.r),
-                                      ),
-                                      child: Text(
-                                        doctors[index]['city'],
-                                      ),
-                                    ),
-                                    title: Text(
-                                      doctors[index]['fullName'],
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
-                                    ),
+                      return showDoctorInfo.isLoading
+                          ? const LoadingWidget()
+                          : ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: doctors.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  height: 80.h,
+                                  margin: EdgeInsets.symmetric(
+                                    horizontal: 10.w,
+                                    vertical: 4.h,
                                   ),
-                                ],
-                              ),
+                                  decoration: BoxDecoration(
+                                    color: kPrimaryColor,
+                                    borderRadius: BorderRadius.circular(20.r),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ListTile(
+                                        onTap: () {
+                                          Get.to(DoctorDetailsInfo(
+                                            phoneNumber: doctors[index]
+                                                ['phoneNumber'],
+                                            doctorName: doctors[index]
+                                                ['fullName'],
+                                          ));
+                                        },
+                                        leading: Container(
+                                          width: 50.w,
+                                          height: 100.h,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(30.r),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      doctors[index]
+                                                          ['imageUrl']),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                        subtitle:
+                                            Text(doctors[index]['specialty']),
+                                        trailing: Container(
+                                          padding: EdgeInsets.all(8.w),
+                                          decoration: BoxDecoration(
+                                            color: cardColors[
+                                                colorIndex.nextInt(17)],
+                                            borderRadius:
+                                                BorderRadius.circular(10.r),
+                                          ),
+                                          child: Text(
+                                            doctors[index]['city'],
+                                          ),
+                                        ),
+                                        title: Text(
+                                          doctors[index]['fullName'],
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             );
-                          },
-                        );
+                    },
+                  );
                 },
-              ),
+              )
             ],
           ),
         ));
