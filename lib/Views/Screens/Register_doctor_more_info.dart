@@ -5,7 +5,6 @@ import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
-import 'package:doctors_guide/Views/widgets/doctor_location.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/Iraq_Cities_and_Specialties.dart';
 import 'package:doctors_guide/main.dart';
@@ -14,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RegisterDoctorLocation extends StatelessWidget {
   RegisterDoctorLocation({Key? key}) : super(key: key);
@@ -124,8 +124,38 @@ class RegisterDoctorLocation extends StatelessWidget {
                 title: "أدخل العنوان العيادة :",
               ),
               textFieldTitle(subTitle: "قم بتحديد موقع العيادة على الخريطة:"),
-              //ToDo: map
-              DoctorLocationMap(),
+              Container(
+                  margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+                  height: 230.h,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                  child: GetBuilder<LocationController>(
+                      init: LocationController(),
+                      builder: (mapController) {
+                        if (mapController.kGooglePlex == null) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+
+                        return GoogleMap(
+                            markers: mapController.currentmarker,
+                            initialCameraPosition: CameraPosition(
+                              target: mapController.latLng,
+                              zoom: 14.0,
+                            ),
+                            onTap: (latlng) {
+                              mapController.onMapTap(latlng);
+                            },
+                            myLocationEnabled: true,
+                            zoomControlsEnabled: true,
+                            mapType: MapType.normal,
+                            onMapCreated: (GoogleMapController c) {
+                              mapController.controller.complete(c);
+                            });
+                      }))
             ],
           ),
         ),

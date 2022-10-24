@@ -18,6 +18,9 @@ class DrawerCard extends StatelessWidget {
         leading: Icon(icon),
         title: Text(
           title,
+          style: TextStyle(
+            fontSize: 14.sp,
+          ),
         ),
       ),
     );

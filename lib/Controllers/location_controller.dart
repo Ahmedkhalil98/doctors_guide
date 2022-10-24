@@ -42,9 +42,10 @@ class LocationController extends GetxController {
 
   Set<Marker> currentmarker = {
     const Marker(
-        draggable: true,
-        markerId: MarkerId("1"),
-        position: LatLng(36.7829415, 42.8798924)),
+      draggable: true,
+      markerId: MarkerId("1"),
+      // position: LatLng(latLng.latitude , latLng.longitude),
+    ),
   };
 
   // getAddress(double lat, double long) async {
@@ -67,8 +68,8 @@ class LocationController extends GetxController {
     currentmarker.remove(const Marker(markerId: MarkerId("1")));
     currentmarker
         .add(Marker(markerId: const MarkerId("1"), position: newLatLng));
+    latLng = newLatLng;
     update();
     // getAddress(newLatLng.latitude, newLatLng.longitude);
-    print("${newLatLng.latitude}, ${newLatLng.longitude}");
   }
 }

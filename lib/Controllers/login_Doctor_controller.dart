@@ -24,7 +24,7 @@ class LogInDoctorController extends GetxController {
   GlobalKey<FormState> codeFormKey = GlobalKey<FormState>();
   List workingDays = [];
   XFile? image;
-  bool isLoading = false;
+  var isLoading = false.obs;
 
   void setSelectedCity(String value) {
     dropdownCity.value = value;
@@ -92,11 +92,11 @@ class LogInDoctorController extends GetxController {
     } else {}
   }
 
-  CheckCode(String inputCode) {
-    isLoading = true;
-    update();
+  CheckCode(String inputCode) async {
+    isLoading.value = true;
+    print("===>>>${isLoading.value}");
     if (codeFormKey.currentState!.validate()) {
-      _firestore
+      await _firestore
           .collection('doctorsCodes')
           .where('code', isEqualTo: inputCode)
           .get()
@@ -104,7 +104,6 @@ class LogInDoctorController extends GetxController {
         if (value.docs.isEmpty) {
           Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
           code.clear();
-          print(isLoading);
         } else {
           for (var element in value.docs) {
             // print(element['code']);
@@ -127,6 +126,6 @@ class LogInDoctorController extends GetxController {
         }
       });
     }
-    // isLoading = false;
+    isLoading.value = false;
   }
 }

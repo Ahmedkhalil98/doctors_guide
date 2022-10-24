@@ -7,6 +7,7 @@ import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DoctorDetailsInfo extends StatelessWidget {
   DoctorDetailsInfo(
@@ -39,6 +40,9 @@ class DoctorDetailsInfo extends StatelessWidget {
               : ListView.builder(
                   itemCount: doctorInfo.length,
                   itemBuilder: (context, index) {
+                    List splitString = doctorInfo[index]['latLong'].split(',');
+                    LatLng latAndLng = LatLng(double.parse(splitString[0]),
+                        double.parse(splitString[1]));
                     return Column(
                       children: [
                         Container(
@@ -104,7 +108,7 @@ class DoctorDetailsInfo extends StatelessWidget {
                           ),
                         ),
                         DoctorLocationMap(
-                          latLong: doctorInfo[index]['latLong'],
+                          latLong: latAndLng,
                           doctorName: doctorInfo[index]['fullName'],
                         ),
                       ],

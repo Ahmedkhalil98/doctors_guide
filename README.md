@@ -21,7 +21,10 @@ A new Flutter project.
 - [x] scroll in register screen
 - [x] create Loading... widget
 - [ ] add loading widget in code page & register page
-- [ ] 
+- [ ] login doctor again after delete app then download ???
+
+
+
 
 
 

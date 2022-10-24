@@ -22,7 +22,7 @@ class LogInAsADoctor extends StatelessWidget {
           "الدخول كطبيب",
         ),
       ),
-      body: loginController.isLoading
+      body: loginController.isLoading.value
           ? const LoadingWidget()
           : SingleChildScrollView(
               child: Form(
@@ -49,10 +49,8 @@ class LogInAsADoctor extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                       child: GestureDetector(
                           onTap: () {
-                            loginController.isLoading = true;
                             loginController.CheckCode(
                                 loginController.code.text);
-                            //loginController.isLoading = false;
                           },
                           child: MyButtonWidget(
                               btntitle: "الدخول", color: kPrimaryColor)),

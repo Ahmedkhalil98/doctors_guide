@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DoctorLocationMap extends StatefulWidget {
   DoctorLocationMap({super.key, this.latLong, this.doctorName});
-  String? latLong;
+  LatLng? latLong;
   String? doctorName;
 
   @override
@@ -31,9 +31,6 @@ class _DoctorLocationMapState extends State<DoctorLocationMap> {
               if (mapController.kGooglePlex == null) {
                 return const Center(child: CircularProgressIndicator());
               }
-              List splitString = widget.latLong!.split(',');
-              LatLng latAndLng = LatLng(
-                  double.parse(splitString[0]), double.parse(splitString[1]));
 
               Set<Marker> placeMarker = {
                 Marker(
@@ -42,12 +39,12 @@ class _DoctorLocationMapState extends State<DoctorLocationMap> {
                     infoWindow: InfoWindow(
                       title: widget.doctorName,
                     ),
-                    position: latAndLng),
+                    position: widget.latLong!),
               };
               return GoogleMap(
                   markers: placeMarker,
                   initialCameraPosition: CameraPosition(
-                    target: latAndLng,
+                    target: widget.latLong!,
                     zoom: 14.0,
                   ),
                   zoomControlsEnabled: true,

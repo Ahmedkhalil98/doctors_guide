@@ -3,6 +3,7 @@ import 'package:doctors_guide/Views/Screens/doctor_editable_screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
 import 'package:doctors_guide/constants/themes.dart';
+import 'package:doctors_guide/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,15 +50,25 @@ class DrawerWidgets extends StatelessWidget {
           const Divider(
             height: 2,
           ),
-          GestureDetector(
-            onTap: () {
-              Get.to(() => LogInAsADoctor());
-            },
-            child: const DrawerCard(
-              icon: Icons.app_registration,
-              title: 'تسجيل كطبيب',
-            ),
-          ),
+          localStorage!.getString('role') == 'admin'
+              ? GestureDetector(
+                  onTap: () {
+                    Get.to(() => DoctorEditableScreen());
+                  },
+                  child: const DrawerCard(
+                    icon: Icons.person,
+                    title: 'الصفحة الشخصية',
+                  ),
+                )
+              : GestureDetector(
+                  onTap: () {
+                    Get.to(() => LogInAsADoctor());
+                  },
+                  child: const DrawerCard(
+                    icon: Icons.app_registration,
+                    title: 'تسجيل كطبيب',
+                  ),
+                ),
           const Divider(
             height: 2,
           ),
