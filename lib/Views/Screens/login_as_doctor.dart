@@ -17,76 +17,79 @@ class LogInAsADoctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "الدخول كطبيب",
+        appBar: AppBar(
+          title: const Text(
+            "الدخول كطبيب",
+          ),
         ),
-      ),
-      body: loginController.isLoading.value
-          ? const LoadingWidget()
-          : SingleChildScrollView(
-              child: Form(
-                key: loginController.codeFormKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(bottom: 15.h),
-                      height: 250.h,
-                      child: Lottie.asset("images/doctorCard.json"),
-                    ),
-                    MyTextFieldWidget(
-                      valid: (value) {
-                        return validInput(value!, 15, "code");
-                      },
-                      controller: loginController.code,
-                      hint: "الكود",
-                      title: "الرجاء أدخال الكود خاص بالطبيب هنا :",
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                      child: GestureDetector(
-                          onTap: () {
-                            loginController.CheckCode(
-                                loginController.code.text);
-                          },
-                          child: MyButtonWidget(
-                              btntitle: "الدخول", color: kPrimaryColor)),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
-                        child: Text(
-                          "للحصول على كود الطبيب اضغط هنا",
-                          style: TextStyle(
-                            fontSize: 13.sp,
-                            color: kGrayColor,
-                            fontWeight: FontWeight.bold,
+        body: Obx(
+          () {
+            return loginController.isLoading.value
+                ? const LoadingWidget()
+                : SingleChildScrollView(
+                    child: Form(
+                      key: loginController.codeFormKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(bottom: 15.h),
+                            height: 250.h,
+                            child: Lottie.asset("images/doctorCard.json"),
                           ),
-                        ),
+                          MyTextFieldWidget(
+                            valid: (value) {
+                              return validInput(value!, 15, "code");
+                            },
+                            controller: loginController.code,
+                            hint: "الكود",
+                            title: "الرجاء أدخال الكود خاص بالطبيب هنا :",
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 5.h),
+                            child: GestureDetector(
+                                onTap: () {
+                                  loginController.CheckCode(
+                                      loginController.code.text);
+                                },
+                                child: MyButtonWidget(
+                                    btntitle: "الدخول", color: kPrimaryColor)),
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
+                              child: Text(
+                                "للحصول على كود الطبيب اضغط هنا",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  color: kGrayColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 50.h),
+                            child: Center(
+                              child: IconButton(
+                                onPressed: () {
+                                  //ToDo : connect with Tw
+                                },
+                                icon: Icon(
+                                  Icons.telegram,
+                                  size: 50.h,
+                                  color: kPrimaryColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 50.h),
-                      child: Center(
-                        child: IconButton(
-                          onPressed: () {
-                            //ToDo : connect with Tw
-                          },
-                          icon: Icon(
-                            Icons.telegram,
-                            size: 50.h,
-                            color: kPrimaryColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-    );
+                  );
+          },
+        ));
   }
 }

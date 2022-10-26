@@ -56,6 +56,7 @@ class LogInDoctorController extends GetxController {
     required String address,
     required String latLong,
   }) async {
+    isLoading.value = true;
     DoctorInfoModel doctorData;
     if (image != null) {
       File file = File(image!.path);
@@ -76,13 +77,19 @@ class LogInDoctorController extends GetxController {
           latLong: latLong,
           imageUrl: imageUrl,
         );
+        localStorage!.setString("doctorImageUrl", imageUrl);
         return _firestore
             .collection("DoctorInformation")
             .add(doctorData.toMap())
-            .then((value) => print("New doctor add"))
-            .catchError((e) => print("Failed to add and Error : $e ?"));
+            .then((value) {
+          Get.snackbar(
+              "تم بنجاح", "تم اضافة معلوماتك ,قم باعادة تشغيل التطبيق ");
+        }).catchError((e) {
+          Get.snackbar("خطأ", "$e");
+        });
       });
     }
+    isLoading.value = false;
   }
 
   nextForm() {
@@ -106,9 +113,7 @@ class LogInDoctorController extends GetxController {
           code.clear();
         } else {
           for (var element in value.docs) {
-            // print(element['code']);
-            // print(element['isLogin']);
-            if (element['isLogin']) {
+            if (element['isLogin'] == 'false') {
               Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
               code.clear();
             } else {
@@ -116,7 +121,7 @@ class LogInDoctorController extends GetxController {
                   .collection("doctorsCodes")
                   .doc(element['code'])
                   .update({
-                'isLogin': true,
+                'isLogin': "true",
               });
 
               localStorage!.setString("role", "adminInRegister");
@@ -127,5 +132,15 @@ class LogInDoctorController extends GetxController {
       });
     }
     isLoading.value = false;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    code.dispose();
+    fullName.dispose();
+    phoneNumber.dispose();
+    price.dispose();
+    address.dispose();
   }
 }

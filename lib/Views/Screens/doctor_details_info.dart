@@ -27,13 +27,11 @@ class DoctorDetailsInfo extends StatelessWidget {
       body: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
         future: showDoctorInfo.doctorDetails(phoneNumber),
         builder: (context, snapshot) {
-          showDoctorInfo.isLoading = true;
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const LoadingWidget();
           }
           List<QueryDocumentSnapshot<Map<String, dynamic>>> doctorInfo =
               snapshot.data!.docs;
-          showDoctorInfo.isLoading = false;
 
           return showDoctorInfo.isLoading
               ? const LoadingWidget()
@@ -90,18 +88,10 @@ class DoctorDetailsInfo extends StatelessWidget {
                               children: [
                                 Text(
                                   doctorInfo[index]['workingDays'].join(' , '),
-                                  style: TextStyle(
-                                    fontSize: 13.sp,
-                                    color: kBlackColor,
-                                  ),
                                 ),
                                 Text(
                                   "متوفر من الساعة ${doctorInfo[index]['fromTime']} الى الساعة"
                                   " ${doctorInfo[index]['toTime']}",
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
-                                    color: kBlackColor,
-                                  ),
                                 ),
                               ],
                             ),

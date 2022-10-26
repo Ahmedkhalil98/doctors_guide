@@ -9,6 +9,7 @@ import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -115,8 +116,41 @@ class HomeScreen extends StatelessWidget {
                         return const LoadingWidget();
                       }
                       if (snapshot.data == null) {
-                        //ToDo
-                        return const Text("no data");
+                        return Center(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 110.h,
+                              ),
+                              SizedBox(
+                                  width: 300.w,
+                                  height: 200.h,
+                                  child: Lottie.asset("images/empty.json")),
+                            ],
+                          ),
+                        );
+                      }
+                      if (snapshot.data!.docs.isEmpty) {
+                        return Center(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 110.h,
+                              ),
+                              SizedBox(
+                                  width: 300.w,
+                                  height: 200.h,
+                                  child: Lottie.asset("images/empty.json")),
+                              Text(
+                                "النتيجة فارغة",
+                                style: TextStyle(
+                                  color: kGrayColor,
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
                       }
                       List<QueryDocumentSnapshot<Map<String, dynamic>>>
                           doctors = snapshot.data!.docs;
@@ -162,8 +196,8 @@ class HomeScreen extends StatelessWidget {
                                                   BorderRadius.circular(30.r),
                                               image: DecorationImage(
                                                   image: NetworkImage(
-                                                      doctors[index]
-                                                          ['imageUrl']),
+                                                    doctors[index]['imageUrl'],
+                                                  ),
                                                   fit: BoxFit.cover)),
                                         ),
                                         subtitle:

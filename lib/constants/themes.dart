@@ -22,9 +22,8 @@ class DoctorTheme {
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(
-        fontSize: 18.sp,
+        fontSize: 16.sp,
         color: kBlackColor,
-        fontWeight: FontWeight.bold,
       ),
       bodySmall: TextStyle(
         fontSize: 14.sp,
@@ -46,9 +45,8 @@ class DoctorTheme {
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(
-        fontSize: 18.sp,
+        fontSize: 16.sp,
         color: kWhiteColor,
-        fontWeight: FontWeight.bold,
       ),
       bodySmall: TextStyle(
         fontSize: 14.sp,

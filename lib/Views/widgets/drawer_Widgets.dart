@@ -2,10 +2,12 @@ import 'package:doctors_guide/Views/Screens/about_app_screen.dart';
 import 'package:doctors_guide/Views/Screens/doctor_editable_screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
+import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:doctors_guide/locale/locale_controller.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DrawerWidgets extends StatelessWidget {
@@ -19,36 +21,38 @@ class DrawerWidgets extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          UserAccountsDrawerHeader(
-            onDetailsPressed: () {
-              Get.to(() => DoctorEditableScreen());
-            },
-            accountEmail: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'تعديل المعلومات',
-                  style: Theme.of(context).textTheme.bodySmall,
+          localStorage!.getString('role') == 'admin'
+              ? UserAccountsDrawerHeader(
+                  decoration: const BoxDecoration(
+                    color: kPrimaryColor,
+                  ),
+                  accountEmail: Row(
+                    children: [
+                      Text(
+                        " ${localStorage!.getString('doctorPhoneNumber')}",
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                  accountName: Text(
+                    " ${localStorage!.getString('doctorName')}",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "${localStorage!.getString('doctorImageUrl')}"),
+                  ),
+                )
+              : Container(
+                  height: 180.h,
+                  decoration: const BoxDecoration(
+                      color: kPrimaryColor,
+                      image: DecorationImage(
+                        image: AssetImage("images/logo.png"),
+                        fit: BoxFit.cover,
+                      )),
                 ),
-              ],
-            ),
-            accountName: Text(
-              'اسم الطبيب',
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            // decoration: const BoxDecoration(
-            //   image: DecorationImage(
-            //     image: ExactAssetImage(
-            //       'images/doctorimg.jpg',
-            //     ),
-            //   ),
-            // ),
-            currentAccountPicture: CircleAvatar(
-              child: Image.asset(
-                'images/doctorimg.jpg',
-              ),
-            ),
-          ),
+          //==============================
           const Divider(
             height: 2,
           ),
@@ -91,7 +95,7 @@ class DrawerWidgets extends StatelessWidget {
               controller.changeLanguage('fa');
             },
             child: const DrawerCard(
-              icon: Icons.nightlight,
+              icon: Icons.language,
               title: 'تغير اللغة',
             ),
           ),

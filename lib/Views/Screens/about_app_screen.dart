@@ -1,4 +1,6 @@
+import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AboutAppScreen extends StatelessWidget {
   const AboutAppScreen({super.key});
@@ -61,30 +63,26 @@ class AboutAppScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               ListTile(
-                leading: const CircleAvatar(
-                  backgroundColor: Colors.amber,
-                ),
                 title: Text(
                   'سامان دخيل ',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                subtitle: Text('مطور Flutter ',
-                    style: Theme.of(context).textTheme.bodySmall),
-                trailing: Text('07827509472',
-                    style: Theme.of(context).textTheme.bodySmall),
+                subtitle: Text('07827509472',
+                    style: TextStyle(
+                      color: kGrayColor,
+                      fontSize: 12.sp,
+                    )),
               ),
               ListTile(
-                leading: const CircleAvatar(
-                  backgroundColor: Colors.amber,
-                ),
                 title: Text(
                   'احمد خليل',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                subtitle: Text('مطور Flutter ',
-                    style: Theme.of(context).textTheme.bodySmall),
-                trailing: Text('07824828348',
-                    style: Theme.of(context).textTheme.bodySmall),
+                subtitle: Text('07824828348',
+                    style: TextStyle(
+                      color: kGrayColor,
+                      fontSize: 12.sp,
+                    )),
               ),
             ],
           ),
