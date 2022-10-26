@@ -12,54 +12,82 @@ class AboutAppScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                '''
-                  وياي تطبيق اطباء العراق يمكنك الوصول
-                  الى الاطباء ب اسهل طريقه و من اي مكان
-                  تطبيق يحتوي على اغلب دكاترة في العراق 
-                  مجموعه من المعلومات عن الدكاترة 
-                  ك اسم, تخصص, سعر الكشف, عنوان الكامل,
-                   موقع على الخريطة, اوقات و ايام الدوام  
-                            ''',
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12.0,
+            vertical: 6.0,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                'اسم التطبيق',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-            ),
-            Text(
-              'المطورين',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            ListTile(
-              leading: const CircleAvatar(
-                backgroundColor: Colors.amber,
+              RichText(
+                textAlign: TextAlign.start,
+                textDirection: TextDirection.rtl,
+                softWrap: true,
+                textScaleFactor: 1,
+                text: TextSpan(
+                  text: ' وياه تطبيق اسم التطبيق يمكنك الوصول',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: ' الى الاطباء ب اسهل طريقه و من اي مكان',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text: ' تطبيق يحتوي على اغلب دكاترة في العراق ',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text: ' مجموعه من المعلومات عن الدكاترة ',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text: ' ك اسم, تخصص, سعر الكشف, عنوان الكامل,',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text: ' موقع على الخريطة, اوقات و ايام الدوام ',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ],
+                ),
               ),
-              title: Text(
-                'سامان دخيل ',
+              Text(
+                'المطورين',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              subtitle: Text('مطور Flutter ',
-                  style: Theme.of(context).textTheme.bodySmall),
-              trailing: Text('07827509472',
-                  style: Theme.of(context).textTheme.bodySmall),
-            ),
-            ListTile(
-              leading: const CircleAvatar(
-                backgroundColor: Colors.amber,
+              ListTile(
+                leading: const CircleAvatar(
+                  backgroundColor: Colors.amber,
+                ),
+                title: Text(
+                  'سامان دخيل ',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                subtitle: Text('مطور Flutter ',
+                    style: Theme.of(context).textTheme.bodySmall),
+                trailing: Text('07827509472',
+                    style: Theme.of(context).textTheme.bodySmall),
               ),
-              title: Text(
-                'احمد خليل',
-                style: Theme.of(context).textTheme.bodyLarge,
+              ListTile(
+                leading: const CircleAvatar(
+                  backgroundColor: Colors.amber,
+                ),
+                title: Text(
+                  'احمد خليل',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                subtitle: Text('مطور Flutter ',
+                    style: Theme.of(context).textTheme.bodySmall),
+                trailing: Text('07824828348',
+                    style: Theme.of(context).textTheme.bodySmall),
               ),
-              subtitle: Text('مطور Flutter ',
-                  style: Theme.of(context).textTheme.bodySmall),
-              trailing: Text('07824828348',
-                  style: Theme.of(context).textTheme.bodySmall),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
