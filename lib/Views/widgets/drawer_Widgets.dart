@@ -3,13 +3,15 @@ import 'package:doctors_guide/Views/Screens/doctor_editable_screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
 import 'package:doctors_guide/constants/themes.dart';
+import 'package:doctors_guide/locale/locale_controller.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DrawerWidgets extends StatelessWidget {
-  const DrawerWidgets({Key? key}) : super(key: key);
-
+  DrawerWidgets({Key? key}) : super(key: key);
+  LanguagesController controller = Get.find();
+  DoctorTheme theme = DoctorTheme();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -74,12 +76,23 @@ class DrawerWidgets extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              DoctorTheme theme = DoctorTheme();
               theme.changeDoctorTheme();
             },
             child: const DrawerCard(
               icon: Icons.nightlight,
               title: 'تغير الوان',
+            ),
+          ),
+          const Divider(
+            height: 2,
+          ),
+          GestureDetector(
+            onTap: () {
+              controller.changeLanguage('kur');
+            },
+            child: const DrawerCard(
+              icon: Icons.nightlight,
+              title: 'تغير اللغة',
             ),
           ),
           const Divider(
