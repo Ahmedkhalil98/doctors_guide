@@ -6,7 +6,6 @@ import 'package:doctors_guide/Views/widgets/drawer_Widgets.dart';
 import 'package:doctors_guide/Views/widgets/loading_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
-import 'package:doctors_guide/locale/locale_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

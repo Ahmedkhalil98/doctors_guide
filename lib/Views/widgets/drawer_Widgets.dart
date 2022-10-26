@@ -88,7 +88,7 @@ class DrawerWidgets extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              controller.changeLanguage('kur');
+              controller.changeLanguage('fa');
             },
             child: const DrawerCard(
               icon: Icons.nightlight,
