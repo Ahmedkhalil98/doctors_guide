@@ -20,7 +20,7 @@ A new Flutter project.
 - [x] add loading widget in code page & register page
 - [X] when search is empty or on internet
 - [ ] login doctor again after delete app then download ??? i need idea
-- [ ] edit image
+- [X] edit image
 - [x] change to Arabic language not work
 - [ ] add kurdish and Arabic language (word)
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
