@@ -15,6 +15,7 @@ class DrawerWidgets extends StatelessWidget {
   LanguagesController controller = Get.find();
   DoctorTheme theme = DoctorTheme();
   bool isLightModeSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -77,39 +78,58 @@ class DrawerWidgets extends StatelessWidget {
           const Divider(
             height: 2,
           ),
-          GestureDetector(
-            onTap: () {
-              theme.changeDoctorTheme(true);
-            },
-            child: const DrawerCard(
-              icon: Icons.nightlight,
-              title: 'تغير الوان',
-            ),
-          ),
-          const Divider(
-            height: 2,
-          ),
+
           SwitchListTile(
+              activeColor: kPrimaryColor,
               value: isLightModeSelected,
               title: const Text('تغير الوان'),
               onChanged: (bool newvalue) {
                 if (isLightModeSelected) {
-                  theme.changeDoctorTheme(true);
+                  isLightModeSelected = newvalue;
+                  theme.changeDoctorTheme(isLightModeSelected);
                 } else {
-                  theme.changeDoctorTheme(false);
+                  isLightModeSelected = newvalue;
+                  theme.changeDoctorTheme(isLightModeSelected);
                 }
               }),
           const Divider(
             height: 2,
           ),
-          GestureDetector(
-            onTap: () {
-              controller.changeLanguage('fa');
-            },
-            child: const DrawerCard(
-              icon: Icons.language,
-              title: 'تغير اللغة',
-            ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Flexible(
+                flex: 3,
+                child: DrawerCard(
+                  icon: Icons.language,
+                  title: 'تغير اللغة',
+                ),
+              ),
+              Flexible(
+                flex: 2,
+                child: DropdownButton<String>(
+                  value: controller.selectedLanguage,
+                  items: controller.languagesList
+                      .map((item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ))
+                      .toList(),
+                  onChanged: (item) {
+                    controller.selectedLanguage = item!;
+                    if (controller.selectedLanguage == 'عربي') {
+                      controller.changeLanguage('ar');
+                    } else {
+                      controller.changeLanguage('fa');
+                    }
+                  },
+                ),
+              ),
+            ],
           ),
           const Divider(
             height: 2,
