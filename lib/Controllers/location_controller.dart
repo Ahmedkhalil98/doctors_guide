@@ -30,7 +30,6 @@ class LocationController extends GetxController {
         await Geolocator.getCurrentPosition().then((value) => value);
     latLng = LatLng(currentLocation!.latitude, currentLocation!.longitude);
 
-    print(latLng);
     kGooglePlex = CameraPosition(
       target: latLng,
       zoom: 14.0,

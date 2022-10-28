@@ -54,9 +54,7 @@ class DrawerWidgets extends StatelessWidget {
                       )),
                 ),
           //==============================
-          const Divider(
-            height: 2,
-          ),
+
           localStorage!.getString('role') == 'admin'
               ? GestureDetector(
                   onTap: () {

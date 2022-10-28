@@ -20,12 +20,10 @@ A new Flutter project.
 - [x] add loading widget in code page & register page
 - [X] when search is empty or on internet
 - [ ] login doctor again after delete app then download ??? i need idea
-- [ ] edditable screen (image and work days not show) && create function for update , I will search for this 
-- [ ] contact us page
-- [ ] change to Arabic language not work
+- [ ] edit image
+- [x] change to Arabic language not work
 - [ ] add kurdish and Arabic language (word)
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
-- [ ] change color to black theme not save when go out form app
 - [ ] 
 - [ ]
 

@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:doctors_guide/Controllers/editable_controller.dart';
 import 'package:doctors_guide/Controllers/location_controller.dart';
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
-import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
 import 'package:doctors_guide/Views/Screens/Register_doctor_more_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
+import 'package:doctors_guide/Views/widgets/loading_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
 import 'package:doctors_guide/main.dart';
@@ -25,6 +26,7 @@ class DoctorEditableScreen extends StatelessWidget {
   final mapController = Get.put(LocationController());
   final loginController = Get.put(LogInDoctorController(), permanent: true);
   final showDoctorInfo = Get.put(ShowDInfo());
+  final editableController = Get.put(Editable());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,9 +39,8 @@ class DoctorEditableScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: GestureDetector(
               onTap: () {
-                if (loginController.addressFormKey.currentState!.validate()) {
-                  //ToDo : save
-                  Get.to(() => HomeScreen());
+                if (editableController.formKey.currentState!.validate()) {
+                  editableController.pressSaveChange();
                 } else {}
               },
               child: MyButtonWidget(btntitle: " حفظ", color: kPrimaryColor)),
@@ -48,30 +49,23 @@ class DoctorEditableScreen extends StatelessWidget {
           future: showDoctorInfo.doctorDetails(
               int.parse("${localStorage!.getString('doctorPhoneNumber')}")),
           builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const LoadingWidget();
+            }
+            //print(snapshot.data.);
             List<QueryDocumentSnapshot<Map<String, dynamic>>> doctorInfo =
                 snapshot.data!.docs;
             return ListView.builder(
               itemCount: doctorInfo.length,
               itemBuilder: (context, index) {
-                loginController.fullName.text = doctorInfo[index]['fullName'];
-                loginController.phoneNumber.text =
-                    doctorInfo[index]['phoneNumber'].toString();
-                loginController.price.text =
-                    doctorInfo[index]['previewPrice'].toString();
-                loginController.address.text = doctorInfo[index]['address'];
-                loginController.dropdownCity.value = doctorInfo[index]['city'];
-                loginController.dropdownSpecialty.value =
-                    doctorInfo[index]['specialty'];
-                timeController.fromTime = doctorInfo[index]['fromTime'];
-                timeController.toTime = doctorInfo[index]['toTime'];
-                List splitString = doctorInfo[index]['latLong'].split(',');
-                LatLng latAndLng = LatLng(
-                    double.parse(splitString[0]), double.parse(splitString[1]));
+                editableController.setValueFun(doctorInfo, index);
+
+                editableController.userId = doctorInfo[index].id;
 
                 return SingleChildScrollView(
                     reverse: true,
                     child: Form(
-                      key: loginController.doctorFormKey,
+                      key: editableController.formKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -187,12 +181,12 @@ class DoctorEditableScreen extends StatelessWidget {
                                 Container(
                                     width: 250.w,
                                     padding: EdgeInsets.only(right: 5.w),
-                                    child: GetBuilder<LogInDoctorController>(
+                                    child: GetBuilder<Editable>(
                                       builder: (imageController) => Text(
                                         loginController.image == null
                                             ? "لم يتم رفع أي صورة بعد"
                                             : basename(
-                                                imageController.image!.path),
+                                                editableController.image!.path),
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                           color: kGrayColor.withOpacity(0.6),
@@ -202,7 +196,7 @@ class DoctorEditableScreen extends StatelessWidget {
                                     )),
                                 GestureDetector(
                                   onTap: () {
-                                    loginController.uploadImage();
+                                    editableController.uploadImage();
                                   },
                                   child: SizedBox(
                                       width: 50.w,
@@ -235,6 +229,9 @@ class DoctorEditableScreen extends StatelessWidget {
                                   .map((e) => MultiSelectCard(
                                         value: e,
                                         label: e,
+                                        selected: editableController
+                                            .selectedWorkingDays
+                                            .contains(e),
                                       ))
                                   .toList(),
                               highlightColor: kPrimaryColor,
@@ -292,42 +289,36 @@ class DoctorEditableScreen extends StatelessWidget {
                                   color: kPrimaryColor,
                                 ),
                               ),
-                              child: GetBuilder<LocationController>(
-                                  init: LocationController(),
+                              child: GetBuilder<Editable>(
                                   builder: (mapController) {
-                                    if (mapController.kGooglePlex == null) {
-                                      return const Center(
-                                          child: CircularProgressIndicator());
-                                    }
-                                    Set<Marker> placeMarker = {
-                                      Marker(
-                                          draggable: true,
-                                          markerId: const MarkerId("1"),
-                                          position: latAndLng),
-                                    };
+                                if (editableController.kGooglePlex == null) {
+                                  return const Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                Set<Marker> placeMarker = {
+                                  Marker(
+                                    draggable: true,
+                                    markerId: const MarkerId("1"),
+                                    position: editableController.latAndLng,
+                                  ),
+                                };
 
-                                    return GoogleMap(
-                                        markers: placeMarker,
-                                        initialCameraPosition: CameraPosition(
-                                          target: latAndLng,
-                                          zoom: 14.0,
-                                        ),
-                                        onTap: (latlng) {
-                                          placeMarker.remove(const Marker(
-                                              markerId: MarkerId("1")));
-                                          placeMarker.add(Marker(
-                                              markerId: const MarkerId("1"),
-                                              position: latlng));
-                                          // latLng = newLatLng;
-                                          //ToDo: change
-                                        },
-                                        myLocationEnabled: true,
-                                        zoomControlsEnabled: true,
-                                        mapType: MapType.normal,
-                                        onMapCreated: (GoogleMapController c) {
-                                          mapController.controller.complete(c);
-                                        });
-                                  })),
+                                return GoogleMap(
+                                    markers: placeMarker,
+                                    initialCameraPosition: CameraPosition(
+                                      target: editableController.latAndLng,
+                                      zoom: 14.0,
+                                    ),
+                                    onTap: (newLatLng) {
+                                      editableController.onMapTap(newLatLng);
+                                    },
+                                    myLocationEnabled: true,
+                                    zoomControlsEnabled: true,
+                                    mapType: MapType.normal,
+                                    onMapCreated: (GoogleMapController c) {
+                                      mapController.controller.complete(c);
+                                    });
+                              })),
                           SizedBox(
                             height: 90.h,
                           )

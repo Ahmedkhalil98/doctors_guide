@@ -109,28 +109,33 @@ class DoctorDetailsInfo extends StatelessWidget {
       ),
       bottomNavigationBar: showDoctorInfo.isLoading
           ? Container()
-          : Container(
-              width: MediaQuery.of(context).size.width * 90,
-              height: MediaQuery.of(context).size.height * 0.08,
-              margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-              decoration: BoxDecoration(
-                color: kSecondColor,
-                borderRadius: BorderRadius.circular(30.r),
-              ),
-              child: ListTile(
-                title: Center(
-                    child: Text(
-                  textDirection: TextDirection.ltr,
-                  phoneNumber.toString(),
-                  style: TextStyle(
-                    fontSize: 16.sp,
+          : GestureDetector(
+              onTap: () async {
+                //ToDo : Test
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width * 90,
+                height: MediaQuery.of(context).size.height * 0.08,
+                margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                decoration: BoxDecoration(
+                  color: kSecondColor,
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
+                child: ListTile(
+                  title: Center(
+                      child: Text(
+                    textDirection: TextDirection.ltr,
+                    phoneNumber.toString(),
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      color: kWhiteColor,
+                    ),
+                  )),
+                  trailing: Icon(
+                    Icons.phone,
+                    size: 25.h,
                     color: kWhiteColor,
                   ),
-                )),
-                trailing: Icon(
-                  Icons.phone,
-                  size: 25.h,
-                  color: kWhiteColor,
                 ),
               ),
             ),

@@ -36,11 +36,8 @@ class LogInDoctorController extends GetxController {
 
   uploadImage() async {
     final imagePiker = ImagePicker();
-
     image = await imagePiker.pickImage(source: ImageSource.gallery);
     File file = File(image!.path);
-    var refStorage = FirebaseStorage.instance.ref("DoctorsImages/$phoneNumber");
-
     update();
   }
 
