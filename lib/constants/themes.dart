@@ -1,4 +1,5 @@
 import 'package:doctors_guide/constants/Colors.dart';
+import 'package:doctors_guide/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -54,11 +55,13 @@ class DoctorTheme {
       ),
     ),
   );
-  void changeDoctorTheme() {
-    if (Get.isDarkMode) {
+  void changeDoctorTheme(bool isLightMode) {
+    if (isLightMode) {
       Get.changeTheme(DoctorTheme.customLight);
+      localStorage!.setBool('doctorTheme', true);
     } else {
       Get.changeTheme(DoctorTheme.customDark);
+      localStorage!.setBool('doctorTheme', false);
     }
   }
 }

@@ -5,6 +5,7 @@ import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/constants/themes.dart';
 import 'package:doctors_guide/locale/locale.dart';
 import 'package:doctors_guide/locale/locale_controller.dart';
+import 'package:doctors_guide/main.dart';
 import 'package:doctors_guide/utils/Middlewar_function.dart';
 import 'package:doctors_guide/utils/my_bindings.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,9 @@ class MyApp extends StatelessWidget {
           ),
         ],
         initialBinding: MyBindings(),
-        theme: DoctorTheme.customLight,
+        theme: localStorage!.getBool('doctorTheme') == true
+            ? DoctorTheme.customLight
+            : DoctorTheme.customDark,
         locale: controller.initialLanguage,
         translations: DoctorLocale(),
       );

@@ -14,6 +14,7 @@ class DrawerWidgets extends StatelessWidget {
   DrawerWidgets({Key? key}) : super(key: key);
   LanguagesController controller = Get.find();
   DoctorTheme theme = DoctorTheme();
+  bool isLightModeSelected = false;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -80,13 +81,26 @@ class DrawerWidgets extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              theme.changeDoctorTheme();
+              theme.changeDoctorTheme(true);
             },
             child: const DrawerCard(
               icon: Icons.nightlight,
               title: 'تغير الوان',
             ),
           ),
+          const Divider(
+            height: 2,
+          ),
+          SwitchListTile(
+              value: isLightModeSelected,
+              title: const Text('تغير الوان'),
+              onChanged: (bool newvalue) {
+                if (isLightModeSelected) {
+                  theme.changeDoctorTheme(true);
+                } else {
+                  theme.changeDoctorTheme(false);
+                }
+              }),
           const Divider(
             height: 2,
           ),
