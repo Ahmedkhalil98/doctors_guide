@@ -18,16 +18,17 @@ A new Flutter project.
 - [x] scroll in register screen
 - [x] create Loading... widget
 - [x] add loading widget in code page & register page
-- [X] when search is empty or on internet
-- [ ] login doctor again after delete app then download ??? i need idea |||||||   My idea to check if the code is already exist in firebase or not if yes will go to home screen other way will go to regesteration screen 
+- [X] when search is empty or on internet 
 - [X] edit image
 - [x] change to Arabic language not work
-- [ ] add kurdish and Arabic language (word) && Done but 
-    we need some kurdish words
+- [ ] add kurdish and Arabic language (word) 
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
-- [ ] after change theme i need to close the app and open again
-    becouse i do not know how to setstate with getx 
-- [ ]
+- [ ] number keyboard type (Ahmed)
+- [ ] url launcher
+- [ ] color of city (ahmed)
+- [ ] font 
+- [ ] drop down lang ( border ,color ,padding )
+- [ ] login doctor again after delete app then download  (Ahmed)
 
 
 

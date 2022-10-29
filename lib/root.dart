@@ -18,10 +18,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LanguagesController controller = Get.put(LanguagesController());
+
     return ScreenUtilInit(builder: (context, child) {
+      final themeConroller = Get.put(DoctorTheme());
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         // home: const LoadingWidget(),
+
         initialRoute: '/',
         getPages: [
           GetPage(
@@ -41,8 +44,8 @@ class MyApp extends StatelessWidget {
         ],
         initialBinding: MyBindings(),
         theme: localStorage!.getBool('doctorTheme') == true
-            ? DoctorTheme.customLight
-            : DoctorTheme.customDark,
+            ? themeConroller.customLight
+            : themeConroller.customDark,
         locale: controller.initialLanguage,
         translations: DoctorLocale(),
       );

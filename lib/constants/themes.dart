@@ -8,8 +8,9 @@ import 'package:get/get.dart';
 // 8ad8da
 // d17d2f
 // 080d10   black
-class DoctorTheme {
-  static ThemeData customLight = ThemeData.light().copyWith(
+class DoctorTheme extends GetxController {
+  bool isLightModeSelected = false;
+  ThemeData customLight = ThemeData.light().copyWith(
     appBarTheme: AppBarTheme(
       backgroundColor: kPrimaryColor,
       centerTitle: true,
@@ -32,7 +33,7 @@ class DoctorTheme {
       ),
     ),
   );
-  static ThemeData customDark = ThemeData.dark().copyWith(
+  ThemeData customDark = ThemeData.dark().copyWith(
     appBarTheme: AppBarTheme(
       backgroundColor: kPrimaryColor,
       centerTitle: true,
@@ -57,11 +58,25 @@ class DoctorTheme {
   );
   void changeDoctorTheme(bool isLightMode) {
     if (isLightMode) {
-      Get.changeTheme(DoctorTheme.customLight);
+      Get.changeTheme(customLight);
       localStorage!.setBool('doctorTheme', true);
+      update();
     } else {
-      Get.changeTheme(DoctorTheme.customDark);
+      Get.changeTheme(customDark);
       localStorage!.setBool('doctorTheme', false);
+      update();
+    }
+  }
+
+  void onChangeSwitch(bool newValue) {
+    if (isLightModeSelected) {
+      isLightModeSelected = newValue;
+
+      changeDoctorTheme(isLightModeSelected);
+    } else {
+      isLightModeSelected = newValue;
+
+      changeDoctorTheme(isLightModeSelected);
     }
   }
 }

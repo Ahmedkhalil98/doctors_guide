@@ -13,8 +13,7 @@ import 'package:get/get.dart';
 class DrawerWidgets extends StatelessWidget {
   DrawerWidgets({Key? key}) : super(key: key);
   LanguagesController controller = Get.find();
-  DoctorTheme theme = DoctorTheme();
-  bool isLightModeSelected = false;
+  //DoctorTheme theme = DoctorTheme();
 
   @override
   Widget build(BuildContext context) {
@@ -79,23 +78,31 @@ class DrawerWidgets extends StatelessWidget {
             height: 2,
           ),
 
-          SwitchListTile(
-              activeColor: kPrimaryColor,
-              value: isLightModeSelected,
-              title: const Text('تغير الوان'),
-              onChanged: (bool newvalue) {
-                if (isLightModeSelected) {
-                  isLightModeSelected = newvalue;
-                  theme.changeDoctorTheme(isLightModeSelected);
-                } else {
-                  isLightModeSelected = newvalue;
-                  theme.changeDoctorTheme(isLightModeSelected);
-                }
-              }),
+          GetBuilder<DoctorTheme>(
+            init: DoctorTheme(),
+            builder: (controller) {
+              return ListTile(
+                contentPadding: const EdgeInsets.all(0),
+                title: SwitchListTile(
+                    activeColor: kPrimaryColor,
+                    value: controller.isLightModeSelected,
+                    title: Text(
+                      'تغير الوان',
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                    onChanged: (bool value) {
+                      controller.onChangeSwitch(value);
+                    }),
+                leading: Padding(
+                  padding: EdgeInsets.only(right: 14.w),
+                  child: const Icon(Icons.color_lens),
+                ),
+              );
+            },
+          ),
           const Divider(
             height: 2,
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
