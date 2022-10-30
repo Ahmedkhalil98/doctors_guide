@@ -24,12 +24,11 @@ A new Flutter project.
 - [ ] add kurdish and Arabic language (word) 
 - [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
 - [ ] number keyboard type (Ahmed)
-- [ ] url launcher
+- [x] url launcher with phone number launcher
 - [ ] color of city (ahmed)
 - [ ] font 
-- [ ] drop down lang ( border ,color ,padding )
 - [ ] login doctor again after delete app then download  (Ahmed)
-
+- [x] create contactUs screen 
 
 
 

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DoctorDetailsInfo extends StatelessWidget {
   DoctorDetailsInfo(
@@ -111,7 +112,12 @@ class DoctorDetailsInfo extends StatelessWidget {
           ? Container()
           : GestureDetector(
               onTap: () async {
-                //ToDo : Test
+                Uri phoneNum = Uri.parse("tel:0$phoneNumber");
+                if (await canLaunchUrl(phoneNum)) {
+                  await launchUrl(phoneNum);
+                } else {
+                  throw 'Could not launch $phoneNum';
+                }
               },
               child: Container(
                 width: MediaQuery.of(context).size.width * 90,

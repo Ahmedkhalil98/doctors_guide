@@ -1,4 +1,5 @@
 import 'package:doctors_guide/Views/Screens/about_app_screen.dart';
+import 'package:doctors_guide/Views/Screens/contact_with_us.dart';
 import 'package:doctors_guide/Views/Screens/doctor_editable_screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
@@ -141,9 +142,14 @@ class DrawerWidgets extends StatelessWidget {
           const Divider(
             height: 2,
           ),
-          const DrawerCard(
-            icon: Icons.call,
-            title: 'تواصل معنا',
+          GestureDetector(
+            onTap: () {
+              Get.to(() => const ContactWithUs());
+            },
+            child: const DrawerCard(
+              icon: Icons.call,
+              title: 'تواصل معنا',
+            ),
           ),
           const Divider(
             height: 2,
