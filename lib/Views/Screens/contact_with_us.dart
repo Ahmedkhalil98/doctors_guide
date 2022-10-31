@@ -1,9 +1,69 @@
+import 'dart:io';
+
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactWithUs extends StatelessWidget {
   const ContactWithUs({super.key});
+  openwhatsapp({
+    required BuildContext context,
+    required String number,
+    required String msg,
+  }) async {
+    String whatsapp = "+964$number";
+    String whatsappURlAndroid = "whatsapp://send?phone=$whatsapp&text=$msg";
+    String whatappURLIos = "https://wa.me/$whatsapp?text=${Uri.parse("msg")}";
+    if (Platform.isIOS) {
+      // for iOS phone only
+      if (await canLaunchUrl(Uri.parse(whatappURLIos))) {
+        await launchUrl(
+          Uri.parse(whatappURLIos),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("whatsapp not installed")));
+      }
+    } else {
+      // android , web
+      if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
+        await launchUrl(Uri.parse(whatsappURlAndroid));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Whatsapp not installed")));
+      }
+    }
+  }
+
+  openTelegram({
+    required BuildContext context,
+    required String userName,
+  }) async {
+    // var telegram = '+964$userName';
+    String telegram = userName;
+    String telegragURlAndroid = "https://t.me/$telegram";
+    String telegramURLIos = "https://t.me/$telegram";
+    if (Platform.isIOS) {
+      // for iOS phone only
+      if (await canLaunchUrl(Uri.parse(telegramURLIos))) {
+        await launchUrl(
+          Uri.parse(telegramURLIos),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Telegram not installed")));
+      }
+    } else {
+      // android , web
+      if (await canLaunchUrl(Uri.parse(telegragURlAndroid))) {
+        await launchUrl(Uri.parse(telegragURlAndroid));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Telegram not installed")));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +88,10 @@ class ContactWithUs extends StatelessWidget {
               ),
               Text(
                 ' Telegram & Whatsapp ',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              Text(
+                'المطورين',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               ListTile(
@@ -58,7 +122,10 @@ class ContactWithUs extends StatelessWidget {
                     IconButton(
                       padding: const EdgeInsets.all(10.0),
                       onPressed: () {
-                        //ToDo : connect with Tw
+                        openwhatsapp(
+                            context: context,
+                            number: '7827509472',
+                            msg: 'مرحبا');
                       },
                       icon: Icon(
                         Icons.whatsapp,
@@ -86,7 +153,7 @@ class ContactWithUs extends StatelessWidget {
                     IconButton(
                       padding: const EdgeInsets.all(10.0),
                       onPressed: () {
-                        //ToDo : connect with Tw
+                        openTelegram(context: context, userName: 'ahmed251998');
                       },
                       icon: Icon(
                         Icons.telegram,
@@ -97,7 +164,10 @@ class ContactWithUs extends StatelessWidget {
                     IconButton(
                       padding: const EdgeInsets.all(10.0),
                       onPressed: () {
-                        //ToDo : connect with Tw
+                        openwhatsapp(
+                            context: context,
+                            number: '7824828348',
+                            msg: 'مرحبا');
                       },
                       icon: Icon(
                         Icons.whatsapp,
