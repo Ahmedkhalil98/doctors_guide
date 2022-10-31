@@ -41,9 +41,9 @@ class ContactWithUs extends StatelessWidget {
     required String userName,
   }) async {
     // var telegram = '+964$userName';
-    String telegram = userName;
-    String telegragURlAndroid = "https://t.me/$telegram";
-    String telegramURLIos = "https://t.me/$telegram";
+    // String telegram = userName;
+    String telegragURlAndroid = "https://telegram.me/$userName";
+    String telegramURLIos = "https://telegram.me/$userName";
     if (Platform.isIOS) {
       // for iOS phone only
       if (await canLaunchUrl(Uri.parse(telegramURLIos))) {

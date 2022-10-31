@@ -22,10 +22,10 @@ A new Flutter project.
 - [X] edit image
 - [x] change to Arabic language not work
 - [ ] add kurdish and Arabic language (word) 
-- [ ] connect code page with Telegram or WhatsApp  && contactUs Screen 
+- [ ] connect code page with Telegram 
 - [ ] number keyboard type (Ahmed)
 - [x] url launcher with phone number launcher
-- [ ] color of city (ahmed)
+- [x] color of city (ahmed)
 - [ ] font 
 - [ ] login doctor again after delete app then download  (Ahmed)
 - [x] create contactUs screen 
