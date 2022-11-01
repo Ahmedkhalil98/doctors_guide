@@ -13,7 +13,7 @@ import 'package:image_picker/image_picker.dart';
 class LogInDoctorController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   TextEditingController code = TextEditingController();
-  RxString dropdownCity = 'بغداد'.obs;
+  RxString dropdownCity = "Baghdad".tr.obs;
   RxString dropdownSpecialty = 'الطب العام'.obs;
   TextEditingController fullName = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();

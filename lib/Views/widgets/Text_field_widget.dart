@@ -7,12 +7,14 @@ class MyTextFieldWidget extends StatelessWidget {
   String title;
   String? helpText;
   TextEditingController controller;
+  final TextInputType? typeinput;
   final String? Function(String?) valid;
 
   MyTextFieldWidget(
       {Key? key,
       required this.hint,
       required this.title,
+      this.typeinput,
       this.helpText,
       required this.controller,
       required this.valid})
@@ -39,7 +41,7 @@ class MyTextFieldWidget extends StatelessWidget {
             validator: valid,
             controller: controller,
             style: Theme.of(context).textTheme.bodySmall,
-            // keyboardType: typeinput,
+            keyboardType: typeinput,
             decoration: InputDecoration(
               hintText: hint,
               hintStyle: Theme.of(context).textTheme.bodySmall,

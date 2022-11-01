@@ -121,6 +121,7 @@ class RegisterDoctorInfo extends StatelessWidget {
                   controller: loginController.phoneNumber,
                   hint: "075XXXXXXXX",
                   title: "رقم العيادة",
+                  typeinput: TextInputType.phone,
                 ),
                 MyTextFieldWidget(
                   valid: (value) {
@@ -129,6 +130,7 @@ class RegisterDoctorInfo extends StatelessWidget {
                   controller: loginController.price,
                   hint: "ادخل مبلغ بالدينار",
                   title: "سعر معاينة",
+                  typeinput: TextInputType.phone,
                   helpText: "IQD",
                 ),
                 textFieldTitle(subTitle: "قم برفع صورتك الشخصية :"),

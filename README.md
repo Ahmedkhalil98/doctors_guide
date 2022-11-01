@@ -21,9 +21,9 @@ A new Flutter project.
 - [X] when search is empty or on internet 
 - [X] edit image
 - [x] change to Arabic language not work
-- [ ] add kurdish and Arabic language (word) 
+- [X] add kurdish and Arabic language (word) 
 - [ ] connect code page with Telegram 
-- [ ] number keyboard type (Ahmed)
+- [X] number keyboard type (Ahmed)
 - [x] url launcher with phone number launcher
 - [x] color of city (ahmed)
 - [ ] font 
