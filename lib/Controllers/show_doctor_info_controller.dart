@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class ShowDInfo extends GetxController {
   bool isLoading = false;
-  RxString dropdownCity = 'بغداد'.obs;
+  RxString dropdownCity = 'Baghdad'.tr.obs;
   RxString dropdownSpecialty = 'الطب العام'.obs;
 
   bool isCityChange = false;

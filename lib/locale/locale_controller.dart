@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LanguagesController extends GetxController {
-  List<String> languagesList = ['عربي', 'كردي'];
-  String selectedLanguage = 'عربي';
+  List<String> languagesList = ['Arabic'.tr, 'Kurdish'.tr];
+  String selectedLanguage = 'Arabic'.tr;
   Locale initialLanguage = localStorage!.getString('lang') == 'fa'
       ? const Locale('fa')
       : const Locale('ar');

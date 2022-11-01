@@ -70,9 +70,9 @@ class DrawerWidgets extends StatelessWidget {
                   onTap: () {
                     Get.to(() => LogInAsADoctor());
                   },
-                  child: const DrawerCard(
+                  child: DrawerCard(
                     icon: Icons.app_registration,
-                    title: 'تسجيل كطبيب',
+                    title: 'Register as a doctor'.tr,
                   ),
                 ),
           const Divider(
@@ -88,7 +88,7 @@ class DrawerWidgets extends StatelessWidget {
                     activeColor: kPrimaryColor,
                     value: controller.isLightModeSelected,
                     title: Text(
-                      'تغير الوان',
+                      'color change'.tr,
                       style: TextStyle(fontSize: 14.sp),
                     ),
                     onChanged: (bool value) {
@@ -107,11 +107,11 @@ class DrawerWidgets extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Flexible(
+              Flexible(
                 flex: 3,
                 child: DrawerCard(
                   icon: Icons.language,
-                  title: 'تغير اللغة',
+                  title: 'change the language'.tr,
                 ),
               ),
               Flexible(
@@ -146,9 +146,9 @@ class DrawerWidgets extends StatelessWidget {
             onTap: () {
               Get.to(() => const ContactWithUs());
             },
-            child: const DrawerCard(
+            child: DrawerCard(
               icon: Icons.call,
-              title: 'تواصل معنا',
+              title: 'Connect with us'.tr,
             ),
           ),
           const Divider(

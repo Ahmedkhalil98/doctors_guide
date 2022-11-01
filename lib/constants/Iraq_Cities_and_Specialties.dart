@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 List iraq_cities = [
-  "Baghdad",
+  "Baghdad".tr,
   "Basra".tr,
   "Nineveh".tr,
   "Erbil".tr,
@@ -15,7 +15,7 @@ List iraq_cities = [
   "Babylon".tr,
   "Sulaymaniyah".tr,
   "Dohuk".tr,
-  "Salahaddin"..tr,
+  "Salahaddin".tr,
   "Wasit".tr,
   "Nasiriyah".tr,
   "Halabja".tr,
@@ -51,11 +51,11 @@ List specialties = [
 ];
 
 List weekDays = [
-  'السبت',
-  'الاحد',
-  'الإثنين',
-  'الثلاثاء',
-  'الأربعاء',
-  'الخميس',
-  'الجمعة',
+  "saturday".tr,
+  "sunday".tr,
+  "monday".tr,
+  "tuesday".tr,
+  "wednesday".tr,
+  "thursday".tr,
+  "friday".tr,
 ];

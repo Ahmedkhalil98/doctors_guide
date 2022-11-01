@@ -32,74 +32,83 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 15.h),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color: kGrayColor.withOpacity(0.8),
-                        width: 1.w,
+                  Flexible(
+                    flex: 2,
+                    child: Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.h),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.r),
+                        border: Border.all(
+                          color: kGrayColor.withOpacity(0.8),
+                          width: 1.w,
+                        ),
                       ),
-                    ),
-                    height: 50.h,
-                    child: Obx(
-                      () => DropdownButton(
-                          underline: const SizedBox(),
-                          value: showDoctorInfo.dropdownCity.value,
-                          items: iraq_cities
-                              .map(
-                                (e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(
-                                    '$e',
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
+                      height: 50.h,
+                      child: Obx(
+                        () => DropdownButton(
+                            underline: const SizedBox(),
+                            value: showDoctorInfo.dropdownCity.value,
+                            items: iraq_cities
+                                .map(
+                                  (e) => DropdownMenuItem(
+                                    value: e,
+                                    child: Text(
+                                      '$e',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
                                   ),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (newvalue) {
-                            showDoctorInfo.setSelectedCity(newvalue.toString());
-                          }),
+                                )
+                                .toList(),
+                            onChanged: (newvalue) {
+                              showDoctorInfo
+                                  .setSelectedCity(newvalue.toString());
+                            }),
+                      ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 15.h),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color: kGrayColor.withOpacity(0.8),
-                        width: 1.w,
+                  Flexible(
+                    flex: 3,
+                    child: Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.h),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.r),
+                        border: Border.all(
+                          color: kGrayColor.withOpacity(0.8),
+                          width: 1.w,
+                        ),
                       ),
-                    ),
-                    height: 50.h,
-                    child: Obx(
-                      () => DropdownButton(
-                          underline: const SizedBox(),
-                          value: showDoctorInfo.dropdownSpecialty.value,
-                          items: specialties
-                              .map(
-                                (e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(
-                                    '$e',
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
+                      height: 50.h,
+                      child: Obx(
+                        () => DropdownButton(
+                            underline: const SizedBox(),
+                            value: showDoctorInfo.dropdownSpecialty.value,
+                            items: specialties
+                                .map(
+                                  (e) => DropdownMenuItem(
+                                    value: e,
+                                    child: Text(
+                                      '$e',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
                                   ),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (newvalue) {
-                            showDoctorInfo
-                                .setSelectedSpecialty(newvalue.toString());
-                          }),
+                                )
+                                .toList(),
+                            onChanged: (newvalue) {
+                              showDoctorInfo
+                                  .setSelectedSpecialty(newvalue.toString());
+                            }),
+                      ),
                     ),
                   ),
                 ],
