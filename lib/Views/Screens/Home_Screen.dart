@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                     flex: 2,
                     child: Container(
                       margin:
-                          EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.h),
+                          EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.w),
                       padding:
                           EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
                       decoration: BoxDecoration(
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                     flex: 3,
                     child: Container(
                       margin:
-                          EdgeInsets.symmetric(vertical: 10.h, horizontal: 5.h),
+                          EdgeInsets.symmetric(vertical: 10.h, horizontal: 5.w),
                       padding:
                           EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                       decoration: BoxDecoration(

@@ -80,7 +80,7 @@ class DoctorDetailsInfo extends StatelessWidget {
                           color: kPrimaryColor,
                           child: ListTile(
                             title: Text(
-                              "اوقات الدوام :",
+                              "working time title :".tr,
                               style: TextStyle(
                                 fontSize: 13.sp,
                               ),
@@ -131,7 +131,7 @@ class DoctorDetailsInfo extends StatelessWidget {
                   title: Center(
                       child: Text(
                     textDirection: TextDirection.ltr,
-                    phoneNumber.toString(),
+                    '0${phoneNumber.toString()}',
                     style: TextStyle(
                       fontSize: 16.sp,
                       color: kWhiteColor,
