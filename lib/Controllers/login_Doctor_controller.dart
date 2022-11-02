@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:doctors_guide/Models/doctor_info_Model.dart';
-import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
-import 'package:doctors_guide/Views/Screens/Register_doctor_more_info.dart';
+import 'package:doctors_guide/models/doctor_info_Model.dart';
+import 'package:doctors_guide/Views/screens/register_doctor_info.dart';
+import 'package:doctors_guide/Views/screens/register_doctor_more_info.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';

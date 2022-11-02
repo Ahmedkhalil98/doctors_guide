@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
-import 'package:doctors_guide/Controllers/time_Controlller.dart';
-import 'package:doctors_guide/Models/doctor_info_Model.dart';
-import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
+import 'package:doctors_guide/controllers/login_Doctor_controller.dart';
+import 'package:doctors_guide/controllers/time_Controlller.dart';
+import 'package:doctors_guide/models/doctor_info_Model.dart';
+import 'package:doctors_guide/Views/Screens/home_screen.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';

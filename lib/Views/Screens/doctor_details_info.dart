@@ -80,7 +80,7 @@ class DoctorDetailsInfo extends StatelessWidget {
                           color: kPrimaryColor,
                           child: ListTile(
                             title: Text(
-                              "working time title :".tr,
+                              "working days title :".tr,
                               style: TextStyle(
                                 fontSize: 13.sp,
                               ),
@@ -91,8 +91,9 @@ class DoctorDetailsInfo extends StatelessWidget {
                                   doctorInfo[index]['workingDays'].join(' , '),
                                 ),
                                 Text(
-                                  "متوفر من الساعة ${doctorInfo[index]['fromTime']} الى الساعة"
-                                  " ${doctorInfo[index]['toTime']}",
+                                  "available from hour ${doctorInfo[index]['fromTime']} to hour"
+                                          " ${doctorInfo[index]['toTime']}"
+                                      .tr,
                                 ),
                               ],
                             ),

@@ -1,5 +1,5 @@
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
-import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
+import 'package:doctors_guide/Views/Screens/home_screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
@@ -67,7 +67,7 @@ class IntroScreen extends StatelessWidget {
                                   Get.to(() => HomeScreen());
                                 },
                                 child: MyButtonWidget(
-                                  btntitle: "دخول",
+                                  btntitle: "Entry".tr,
                                   color: kPrimaryColor,
                                 ),
                               ),
@@ -76,7 +76,7 @@ class IntroScreen extends StatelessWidget {
                                   Get.to(() => LogInAsADoctor());
                                 },
                                 child: MyButtonWidget(
-                                  btntitle: "الدخول كطبيب",
+                                  btntitle: "Log in as a doctor".tr,
                                   color: kSecondColor,
                                 ),
                               ),

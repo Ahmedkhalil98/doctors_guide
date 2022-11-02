@@ -18,8 +18,8 @@ List iraq_cities = [
   "Salahaddin".tr,
   "Wasit".tr,
   "Nasiriyah".tr,
-  "ziqar",
-  "mothana",
+  "ziqar".tr,
+  "mothana".tr,
   "Halabja".tr,
 ];
 

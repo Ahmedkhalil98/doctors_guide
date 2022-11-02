@@ -87,6 +87,7 @@ class DoctorLocale implements Translations {
           "from": "من",
           "to": "الى",
           "from time": "من وقت",
+          "available": "متوفر",
           "hour": "ساعة",
           "minute": "دقيقة",
           "save": "حفظ",
@@ -94,6 +95,7 @@ class DoctorLocale implements Translations {
           "address title": "عنوان العيادة",
           "address hint": "ادخل عنوان العيادة",
           "map title": "موقع على الخريطة",
+          "not found": "النتيجة فارغة",
         },
         "fa": {
           "Entry": "چوونەژوور",
@@ -179,6 +181,7 @@ class DoctorLocale implements Translations {
           "from": "لە",
           "to": "بۆ",
           "from time": "له كاتي ",
+          "available": "بەردستە",
           "hour": "کاتژمێر",
           "minute": "خولەک",
           "save": "هەڵگرتن",
@@ -186,6 +189,7 @@ class DoctorLocale implements Translations {
           "address title": "ناونیشانی کلینیک",
           "address hint": " ناونیشان کلینیک تۆمار بکە",
           "map title": " ناونیشان له سر نخشى",
+          "not found": "هيج دكتور نينه",
         },
       };
 }

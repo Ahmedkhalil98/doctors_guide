@@ -1,8 +1,8 @@
 import 'package:doctors_guide/Controllers/location_controller.dart';
 import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
-import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
-import 'package:doctors_guide/Views/Screens/Register_doctor_info.dart';
+import 'package:doctors_guide/Views/Screens/home_screen.dart';
+import 'package:doctors_guide/Views/Screens/register_doctor_info.dart';
 import 'package:doctors_guide/Views/widgets/Text_field_widget.dart';
 import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/Views/widgets/loading_widget.dart';

@@ -1,4 +1,4 @@
-import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
+import 'package:doctors_guide/controllers/login_Doctor_controller.dart';
 import 'package:get/get.dart';
 
 class MyBindings implements Bindings {
