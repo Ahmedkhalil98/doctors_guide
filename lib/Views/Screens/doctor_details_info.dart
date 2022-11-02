@@ -60,20 +60,20 @@ class DoctorDetailsInfo extends StatelessWidget {
                         ),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['fullName'],
-                            title: "الأسم"),
+                            title: "name".tr),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['specialty'],
-                            title: "التخصص"),
+                            title: "specialty".tr),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['city'],
-                            title: "المحافظة"),
+                            title: "city".tr),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['address'],
-                            title: "العنوان"),
+                            title: "address".tr),
                         DoctorInfoCard(
                             titleVale:
                                 "${doctorInfo[index]['previewPrice'].toString()} دينار",
-                            title: "سعر المعاينة"),
+                            title: "price title".tr),
                         Card(
                           margin: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 5.h),

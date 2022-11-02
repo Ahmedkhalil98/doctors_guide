@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                                   (e) => DropdownMenuItem(
                                     value: e,
                                     child: Text(
-                                      '$e',
+                                      e,
                                       style:
                                           Theme.of(context).textTheme.bodySmall,
                                     ),
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                                   (e) => DropdownMenuItem(
                                     value: e,
                                     child: Text(
-                                      '$e',
+                                      e,
                                       style:
                                           Theme.of(context).textTheme.bodySmall,
                                     ),

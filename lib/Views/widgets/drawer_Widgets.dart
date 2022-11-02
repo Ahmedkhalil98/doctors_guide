@@ -122,7 +122,7 @@ class DrawerWidgets extends StatelessWidget {
                       .map((item) => DropdownMenuItem<String>(
                             value: item,
                             child: Text(
-                              item,
+                              item.tr,
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           ))

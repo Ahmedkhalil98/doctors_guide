@@ -18,8 +18,8 @@ class LogInAsADoctor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "الدخول كطبيب",
+          title: Text(
+            "Log in as a doctor".tr,
           ),
         ),
         body: Obx(
@@ -43,8 +43,8 @@ class LogInAsADoctor extends StatelessWidget {
                               return validInput(value!, 15, "code");
                             },
                             controller: loginController.code,
-                            hint: "الكود",
-                            title: "الرجاء أدخال الكود خاص بالطبيب هنا :",
+                            hint: "code hint".tr,
+                            title: "code".tr,
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -55,13 +55,14 @@ class LogInAsADoctor extends StatelessWidget {
                                       loginController.code.text);
                                 },
                                 child: MyButtonWidget(
-                                    btntitle: "الدخول", color: kPrimaryColor)),
+                                    btntitle: "Entry".tr,
+                                    color: kPrimaryColor)),
                           ),
                           Center(
                             child: Padding(
                               padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
                               child: Text(
-                                "للحصول على كود الطبيب اضغط هنا",
+                                "get code hint".tr,
                                 style: TextStyle(
                                   fontSize: 13.sp,
                                   color: kGrayColor,
