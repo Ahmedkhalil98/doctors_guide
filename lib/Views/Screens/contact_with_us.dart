@@ -74,112 +74,124 @@ class ContactWithUs extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12.0,
-            vertical: 6.0,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'يمكنك تواصل معنا من خلال ',
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'نحن نعمل معاً ك كروب ل تطوير ',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            Text(
+              ' تطبيقات الجوال لل عملاء',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            Text(
+              'هذا التطبيق احد تطبيقاتنا ',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            SizedBox(
+              height: 20.0.h,
+            ),
+            Text(
+              'للمعلومات اكثر او للاعلان',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            Text(
+              'يمكنك تواصل معنا من خلال ',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            Text(
+              ' Telegram & Whatsapp ',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            SizedBox(
+              height: 40.0.h,
+            ),
+            Text(
+              'المطورين',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            ListTile(
+              leading: const CircleAvatar(backgroundColor: kSecondColor),
+              title: Text(
+                'سامان دخيل ',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              Text(
-                ' Telegram & Whatsapp ',
+              subtitle: Text('Flutter Developer',
+                  style: TextStyle(
+                    color: kGrayColor,
+                    fontSize: 12.sp,
+                  )),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    padding: const EdgeInsets.all(10.0),
+                    onPressed: () {
+                      //ToDo : connect with Tw
+                    },
+                    icon: Icon(
+                      Icons.telegram,
+                      size: 30.h,
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                  IconButton(
+                    padding: const EdgeInsets.all(10.0),
+                    onPressed: () {
+                      openwhatsapp(
+                          context: context, number: '7827509472', msg: 'مرحبا');
+                    },
+                    icon: Icon(
+                      Icons.whatsapp,
+                      size: 30.h,
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const CircleAvatar(backgroundColor: kSecondColor),
+              title: Text(
+                'احمد خليل',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              Text(
-                'المطورين',
-                style: Theme.of(context).textTheme.bodyLarge,
+              subtitle: Text('Flutter Developer',
+                  style: TextStyle(
+                    color: kGrayColor,
+                    fontSize: 12.sp,
+                  )),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    padding: const EdgeInsets.all(10.0),
+                    onPressed: () {
+                      openTelegram(context: context, userName: 'ahmed251998');
+                    },
+                    icon: Icon(
+                      Icons.telegram,
+                      size: 30.h,
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                  IconButton(
+                    padding: const EdgeInsets.all(10.0),
+                    onPressed: () {
+                      openwhatsapp(
+                          context: context, number: '7824828348', msg: 'مرحبا');
+                    },
+                    icon: Icon(
+                      Icons.whatsapp,
+                      size: 30.h,
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                ],
               ),
-              ListTile(
-                leading: const CircleAvatar(backgroundColor: kSecondColor),
-                title: Text(
-                  'سامان دخيل ',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                subtitle: Text('Flutter Developer',
-                    style: TextStyle(
-                      color: kGrayColor,
-                      fontSize: 12.sp,
-                    )),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                      padding: const EdgeInsets.all(10.0),
-                      onPressed: () {
-                        //ToDo : connect with Tw
-                      },
-                      icon: Icon(
-                        Icons.telegram,
-                        size: 30.h,
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                    IconButton(
-                      padding: const EdgeInsets.all(10.0),
-                      onPressed: () {
-                        openwhatsapp(
-                            context: context,
-                            number: '7827509472',
-                            msg: 'مرحبا');
-                      },
-                      icon: Icon(
-                        Icons.whatsapp,
-                        size: 30.h,
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ListTile(
-                leading: const CircleAvatar(backgroundColor: kSecondColor),
-                title: Text(
-                  'احمد خليل',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                subtitle: Text('Flutter Developer',
-                    style: TextStyle(
-                      color: kGrayColor,
-                      fontSize: 12.sp,
-                    )),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                      padding: const EdgeInsets.all(10.0),
-                      onPressed: () {
-                        openTelegram(context: context, userName: 'ahmed251998');
-                      },
-                      icon: Icon(
-                        Icons.telegram,
-                        size: 30.h,
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                    IconButton(
-                      padding: const EdgeInsets.all(10.0),
-                      onPressed: () {
-                        openwhatsapp(
-                            context: context,
-                            number: '7824828348',
-                            msg: 'مرحبا');
-                      },
-                      icon: Icon(
-                        Icons.whatsapp,
-                        size: 30.h,
-                        color: kPrimaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

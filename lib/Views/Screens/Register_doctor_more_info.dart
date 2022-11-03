@@ -26,8 +26,8 @@ class RegisterDoctorLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "الدخول كطبيب",
+          title: Text(
+            "Log in as a doctor".tr,
           ),
         ),
         bottomSheet: Padding(
@@ -55,7 +55,7 @@ class RegisterDoctorLocation extends StatelessWidget {
                   Get.to(() => HomeScreen());
                 } else {}
               },
-              child: MyButtonWidget(btntitle: "حفظ", color: kPrimaryColor)),
+              child: MyButtonWidget(btntitle: "save".tr, color: kPrimaryColor)),
         ),
         body: Obx(
           () {
@@ -68,7 +68,7 @@ class RegisterDoctorLocation extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          textFieldTitle(subTitle: "أيام الدوام :"),
+                          textFieldTitle(subTitle: "working days title :".tr),
                           Container(
                             height: 80.h,
                             width: double.infinity,
@@ -111,7 +111,7 @@ class RegisterDoctorLocation extends StatelessWidget {
                                       },
                                       child: timeTextField(
                                           context: context,
-                                          suTitle: "من",
+                                          suTitle: "from".tr,
                                           time: timeController.fromTime)),
                                   GestureDetector(
                                       onTap: () {
@@ -120,7 +120,7 @@ class RegisterDoctorLocation extends StatelessWidget {
                                       },
                                       child: timeTextField(
                                           context: context,
-                                          suTitle: "الى",
+                                          suTitle: "to".tr,
                                           time: timeController.toTime
                                               .toString())),
                                 ],
@@ -133,10 +133,11 @@ class RegisterDoctorLocation extends StatelessWidget {
                             },
                             controller: logInDoctor.address,
                             hint: "اسم منطقة,اسم شارع,اسم مشفى او مجمع",
-                            title: "أدخل العنوان العيادة :",
+                            title: "address title :".tr,
                           ),
                           textFieldTitle(
-                              subTitle: "قم بتحديد موقع العيادة على الخريطة:"),
+                            subTitle: "map title :".tr,
+                          ),
                           Container(
                               margin: EdgeInsets.symmetric(
                                   horizontal: 8.w, vertical: 5.h),

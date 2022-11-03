@@ -17,8 +17,8 @@ class RegisterDoctorInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "الدخول كطبيب",
+        title: Text(
+          "Log in as a doctor".tr,
         ),
       ),
       bottomSheet: Padding(
@@ -27,7 +27,7 @@ class RegisterDoctorInfo extends StatelessWidget {
             onTap: () {
               loginController.nextForm();
             },
-            child: MyButtonWidget(btntitle: "التالي", color: kPrimaryColor)),
+            child: MyButtonWidget(btntitle: "next".tr, color: kPrimaryColor)),
       ),
       body: SingleChildScrollView(
           reverse: true,
@@ -41,10 +41,10 @@ class RegisterDoctorInfo extends StatelessWidget {
                     return validInput(value!, 200, "name");
                   },
                   controller: loginController.fullName,
-                  hint: "اسم الطيب",
-                  title: "أدخل أسم الثلاثي للطبيب :",
+                  hint: "full name hint".tr,
+                  title: "full name title".tr,
                 ),
-                textFieldTitle(subTitle: "المحافظة:"),
+                textFieldTitle(subTitle: "city".tr),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.w),
                     padding:
@@ -79,7 +79,7 @@ class RegisterDoctorInfo extends StatelessWidget {
                                 .setSelectedCity(newvalue.toString());
                           }),
                     )),
-                textFieldTitle(subTitle: "التخصص:"),
+                textFieldTitle(subTitle: "specialty".tr),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.w),
                     padding:
@@ -120,7 +120,7 @@ class RegisterDoctorInfo extends StatelessWidget {
                   },
                   controller: loginController.phoneNumber,
                   hint: "075XXXXXXXX",
-                  title: "رقم العيادة",
+                  title: "phone number title ".tr,
                   typeinput: TextInputType.phone,
                 ),
                 MyTextFieldWidget(
@@ -128,12 +128,12 @@ class RegisterDoctorInfo extends StatelessWidget {
                     return validInput(value!, 50, "price");
                   },
                   controller: loginController.price,
-                  hint: "ادخل مبلغ بالدينار",
-                  title: "سعر معاينة",
+                  hint: "price hint".tr,
+                  title: "price title".tr,
                   typeinput: TextInputType.phone,
                   helpText: "IQD",
                 ),
-                textFieldTitle(subTitle: "قم برفع صورتك الشخصية :"),
+                textFieldTitle(subTitle: "image title".tr),
                 Container(
                   height: 50.h,
                   margin: EdgeInsets.symmetric(horizontal: 5.w),

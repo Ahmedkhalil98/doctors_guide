@@ -1,4 +1,3 @@
-import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,14 +19,15 @@ class AboutAppScreen extends StatelessWidget {
             vertical: 6.0,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'اسم التطبيق',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               RichText(
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
                 textDirection: TextDirection.rtl,
                 softWrap: true,
                 textScaleFactor: 1,
@@ -36,7 +36,8 @@ class AboutAppScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                   children: <TextSpan>[
                     TextSpan(
-                      text: ' الى الاطباء ب اسهل طريقه و من اي مكان',
+                      text:
+                          ' الى اكبر عدد من الاطباء ب اسهل طريقه و من اي مكان',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     TextSpan(
@@ -48,41 +49,50 @@ class AboutAppScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     TextSpan(
-                      text: ' ك اسم, تخصص, سعر الكشف, عنوان الكامل,',
+                      text: ' ك اسم, تخصص, سعر الكشف\n,',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     TextSpan(
-                      text: ' موقع على الخريطة, اوقات و ايام الدوام ',
+                      text: ' عنوان الكامل,',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text: ' موقع على الخريطة, \nاوقات و ايام الدوام ',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],
                 ),
               ),
-              Text(
-                'المطورين',
-                style: Theme.of(context).textTheme.bodyLarge,
+              SizedBox(
+                height: 30.h,
               ),
-              ListTile(
-                title: Text(
-                  'سامان دخيل ',
+              RichText(
+                textAlign: TextAlign.center,
+                textDirection: TextDirection.rtl,
+                softWrap: true,
+                text: TextSpan(
+                  text: 'لل اطباء\n',
                   style: Theme.of(context).textTheme.bodyLarge,
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'يمكنك ظغط على تسجيل ك طبيب \n',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text: "و تقوم ب انشاء صفحة خاصة بيك ",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text: "و توفير معلوماتك لل مراجعين ",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextSpan(
+                      text:
+                          "هذا يساعدنا ل وصول معلوماتك لل مراجعين ب اسهل طريقه ",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ],
                 ),
-                subtitle: Text('07827509472',
-                    style: TextStyle(
-                      color: kGrayColor,
-                      fontSize: 12.sp,
-                    )),
-              ),
-              ListTile(
-                title: Text(
-                  'احمد خليل',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                subtitle: Text('07824828348',
-                    style: TextStyle(
-                      color: kGrayColor,
-                      fontSize: 12.sp,
-                    )),
               ),
             ],
           ),
