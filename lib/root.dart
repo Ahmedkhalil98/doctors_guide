@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LanguagesController controller = Get.put(LanguagesController());
+    final controller = Get.put(LanguagesController());
 
     return ScreenUtilInit(builder: (context, child) {
       final themeConroller = Get.put(DoctorTheme());

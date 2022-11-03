@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:doctors_guide/models/doctor_info_Model.dart';
+import 'package:doctors_guide/Views/Screens/Home_Screen.dart';
 import 'package:doctors_guide/Views/screens/register_doctor_info.dart';
 import 'package:doctors_guide/Views/screens/register_doctor_more_info.dart';
 import 'package:doctors_guide/main.dart';
+import 'package:doctors_guide/models/doctor_info_Model.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -73,7 +74,9 @@ class LogInDoctorController extends GetxController {
           address: address,
           latLong: latLong,
           imageUrl: imageUrl,
+          doctorCode: tempStorage!.getString('doctorCode')!,
         );
+
         localStorage!.setString("doctorImageUrl", imageUrl);
         return _firestore
             .collection("DoctorInformation")
@@ -110,20 +113,36 @@ class LogInDoctorController extends GetxController {
           code.clear();
         } else {
           for (var element in value.docs) {
-            if (element['isLogin'] == 'false') {
-              Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
-              code.clear();
-            } else {
+            if (element['isLogin'] == 'true') {
+              FirebaseFirestore.instance
+                  .collection("DoctorInformation")
+                  .where("doctorCode", isEqualTo: code.text)
+                  .get()
+                  .then((QuerySnapshot data) {
+                for (var element in data.docs) {
+                  localStorage!.setString("doctorName", element['fullName']);
+                  localStorage!.setString(
+                      "doctorPhoneNumber", element['phoneNumber'].toString());
+                  localStorage!
+                      .setString("doctorImageUrl", element['imageUrl']);
+                }
+              });
+              localStorage!.setString("role", "admin");
+              Get.offAll(() => HomeScreen());
+            } else if (element['isLogin'] == 'false') {
               _firestore
                   .collection("doctorsCodes")
                   .doc(element['code'])
                   .update({
                 'isLogin': "true",
               });
-
+              tempStorage!.setString("doctorCode", code.text);
               localStorage!.setString("role", "adminInRegister");
-              Get.to(() => RegisterDoctorInfo());
+              Get.offAll(() => RegisterDoctorInfo());
+            } else {
+              Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
             }
+            code.clear();
           }
         }
       });

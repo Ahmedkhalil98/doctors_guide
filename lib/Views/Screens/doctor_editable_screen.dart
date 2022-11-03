@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctors_guide/Controllers/editable_controller.dart';
 import 'package:doctors_guide/Controllers/location_controller.dart';
-import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Controllers/time_Controlller.dart';
 import 'package:doctors_guide/Views/screens/register_doctor_info.dart';
@@ -11,6 +10,7 @@ import 'package:doctors_guide/Views/widgets/button_widget.dart';
 import 'package:doctors_guide/Views/widgets/loading_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/iraq_cities_and_specialties.dart';
+import 'package:doctors_guide/Controllers/login_Doctor_controller.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:doctors_guide/utils/valid_function.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class DoctorEditableScreen extends StatelessWidget {
   DoctorEditableScreen({Key? key}) : super(key: key);
   final timeController = Get.put(TimeController(), permanent: true);
   final mapController = Get.put(LocationController());
-  final loginController = Get.put(LogInDoctorController(), permanent: true);
+  final loginController = Get.put(LogInDoctorController());
   final showDoctorInfo = Get.put(ShowDInfo());
   final editableController = Get.put(Editable());
   @override

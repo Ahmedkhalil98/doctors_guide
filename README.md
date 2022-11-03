@@ -27,7 +27,7 @@ A new Flutter project.
 - [x] url launcher with phone number launcher
 - [x] color of city (ahmed)
 - [ ] font 
-- [ ] login doctor again after delete app then download  (Ahmed)
+- [x] login doctor again after delete app then download  (Ahmed)
 - [x] create contactUs screen 
 
 
