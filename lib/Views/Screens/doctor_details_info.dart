@@ -60,27 +60,27 @@ class DoctorDetailsInfo extends StatelessWidget {
                         ),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['fullName'],
-                            title: "name".tr),
+                            title: "الاسم"),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['specialty'],
-                            title: "specialty".tr),
+                            title: "تخصص"),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['city'],
-                            title: "city".tr),
+                            title: "المحافظة"),
                         DoctorInfoCard(
                             titleVale: doctorInfo[index]['address'],
-                            title: "address".tr),
+                            title: "العنوان"),
                         DoctorInfoCard(
                             titleVale:
                                 "${doctorInfo[index]['previewPrice'].toString()} دينار",
-                            title: "price title".tr),
+                            title: "سعر الكشفية "),
                         Card(
                           margin: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 5.h),
                           color: kPrimaryColor,
                           child: ListTile(
                             title: Text(
-                              "working days title :".tr,
+                              "ايام الدوام :",
                               style: TextStyle(
                                 fontSize: 13.sp,
                               ),
@@ -91,9 +91,8 @@ class DoctorDetailsInfo extends StatelessWidget {
                                   doctorInfo[index]['workingDays'].join(' , '),
                                 ),
                                 Text(
-                                  "available from hour ${doctorInfo[index]['fromTime']} to hour"
-                                          " ${doctorInfo[index]['toTime']}"
-                                      .tr,
+                                  "متوفر من الساعة  ${doctorInfo[index]['fromTime']} الى الساعة"
+                                  " ${doctorInfo[index]['toTime']}",
                                 ),
                               ],
                             ),

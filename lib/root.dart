@@ -3,8 +3,6 @@ import 'package:doctors_guide/Views/Screens/register_doctor_info.dart';
 import 'package:doctors_guide/Views/Screens/intro_Screen.dart';
 import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/constants/themes.dart';
-import 'package:doctors_guide/locale/locale.dart';
-import 'package:doctors_guide/locale/locale_controller.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:doctors_guide/utils/middlewar_function.dart';
 import 'package:doctors_guide/utils/my_bindings.dart';
@@ -17,8 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LanguagesController());
-
     return ScreenUtilInit(builder: (context, child) {
       final themeConroller = Get.put(DoctorTheme());
       return GetMaterialApp(
@@ -46,8 +42,7 @@ class MyApp extends StatelessWidget {
         theme: localStorage!.getBool('doctorTheme') == true
             ? themeConroller.customLight
             : themeConroller.customDark,
-        locale: controller.initialLanguage,
-        translations: DoctorLocale(),
+        locale: const Locale('ar'),
       );
     });
   }

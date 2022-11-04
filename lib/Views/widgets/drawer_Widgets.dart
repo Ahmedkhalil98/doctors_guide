@@ -5,15 +5,13 @@ import 'package:doctors_guide/Views/Screens/login_as_doctor.dart';
 import 'package:doctors_guide/Views/widgets/drawer_card.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:doctors_guide/constants/themes.dart';
-import 'package:doctors_guide/locale/locale_controller.dart';
 import 'package:doctors_guide/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DrawerWidgets extends StatelessWidget {
-  DrawerWidgets({Key? key}) : super(key: key);
-  LanguagesController controller = Get.find();
+  const DrawerWidgets({Key? key}) : super(key: key);
   //DoctorTheme theme = DoctorTheme();
 
   @override
@@ -101,44 +99,7 @@ class DrawerWidgets extends StatelessWidget {
               );
             },
           ),
-          const Divider(
-            height: 2,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                flex: 3,
-                child: DrawerCard(
-                  icon: Icons.language,
-                  title: 'change the language'.tr,
-                ),
-              ),
-              Flexible(
-                flex: 2,
-                child: DropdownButton<String>(
-                  value: controller.selectedLanguage,
-                  items: controller.languagesList
-                      .map((item) => DropdownMenuItem<String>(
-                            value: item,
-                            child: Text(
-                              item.tr,
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                          ))
-                      .toList(),
-                  onChanged: (item) {
-                    controller.selectedLanguage = item!;
-                    if (controller.selectedLanguage == 'عربي') {
-                      controller.changeLanguage('ar');
-                    } else {
-                      controller.changeLanguage('fa');
-                    }
-                  },
-                ),
-              ),
-            ],
-          ),
+
           const Divider(
             height: 2,
           ),
@@ -146,9 +107,9 @@ class DrawerWidgets extends StatelessWidget {
             onTap: () {
               Get.to(() => const ContactWithUs());
             },
-            child: DrawerCard(
+            child: const DrawerCard(
               icon: Icons.call,
-              title: 'Connect with us'.tr,
+              title: 'تواصل معنا',
             ),
           ),
           const Divider(

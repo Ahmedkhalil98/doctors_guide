@@ -157,6 +157,7 @@ class DoctorEditableScreen extends StatelessWidget {
                             controller: loginController.phoneNumber,
                             hint: "075XXXXXXXX",
                             title: "رقم العيادة",
+                            
                           ),
                           MyTextFieldWidget(
                             valid: (value) {

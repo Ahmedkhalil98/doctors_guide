@@ -149,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                                   height: 200.h,
                                   child: Lottie.asset("images/empty.json")),
                               Text(
-                                "not found".tr,
+                                "غير متوفر",
                                 style: TextStyle(
                                   color: kGrayColor,
                                   fontSize: 14.sp,

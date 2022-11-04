@@ -17,8 +17,8 @@ class RegisterDoctorInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Log in as a doctor".tr,
+        title: const Text(
+          "دخول كطبيب",
         ),
       ),
       bottomSheet: Padding(
@@ -27,7 +27,7 @@ class RegisterDoctorInfo extends StatelessWidget {
             onTap: () {
               loginController.nextForm();
             },
-            child: MyButtonWidget(btntitle: "next".tr, color: kPrimaryColor)),
+            child: MyButtonWidget(btntitle: "تالي", color: kPrimaryColor)),
       ),
       body: SingleChildScrollView(
           reverse: true,
@@ -41,10 +41,10 @@ class RegisterDoctorInfo extends StatelessWidget {
                     return validInput(value!, 200, "name");
                   },
                   controller: loginController.fullName,
-                  hint: "full name hint".tr,
-                  title: "full name title".tr,
+                  hint: "ادخل اسم الطبيب",
+                  title: "اسم الطبيب الثلاثي",
                 ),
-                textFieldTitle(subTitle: "city".tr),
+                textFieldTitle(subTitle: "المحافظة"),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.w),
                     padding:
@@ -120,7 +120,7 @@ class RegisterDoctorInfo extends StatelessWidget {
                   },
                   controller: loginController.phoneNumber,
                   hint: "075XXXXXXXX",
-                  title: "phone number title ".tr,
+                  title: "رقم تلفون العيادة",
                   typeinput: TextInputType.phone,
                 ),
                 MyTextFieldWidget(
@@ -128,12 +128,12 @@ class RegisterDoctorInfo extends StatelessWidget {
                     return validInput(value!, 50, "price");
                   },
                   controller: loginController.price,
-                  hint: "price hint".tr,
-                  title: "price title".tr,
+                  hint: "ادخل السعر بالدينار",
+                  title: "سعر الكشفية",
                   typeinput: TextInputType.phone,
                   helpText: "IQD",
                 ),
-                textFieldTitle(subTitle: "image title".tr),
+                textFieldTitle(subTitle: "ارفع صورة شخصية"),
                 Container(
                   height: 50.h,
                   margin: EdgeInsets.symmetric(horizontal: 5.w),

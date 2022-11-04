@@ -67,7 +67,7 @@ class IntroScreen extends StatelessWidget {
                                   Get.to(() => HomeScreen());
                                 },
                                 child: MyButtonWidget(
-                                  btntitle: "Entry".tr,
+                                  btntitle: "دخول",
                                   color: kPrimaryColor,
                                 ),
                               ),
@@ -76,7 +76,7 @@ class IntroScreen extends StatelessWidget {
                                   Get.to(() => LogInAsADoctor());
                                 },
                                 child: MyButtonWidget(
-                                  btntitle: "Log in as a doctor".tr,
+                                  btntitle: "دخول ك طبيب",
                                   color: kSecondColor,
                                 ),
                               ),
