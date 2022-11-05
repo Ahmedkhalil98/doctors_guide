@@ -68,9 +68,9 @@ class DrawerWidgets extends StatelessWidget {
                   onTap: () {
                     Get.to(() => LogInAsADoctor());
                   },
-                  child: DrawerCard(
-                    icon: Icons.app_registration,
-                    title: 'Register as a doctor'.tr,
+                  child: const DrawerCard(
+                    icon: Icons.input,
+                    title: 'تسجيل كطبيب',
                   ),
                 ),
           const Divider(
@@ -86,7 +86,7 @@ class DrawerWidgets extends StatelessWidget {
                     activeColor: kPrimaryColor,
                     value: controller.isLightModeSelected,
                     title: Text(
-                      'color change'.tr,
+                      "الوضع المظلم",
                       style: TextStyle(fontSize: 14.sp),
                     ),
                     onChanged: (bool value) {

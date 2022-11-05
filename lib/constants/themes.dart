@@ -29,7 +29,11 @@ class DoctorTheme extends GetxController {
       ),
       bodySmall: TextStyle(
         fontSize: 14.sp,
-        color: Colors.black.withOpacity(0.8),
+        color: kWhiteColor,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 14.sp,
+        color: kBlackColor,
       ),
     ),
   );
@@ -54,15 +58,19 @@ class DoctorTheme extends GetxController {
         fontSize: 14.sp,
         color: kWhiteColor,
       ),
+      bodyMedium: TextStyle(
+        fontSize: 14.sp,
+        color: kWhiteColor,
+      ),
     ),
   );
   void changeDoctorTheme(bool isLightMode) {
     if (isLightMode) {
-      Get.changeTheme(customLight);
+      Get.changeTheme(customDark);
       localStorage!.setBool('doctorTheme', true);
       update();
     } else {
-      Get.changeTheme(customDark);
+      Get.changeTheme(customLight);
       localStorage!.setBool('doctorTheme', false);
       update();
     }

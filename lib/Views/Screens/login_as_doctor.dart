@@ -44,7 +44,7 @@ class LogInAsADoctor extends StatelessWidget {
                             },
                             controller: loginController.code,
                             hint: "ادخل الكود الخاص ب طبيب",
-                            title: "code".tr,
+                            title: "الكود :",
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -61,7 +61,7 @@ class LogInAsADoctor extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
                               child: Text(
-                                "ادخل كود الطبيب",
+                                "للحصول على كود تواصل معنا",
                                 style: TextStyle(
                                   fontSize: 13.sp,
                                   color: kGrayColor,

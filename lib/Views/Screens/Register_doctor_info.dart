@@ -42,9 +42,9 @@ class RegisterDoctorInfo extends StatelessWidget {
                   },
                   controller: loginController.fullName,
                   hint: "ادخل اسم الطبيب",
-                  title: "اسم الطبيب الثلاثي",
+                  title: "اسم الطبيب الثلاثي :",
                 ),
-                textFieldTitle(subTitle: "المحافظة"),
+                textFieldTitle(subTitle: "المحافظة :"),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.w),
                     padding:
@@ -79,7 +79,7 @@ class RegisterDoctorInfo extends StatelessWidget {
                                 .setSelectedCity(newvalue.toString());
                           }),
                     )),
-                textFieldTitle(subTitle: "specialty".tr),
+                textFieldTitle(subTitle: "التخصص :"),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.w),
                     padding:
@@ -119,21 +119,21 @@ class RegisterDoctorInfo extends StatelessWidget {
                     return validInput(value!, 11, "phone");
                   },
                   controller: loginController.phoneNumber,
-                  hint: "075XXXXXXXX",
-                  title: "رقم تلفون العيادة",
+                  hint: "075xxxxxxx",
+                  title: "رقم هاتف العيادة :",
                   typeinput: TextInputType.phone,
                 ),
                 MyTextFieldWidget(
                   valid: (value) {
-                    return validInput(value!, 50, "price");
+                    return validInput(value!, 10, "price");
                   },
                   controller: loginController.price,
                   hint: "ادخل السعر بالدينار",
-                  title: "سعر الكشفية",
+                  title: "سعر الكشفية :",
                   typeinput: TextInputType.phone,
                   helpText: "IQD",
                 ),
-                textFieldTitle(subTitle: "ارفع صورة شخصية"),
+                textFieldTitle(subTitle: "ارفع صورة شخصية :"),
                 Container(
                   height: 50.h,
                   margin: EdgeInsets.symmetric(horizontal: 5.w),

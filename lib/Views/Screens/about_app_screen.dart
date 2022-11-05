@@ -1,8 +1,41 @@
+import 'dart:io';
+
+import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutAppScreen extends StatelessWidget {
   const AboutAppScreen({super.key});
+
+  openwhatsapp({
+    required BuildContext context,
+    required String number,
+    required String msg,
+  }) async {
+    String whatsapp = "+964$number";
+    String whatsappURlAndroid = "whatsapp://send?phone=$whatsapp&text=$msg";
+    String whatappURLIos = "https://wa.me/$whatsapp?text=${Uri.parse("msg")}";
+    if (Platform.isIOS) {
+      // for iOS phone only
+      if (await canLaunchUrl(Uri.parse(whatappURLIos))) {
+        await launchUrl(
+          Uri.parse(whatappURLIos),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("whatsapp not installed")));
+      }
+    } else {
+      // android , web
+      if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
+        await launchUrl(Uri.parse(whatsappURlAndroid));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Whatsapp not installed")));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,74 +55,108 @@ class AboutAppScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                  width: 150.w,
+                  height: 150.h,
+                  child: Image.asset("images/applogo.png")),
               Text(
-                'اسم التطبيق',
+                "هو تطبيق يهدف الى تسهيل عملية البحث عن طبيب متخصص في المحافظات العراق .",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              RichText(
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.rtl,
-                softWrap: true,
-                textScaleFactor: 1,
-                text: TextSpan(
-                  text: ' وياه تطبيق اسم التطبيق يمكنك الوصول',
+              Text(
+                "يوفر الأصدار الحالي خدمات كتسجيل الدكتور معلوماته بنفسه و خدمة البحث عن طريق محافظة او تخصص معين ونامل في الاصدارات قادمة أضافة خدمات اخرى تفيدكم .",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
+                "التطبيق محصلة العمل دائم والشاق للمطورين :",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              ListTile(
+                leading: const CircleAvatar(backgroundColor: kSecondColor),
+                title: Text(
+                  'سامان دخيل ',
                   style: Theme.of(context).textTheme.bodyLarge,
-                  children: <TextSpan>[
-                    TextSpan(
-                      text:
-                          ' الى اكبر عدد من الاطباء ب اسهل طريقه و من اي مكان',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                subtitle: Text('Flutter Developer',
+                    style: TextStyle(
+                      color: kGrayColor,
+                      fontSize: 12.sp,
+                    )),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      padding: const EdgeInsets.all(10.0),
+                      onPressed: () {
+                        //ToDo : connect with Tw
+                      },
+                      icon: Icon(
+                        Icons.telegram,
+                        size: 30.h,
+                        color: kPrimaryColor,
+                      ),
                     ),
-                    TextSpan(
-                      text: ' تطبيق يحتوي على اغلب دكاترة في العراق ',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text: ' مجموعه من المعلومات عن الدكاترة ',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text: ' ك اسم, تخصص, سعر الكشف\n,',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text: ' عنوان الكامل,',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text: ' موقع على الخريطة, \nاوقات و ايام الدوام ',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                    IconButton(
+                      padding: const EdgeInsets.all(10.0),
+                      onPressed: () {
+                        openwhatsapp(
+                            context: context,
+                            number: '7827509472',
+                            msg: 'مرحبا');
+                      },
+                      icon: Icon(
+                        Icons.whatsapp,
+                        size: 30.h,
+                        color: kPrimaryColor,
+                      ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 30.h,
-              ),
-              RichText(
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.rtl,
-                softWrap: true,
-                text: TextSpan(
-                  text: 'لل اطباء\n',
+              ListTile(
+                leading: const CircleAvatar(backgroundColor: kSecondColor),
+                title: Text(
+                  'احمد خليل',
                   style: Theme.of(context).textTheme.bodyLarge,
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'يمكنك ظغط على تسجيل ك طبيب \n',
-                      style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                subtitle: Text('Flutter Developer',
+                    style: TextStyle(
+                      color: kGrayColor,
+                      fontSize: 12.sp,
+                    )),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      padding: const EdgeInsets.all(10.0),
+                      onPressed: () {
+                        // openTelegram(context: context, userName: 'ahmed251998');
+                      },
+                      icon: Icon(
+                        Icons.telegram,
+                        size: 30.h,
+                        color: kPrimaryColor,
+                      ),
                     ),
-                    TextSpan(
-                      text: "و تقوم ب انشاء صفحة خاصة بيك ",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text: "و توفير معلوماتك لل مراجعين ",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    TextSpan(
-                      text:
-                          "هذا يساعدنا ل وصول معلوماتك لل مراجعين ب اسهل طريقه ",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                    IconButton(
+                      padding: const EdgeInsets.all(10.0),
+                      onPressed: () {
+                        openwhatsapp(
+                            context: context,
+                            number: '7824828348',
+                            msg: 'مرحبا');
+                      },
+                      icon: Icon(
+                        Icons.whatsapp,
+                        size: 30.h,
+                        color: kPrimaryColor,
+                      ),
                     ),
                   ],
                 ),

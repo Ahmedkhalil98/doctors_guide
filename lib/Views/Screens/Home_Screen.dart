@@ -20,10 +20,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: DrawerWidgets(),
+        drawer: const DrawerWidgets(),
         appBar: AppBar(
           title: Text(
-            'home-page-title'.tr,
+            'قائمة أطباء',
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
@@ -35,42 +35,38 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Flexible(
-                    flex: 2,
-                    child: Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.w),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(
-                          color: kGrayColor.withOpacity(0.8),
-                          width: 1.w,
-                        ),
+                  Container(
+                    margin:
+                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.w),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.r),
+                      border: Border.all(
+                        color: kGrayColor.withOpacity(0.8),
+                        width: 1.w,
                       ),
-                      height: 50.h,
-                      child: Obx(
-                        () => DropdownButton(
-                            underline: const SizedBox(),
-                            value: showDoctorInfo.dropdownCity.value,
-                            items: iraq_cities
-                                .map(
-                                  (e) => DropdownMenuItem(
-                                    value: e,
-                                    child: Text(
-                                      e,
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
-                                    ),
+                    ),
+                    height: 50.h,
+                    child: Obx(
+                      () => DropdownButton(
+                          underline: const SizedBox(),
+                          value: showDoctorInfo.dropdownCity.value,
+                          items: iraq_cities
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    e,
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium,
                                   ),
-                                )
-                                .toList(),
-                            onChanged: (newvalue) {
-                              showDoctorInfo
-                                  .setSelectedCity(newvalue.toString());
-                            }),
-                      ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (newvalue) {
+                            showDoctorInfo.setSelectedCity(newvalue.toString());
+                          }),
                     ),
                   ),
                   Flexible(
@@ -98,8 +94,9 @@ class HomeScreen extends StatelessWidget {
                                     value: e,
                                     child: Text(
                                       e,
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
                                     ),
                                   ),
                                 )

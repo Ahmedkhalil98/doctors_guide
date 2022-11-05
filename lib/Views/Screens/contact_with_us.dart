@@ -7,34 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactWithUs extends StatelessWidget {
   const ContactWithUs({super.key});
-  openwhatsapp({
-    required BuildContext context,
-    required String number,
-    required String msg,
-  }) async {
-    String whatsapp = "+964$number";
-    String whatsappURlAndroid = "whatsapp://send?phone=$whatsapp&text=$msg";
-    String whatappURLIos = "https://wa.me/$whatsapp?text=${Uri.parse("msg")}";
-    if (Platform.isIOS) {
-      // for iOS phone only
-      if (await canLaunchUrl(Uri.parse(whatappURLIos))) {
-        await launchUrl(
-          Uri.parse(whatappURLIos),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("whatsapp not installed")));
-      }
-    } else {
-      // android , web
-      if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
-        await launchUrl(Uri.parse(whatsappURlAndroid));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Whatsapp not installed")));
-      }
-    }
-  }
 
   openTelegram({
     required BuildContext context,
@@ -70,128 +42,108 @@ class ContactWithUs extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'من نحن ',
+          'تواصل معنا',
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'نحن نعمل معاً ك كروب ل تطوير ',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            Text(
-              ' تطبيقات الجوال لل عملاء',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            Text(
-              'هذا التطبيق احد تطبيقاتنا ',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            SizedBox(
-              height: 20.0.h,
-            ),
-            Text(
-              'للمعلومات اكثر او للاعلان',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            Text(
-              'يمكنك تواصل معنا من خلال ',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            Text(
-              ' Telegram & Whatsapp ',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            SizedBox(
-              height: 40.0.h,
-            ),
-            Text(
-              'المطورين',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            ListTile(
-              leading: const CircleAvatar(backgroundColor: kSecondColor),
-              title: Text(
-                'سامان دخيل ',
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                  width: 150.w,
+                  height: 150.h,
+                  child: Image.asset("images/applogo.png")),
+              Padding(
+                padding: EdgeInsets.only(right: 5.w),
+                child: Text(
+                  textAlign: TextAlign.center,
+                  'اذا واجهتك اي مشكلة او خطأ في التطبيق فكن مشاركا معا لاصلاحها وتقديم افضل خدمة لشعبنا .',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+              SizedBox(
+                height: 40.h,
+              ),
+              Text(
+                'يمكنك تواصل معنا من خلال :',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              subtitle: Text('Flutter Developer',
-                  style: TextStyle(
-                    color: kGrayColor,
-                    fontSize: 12.sp,
-                  )),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    padding: const EdgeInsets.all(10.0),
-                    onPressed: () {
-                      //ToDo : connect with Tw
-                    },
-                    icon: Icon(
-                      Icons.telegram,
-                      size: 30.h,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                  IconButton(
-                    padding: const EdgeInsets.all(10.0),
-                    onPressed: () {
-                      openwhatsapp(
-                          context: context, number: '7827509472', msg: 'مرحبا');
-                    },
-                    icon: Icon(
-                      Icons.whatsapp,
-                      size: 30.h,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                ],
+              SizedBox(
+                height: 20.h,
               ),
-            ),
-            ListTile(
-              leading: const CircleAvatar(backgroundColor: kSecondColor),
-              title: Text(
-                'احمد خليل',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              subtitle: Text('Flutter Developer',
-                  style: TextStyle(
-                    color: kGrayColor,
-                    fontSize: 12.sp,
-                  )),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    padding: const EdgeInsets.all(10.0),
-                    onPressed: () {
-                      openTelegram(context: context, userName: 'ahmed251998');
-                    },
-                    icon: Icon(
-                      Icons.telegram,
-                      size: 30.h,
-                      color: kPrimaryColor,
+              SizedBox(
+                width: 200.w,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 50.h),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            //ToDo : connect with Tw
+                          },
+                          icon: Icon(
+                            Icons.telegram,
+                            size: 35.h,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    padding: const EdgeInsets.all(10.0),
-                    onPressed: () {
-                      openwhatsapp(
-                          context: context, number: '7824828348', msg: 'مرحبا');
-                    },
-                    icon: Icon(
-                      Icons.whatsapp,
-                      size: 30.h,
-                      color: kPrimaryColor,
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 50.h),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            //ToDo : connect with Tw
+                          },
+                          icon: Icon(
+                            Icons.whatsapp,
+                            size: 35.h,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 50.h),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            //ToDo : connect with Tw
+                          },
+                          icon: Icon(
+                            Icons.facebook,
+                            size: 35.h,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 50.h),
+                      child: Center(
+                        child: IconButton(
+                          onPressed: () {
+                            //ToDo : connect with Tw
+                          },
+                          icon: Icon(
+                            Icons.email,
+                            size: 35.h,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
