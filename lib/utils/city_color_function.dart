@@ -7,11 +7,11 @@ Color? cityColorFun(String city) {
   if (city == 'ذي قار' || city == '') {
     return Colors.green.withOpacity(0.6);
   }
-  if (city == 'النجف' || city == '') {
+  if (city == 'نجف' || city == '') {
     return Colors.amber.withOpacity(0.6);
   }
-  if (city == 'أربيل' || city == '') {
-    return Colors.blueGrey.withOpacity(0.6);
+  if (city == 'اربيل' || city == '') {
+    return Colors.blueAccent.withOpacity(0.6);
   }
   if (city == 'نينوى' || city == '') {
     return Colors.blue.withOpacity(0.6);
@@ -19,10 +19,10 @@ Color? cityColorFun(String city) {
   if (city == 'البصرة' || city == '') {
     return Colors.brown.withOpacity(0.6);
   }
-  if (city == 'القادسية' || city == '') {
+  if (city == 'قادسية' || city == '') {
     return Colors.lime.withOpacity(0.6);
   }
-  if (city == 'المثنى' || city == '') {
+  if (city == 'مثنى' || city == '') {
     return Colors.grey.withOpacity(0.6);
   }
   if (city == 'ديالى' || city == '') {
@@ -38,18 +38,18 @@ Color? cityColorFun(String city) {
     return Colors.red.withOpacity(0.6);
   }
   if (city == 'كربلاء' || city == '') {
-    return Colors.blueGrey.withOpacity(0.6);
+    return Colors.pinkAccent.withOpacity(0.6);
   }
   if (city == 'بابل' || city == '') {
     return Colors.deepOrange.withOpacity(0.6);
   }
-  if (city == 'السليمانية' || city == '') {
+  if (city == 'سليمانية' || city == '') {
     return Colors.green.withOpacity(0.6);
   }
   if (city == 'دهوك' || city == '') {
     return Colors.yellow.withOpacity(0.6);
   }
-  if (city == 'الواسط' || city == '') {
+  if (city == 'واسط' || city == '') {
     return Colors.pink.withOpacity(0.6);
   }
   if (city == 'ميسان' || city == '') {
@@ -57,6 +57,9 @@ Color? cityColorFun(String city) {
   }
   if (city == 'صلاح الدين' || city == '') {
     return Colors.lightBlueAccent.withOpacity(0.6);
+  }
+  if (city == 'ناصرية' || city == '') {
+    return Colors.redAccent.withOpacity(0.6);
   }
   return null;
 }
