@@ -2,6 +2,7 @@ import 'package:doctors_guide/firebase_options.dart';
 import 'package:doctors_guide/root.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 SharedPreferences? localStorage;
@@ -11,6 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  MobileAds.instance.initialize();
   localStorage = await SharedPreferences.getInstance();
   tempStorage = await SharedPreferences.getInstance();
   runApp(const MyApp());

@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:doctors_guide/Controllers/ads_controller.dart';
 import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
 import 'package:doctors_guide/Views/widgets/drawer_Widgets.dart';
@@ -233,7 +234,13 @@ class HomeScreen extends StatelessWidget {
                     },
                   );
                 },
-              )
+              ),
+              GetBuilder<DoctorAdsController>(
+                init: DoctorAdsController(),
+                builder: ((controller) {
+                  return controller.bannerWidget();
+                }),
+              ),
             ],
           ),
         ));

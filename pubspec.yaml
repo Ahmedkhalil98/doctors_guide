@@ -48,6 +48,7 @@ dependencies:
   geolocator: ^9.0.2
   shared_preferences: ^2.0.15
   image_picker: ^0.8.6
+  google_mobile_ads: ^2.2.0
   
 
 dev_dependencies:
