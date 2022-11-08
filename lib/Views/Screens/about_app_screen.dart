@@ -84,10 +84,8 @@ class AboutAppScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 subtitle: Text('Flutter Developer',
-                    style: TextStyle(
-                      color: kGrayColor,
-                      fontSize: 12.sp,
-                    )),
+                    style: Theme.of(context).textTheme.bodyMedium,
+                ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -126,10 +124,7 @@ class AboutAppScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 subtitle: Text('Flutter Developer',
-                    style: TextStyle(
-                      color: kGrayColor,
-                      fontSize: 12.sp,
-                    )),
+                    style: Theme.of(context).textTheme.bodyMedium,),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

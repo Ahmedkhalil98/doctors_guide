@@ -26,9 +26,11 @@ A new Flutter project.
 - [X] number keyboard type (Ahmed)
 - [x] url launcher with phone number launcher
 - [x] color of city (ahmed)
-- [ ] font 
+- [x] font 
 - [x] login doctor again after delete app then download  (Ahmed)
 - [x] create contactUs screen 
+- [ ] Google ads 
+- [ ] edit info screen have some erorrs
 
 
 

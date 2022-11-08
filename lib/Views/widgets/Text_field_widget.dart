@@ -40,14 +40,11 @@ class MyTextFieldWidget extends StatelessWidget {
           child: TextFormField(
             validator: valid,
             controller: controller,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Theme.of(context).textTheme.bodyMedium,
             keyboardType: typeinput,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: TextStyle(
-                fontSize: 12.sp,
-                color: kGrayColor,
-              ),
+              hintStyle: Theme.of(context).textTheme.bodyMedium,
               helperStyle: const TextStyle(color: Colors.red),
               suffix: Text(helpText ?? " "),
               border: OutlineInputBorder(

@@ -73,7 +73,7 @@ class DoctorDetailsInfo extends StatelessWidget {
                         DoctorInfoCard(
                             titleVale:
                                 "${doctorInfo[index]['previewPrice'].toString()} دينار",
-                            title: "سعر الكشفية "),
+                            title: "سعر الكشفية ",),
                         Card(
                           margin: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 5.h),
@@ -81,9 +81,7 @@ class DoctorDetailsInfo extends StatelessWidget {
                           child: ListTile(
                             title: Text(
                               "ايام الدوام :",
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                              ),
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                             subtitle: Column(
                               children: [

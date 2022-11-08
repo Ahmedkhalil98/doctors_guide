@@ -20,20 +20,24 @@ class DoctorTheme extends GetxController {
         color: kWhiteColor,
         fontSize: 16.sp,
         fontWeight: FontWeight.w700,
+        fontFamily: 'Tajawal',
       ),
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(
         fontSize: 16.sp,
         color: kBlackColor,
+        fontFamily: 'Tajawal',
       ),
       bodySmall: TextStyle(
         fontSize: 14.sp,
         color: kWhiteColor,
+        fontFamily: 'Tajawal',
       ),
       bodyMedium: TextStyle(
         fontSize: 14.sp,
         color: kBlackColor,
+        fontFamily: 'Tajawal',
       ),
     ),
   );
@@ -47,20 +51,24 @@ class DoctorTheme extends GetxController {
         color: kWhiteColor,
         fontSize: 16.sp,
         fontWeight: FontWeight.w700,
+        fontFamily: 'Tajawal',
       ),
     ),
     textTheme: TextTheme(
       bodyLarge: TextStyle(
         fontSize: 16.sp,
         color: kWhiteColor,
+        fontFamily: 'Tajawal',
       ),
       bodySmall: TextStyle(
         fontSize: 14.sp,
         color: kWhiteColor,
+        fontFamily: 'Tajawal',
       ),
       bodyMedium: TextStyle(
         fontSize: 14.sp,
         color: kWhiteColor,
+        fontFamily: 'Tajawal',
       ),
     ),
   );

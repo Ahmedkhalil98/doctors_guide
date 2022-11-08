@@ -18,7 +18,9 @@ class DoctorInfoCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
       color: kPrimaryColor,
       child: ListTile(
-        leading: Text("$title :"),
+        leading: Text("$title :",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
         title: Text(
           titleVale,
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Color? cityColorFun(String city) {
   if (city == 'بغداد' || city == '') {
-    return Colors.black.withOpacity(0.6);
+    return Colors.black.withOpacity(0.3);
   }
   if (city == 'ذي قار' || city == '') {
     return Colors.green.withOpacity(0.6);
