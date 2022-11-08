@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   final showDoctorInfo = Get.put(ShowDInfo());
+  final adsController = Get.put(DoctorAdsController());
   Random colorIndex = Random();
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,11 @@ class HomeScreen extends StatelessWidget {
             'قائمة أطباء',
             style: Theme.of(context).textTheme.bodySmall,
           ),
+        ),
+        bottomNavigationBar: GetBuilder<DoctorAdsController>(
+          builder: ((controller) {
+            return controller.bannerWidget();
+          }),
         ),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -186,6 +192,7 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       ListTile(
                                         onTap: () {
+                                          
                                           Get.to(DoctorDetailsInfo(
                                             phoneNumber: doctors[index]
                                                 ['phoneNumber'],
@@ -234,12 +241,6 @@ class HomeScreen extends StatelessWidget {
                     },
                   );
                 },
-              ),
-              GetBuilder<DoctorAdsController>(
-                init: DoctorAdsController(),
-                builder: ((controller) {
-                  return controller.bannerWidget();
-                }),
               ),
             ],
           ),

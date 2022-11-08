@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:doctors_guide/Controllers/ads_controller.dart';
 import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Views/widgets/doctor_info_card.dart';
 import 'package:doctors_guide/Views/widgets/doctor_location.dart';
@@ -12,7 +13,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DoctorDetailsInfo extends StatelessWidget {
   DoctorDetailsInfo(
-      {super.key, required this.phoneNumber, required this.doctorName});
+      {super.key, required this.phoneNumber, required this.doctorName}) {
+        if(adsController.isInterstitialready){
+              adsController.interstitialAd.show();
+        }
+  }
+  final adsController = Get.put(DoctorAdsController());
   int phoneNumber;
   String doctorName;
   @override
@@ -71,9 +77,10 @@ class DoctorDetailsInfo extends StatelessWidget {
                             titleVale: doctorInfo[index]['address'],
                             title: "العنوان"),
                         DoctorInfoCard(
-                            titleVale:
-                                "${doctorInfo[index]['previewPrice'].toString()} دينار",
-                            title: "سعر الكشفية ",),
+                          titleVale:
+                              "${doctorInfo[index]['previewPrice'].toString()} دينار",
+                          title: "سعر الكشفية ",
+                        ),
                         Card(
                           margin: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 5.h),

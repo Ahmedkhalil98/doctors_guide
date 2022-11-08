@@ -30,6 +30,12 @@ class DoctorAdsController extends GetxController {
         onAdLoaded: (InterstitialAd ad) {
           interstitialAd = ad;
           isInterstitialready = true;
+          interstitialAd.fullScreenContentCallback =
+              FullScreenContentCallback(onAdDismissedFullScreenContent: ((ad) {
+            interstitialAd.dispose();
+          }), onAdFailedToShowFullScreenContent: (ad, error) {
+            interstitialAd.dispose();
+          });
           update();
         },
         onAdFailedToLoad: (LoadAdError error) {
