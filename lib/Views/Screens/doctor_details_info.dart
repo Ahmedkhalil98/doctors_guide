@@ -13,12 +13,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DoctorDetailsInfo extends StatelessWidget {
   DoctorDetailsInfo(
-      {super.key, required this.phoneNumber, required this.doctorName}) {
-        if(adsController.isInterstitialready){
-              adsController.interstitialAd.show();
-        }
-  }
-  final adsController = Get.put(DoctorAdsController());
+      {super.key, required this.phoneNumber, required this.doctorName});
   int phoneNumber;
   String doctorName;
   @override

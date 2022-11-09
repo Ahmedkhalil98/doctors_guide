@@ -1,12 +1,14 @@
 import 'dart:io';
 
+import 'package:doctors_guide/Controllers/ads_controller.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactWithUs extends StatelessWidget {
-  const ContactWithUs({super.key});
+  ContactWithUs({super.key});
 
   openTelegram({
     required BuildContext context,
@@ -39,12 +41,20 @@ class ContactWithUs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final adsController = Get.put(DoctorAdsController());
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           'تواصل معنا',
         ),
       ),
+      bottomNavigationBar: adsController.isBannerReady
+          ? GetBuilder<DoctorAdsController>(
+              builder: ((controller) {
+                return controller.bannerWidget();
+              }),
+            )
+          : Container(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(

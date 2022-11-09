@@ -11,11 +11,15 @@ class DoctorAdsController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
     initAds();
-    initBanner();
-    initInterstitial();
-    update();
+    super.onInit();
+  }
+
+  @override
+  void dispose() {
+    interstitialAd.dispose();
+    bannerAd.dispose();
+    super.dispose();
   }
 
   Future<InitializationStatus> initAds() {
@@ -30,12 +34,9 @@ class DoctorAdsController extends GetxController {
         onAdLoaded: (InterstitialAd ad) {
           interstitialAd = ad;
           isInterstitialready = true;
-          interstitialAd.fullScreenContentCallback =
-              FullScreenContentCallback(onAdDismissedFullScreenContent: ((ad) {
-            interstitialAd.dispose();
-          }), onAdFailedToShowFullScreenContent: (ad, error) {
-            interstitialAd.dispose();
-          });
+          interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+              onAdDismissedFullScreenContent: ((ad) {}),
+              onAdFailedToShowFullScreenContent: (ad, error) {});
           update();
         },
         onAdFailedToLoad: (LoadAdError error) {
@@ -44,6 +45,7 @@ class DoctorAdsController extends GetxController {
         },
       ),
     );
+    interstitialAd.show();
   }
 
   void initBanner() {

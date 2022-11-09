@@ -29,11 +29,13 @@ class HomeScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
-        bottomNavigationBar: GetBuilder<DoctorAdsController>(
-          builder: ((controller) {
-            return controller.bannerWidget();
-          }),
-        ),
+        bottomNavigationBar: adsController.isBannerReady
+            ? GetBuilder<DoctorAdsController>(
+                builder: ((controller) {
+                  return controller.bannerWidget();
+                }),
+              )
+            : Container(),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -192,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       ListTile(
                                         onTap: () {
-                                          
+                                          adsController.initInterstitial();
                                           Get.to(DoctorDetailsInfo(
                                             phoneNumber: doctors[index]
                                                 ['phoneNumber'],

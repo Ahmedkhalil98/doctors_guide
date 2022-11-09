@@ -105,7 +105,7 @@ class DrawerWidgets extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Get.to(() => const ContactWithUs());
+              Get.to(() =>  ContactWithUs());
             },
             child: const DrawerCard(
               icon: Icons.call,
@@ -118,7 +118,7 @@ class DrawerWidgets extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Get.to(
-                () => const AboutAppScreen(),
+                () =>  AboutAppScreen(),
               );
             },
             child: const DrawerCard(icon: Icons.info, title: 'حول التطبيق'),

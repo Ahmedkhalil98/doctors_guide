@@ -1,13 +1,15 @@
 import 'dart:io';
 
+import 'package:doctors_guide/Controllers/ads_controller.dart';
 import 'package:doctors_guide/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutAppScreen extends StatelessWidget {
-  const AboutAppScreen({super.key});
-
+  AboutAppScreen({super.key});
+  DoctorAdsController adsController = Get.put(DoctorAdsController());
   openwhatsapp({
     required BuildContext context,
     required String number,
@@ -45,6 +47,14 @@ class AboutAppScreen extends StatelessWidget {
           'حول التطبيق',
         ),
       ),
+      bottomNavigationBar: adsController.isBannerReady
+          ? GetBuilder<DoctorAdsController>(
+            init: DoctorAdsController(),
+              builder: ((controller) {
+                return controller.bannerWidget();
+              }),
+            )
+          : Container(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -83,8 +93,9 @@ class AboutAppScreen extends StatelessWidget {
                   'سامان دخيل ',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                subtitle: Text('Flutter Developer',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                subtitle: Text(
+                  'Flutter Developer',
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -123,8 +134,10 @@ class AboutAppScreen extends StatelessWidget {
                   'احمد خليل',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                subtitle: Text('Flutter Developer',
-                    style: Theme.of(context).textTheme.bodyMedium,),
+                subtitle: Text(
+                  'Flutter Developer',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
