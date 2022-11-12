@@ -29,6 +29,7 @@ class HomeScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
+        //ToDo : your problem here
         bottomNavigationBar: adsController.isBannerReady
             ? GetBuilder<DoctorAdsController>(
                 builder: ((controller) {
@@ -124,7 +125,6 @@ class HomeScreen extends StatelessWidget {
                   return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
                     future: showDoctorInfo.showDoctors(),
                     builder: (context, snapshot) {
-                      showDoctorInfo.isLoading = true;
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const LoadingWidget();
                       }
