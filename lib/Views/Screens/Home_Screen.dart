@@ -29,14 +29,7 @@ class HomeScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
-        //ToDo : your problem here
-        bottomNavigationBar: adsController.isBannerReady
-            ? GetBuilder<DoctorAdsController>(
-                builder: ((controller) {
-                  return controller.bannerWidget();
-                }),
-              )
-            : Container(),
+        
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -246,6 +239,14 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        ),
+        //ToDo : your problem here
+      bottomNavigationBar:GetBuilder<DoctorAdsController>(
+        init: DoctorAdsController(),
+        builder: ((controller) {
+          return controller.bannerWidget();
+        }),
+      ),
+        );
   }
 }
