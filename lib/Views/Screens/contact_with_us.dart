@@ -139,7 +139,21 @@ class ContactWithUs extends StatelessWidget {
                       child: Center(
                         child: IconButton(
                           onPressed: () {
-                            //ToDo : connect with Tw
+                            void _launchURL() async {
+                              // final Uri params = Uri(
+                              //   scheme: 'mailto',
+                              //   path: 'my.mail@example.com',
+                              // );
+                              // String url = params.toString();
+                              Uri url = Uri.parse(
+                                  'mailto:smith@example.org?subject=News&body=New%20plugin');
+
+                              if (await canLaunchUrl(url)) {
+                                await launchUrl(url);
+                              } else {
+                                print('Could not launch $url');
+                              }
+                            }
                           },
                           icon: Icon(
                             Icons.email,
