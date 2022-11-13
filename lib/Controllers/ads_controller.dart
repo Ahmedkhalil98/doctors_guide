@@ -12,6 +12,7 @@ class DoctorAdsController extends GetxController {
   @override
   void onInit() {
     initAds();
+    initBanner();
     super.onInit();
   }
 
@@ -36,7 +37,9 @@ class DoctorAdsController extends GetxController {
           isInterstitialready = true;
           interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
               onAdDismissedFullScreenContent: ((ad) {}),
-              onAdFailedToShowFullScreenContent: (ad, error) {});
+              onAdFailedToShowFullScreenContent: (ad, error) {
+                print("==>${error.toString()}");
+              });
           update();
         },
         onAdFailedToLoad: (LoadAdError error) {
@@ -58,6 +61,8 @@ class DoctorAdsController extends GetxController {
         update();
       }, onAdFailedToLoad: (Ad ad, LoadAdError error) {
         isBannerReady = false;
+        //toDo : read error here
+        print("=>>> ${error.toString()} <<==");
         update();
       }),
     );
@@ -65,7 +70,7 @@ class DoctorAdsController extends GetxController {
   }
 
   Widget bannerWidget() {
-    if (isBannerReady) {
+    if (!isBannerReady) {
       return Container(
         width: bannerAd.size.width.toDouble(),
         height: bannerAd.size.height.toDouble(),
