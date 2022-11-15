@@ -31,7 +31,7 @@ class DoctorTheme extends GetxController {
       ),
       bodySmall: TextStyle(
         fontSize: 14.sp,
-        color: kWhiteColor,
+        color: kBlackColor,
         fontFamily: 'Tajawal',
       ),
       bodyMedium: TextStyle(
@@ -72,27 +72,22 @@ class DoctorTheme extends GetxController {
       ),
     ),
   );
+
+  @override
   void changeDoctorTheme(bool isLightMode) {
     if (isLightMode) {
       Get.changeTheme(customDark);
       localStorage!.setBool('doctorTheme', true);
-      update();
     } else {
       Get.changeTheme(customLight);
       localStorage!.setBool('doctorTheme', false);
-      update();
     }
+    update();
   }
 
-  void onChangeSwitch(bool newValue) {
-    if (isLightModeSelected) {
-      isLightModeSelected = newValue;
-
-      changeDoctorTheme(isLightModeSelected);
-    } else {
-      isLightModeSelected = newValue;
-
-      changeDoctorTheme(isLightModeSelected);
-    }
+  void onChangeSwitch(bool newValue) async {
+    localStorage!.setBool('doctorTheme', newValue);
+    changeDoctorTheme(newValue);
+    update();
   }
 }

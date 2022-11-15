@@ -52,7 +52,7 @@ class RegisterDoctorLocation extends StatelessWidget {
                       .setString("doctorName", logInDoctor.fullName.text);
                   localStorage!.setString(
                       "doctorPhoneNumber", logInDoctor.phoneNumber.text);
-                  Get.to(() => HomeScreen());
+                  Get.offAll(() => HomeScreen());
                 } else {}
               },
               child: MyButtonWidget(btntitle: "حفظ", color: kPrimaryColor)),

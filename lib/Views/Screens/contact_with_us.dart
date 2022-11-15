@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactWithUs extends StatelessWidget {
-  ContactWithUs({super.key});
+  const ContactWithUs({super.key});
 
   openTelegram({
     required BuildContext context,
@@ -48,13 +48,13 @@ class ContactWithUs extends StatelessWidget {
           'تواصل معنا',
         ),
       ),
-      bottomNavigationBar: adsController.isBannerReady
-          ? GetBuilder<DoctorAdsController>(
-              builder: ((controller) {
-                return controller.bannerWidget();
-              }),
-            )
-          : Container(),
+      // bottomNavigationBar: adsController.isBannerReady
+      //     ? GetBuilder<DoctorAdsController>(
+      //         builder: ((controller) {
+      //           return controller.bannerWidget();
+      //         }),
+      //       )
+      //     : Container(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -74,7 +74,7 @@ class ContactWithUs extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 40.h,
+                height: 90.h,
               ),
               Text(
                 'يمكنك تواصل معنا من خلال :',
@@ -94,7 +94,7 @@ class ContactWithUs extends StatelessWidget {
                       child: Center(
                         child: IconButton(
                           onPressed: () {
-                            //ToDo : connect with Tw
+                            //ToDo : connect with telg
                           },
                           icon: Icon(
                             Icons.telegram,
@@ -109,7 +109,7 @@ class ContactWithUs extends StatelessWidget {
                       child: Center(
                         child: IconButton(
                           onPressed: () {
-                            //ToDo : connect with Tw
+                            //ToDo : connect with wtapp
                           },
                           icon: Icon(
                             Icons.whatsapp,
@@ -124,7 +124,7 @@ class ContactWithUs extends StatelessWidget {
                       child: Center(
                         child: IconButton(
                           onPressed: () {
-                            //ToDo : connect with Tw
+                            //ToDo : connect with facebook
                           },
                           icon: Icon(
                             Icons.facebook,

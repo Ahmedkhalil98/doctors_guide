@@ -49,11 +49,23 @@ dependencies:
   shared_preferences: ^2.0.15
   image_picker: ^0.8.6
   google_mobile_ads: ^2.2.0
-  
+  flutter_native_splash: ^2.2.14
+
+
+flutter_native_splash:
+  image: images/applogo.png
+  color: "#ffffff"
+  ios: true
+  android_gravity: center  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+  
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
