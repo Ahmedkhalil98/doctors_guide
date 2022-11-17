@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doctors_guide/Controllers/ads_controller.dart';
 import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
+import 'package:doctors_guide/Views/widgets/adBanner_widget.dart';
 import 'package:doctors_guide/Views/widgets/drawer_Widgets.dart';
 import 'package:doctors_guide/Views/widgets/loading_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   final showDoctorInfo = Get.put(ShowDInfo());
-  final adsController = Get.put(DoctorAdsController());
   Random colorIndex = Random();
   @override
   Widget build(BuildContext context) {
@@ -241,13 +240,8 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      //ToDo : your problem here
-      // bottomNavigationBar: GetBuilder<DoctorAdsController>(
-      //   init: DoctorAdsController(),
-      //   builder: ((controller) {
-      //     return controller.bannerWidget();
-      //   }),
-      // ),
+      //ToDo : google ads
+      bottomNavigationBar: AdBanner(),
     );
   }
 }

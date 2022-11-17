@@ -8,8 +8,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutAppScreen extends StatelessWidget {
-  AboutAppScreen({super.key});
-  DoctorAdsController adsController = Get.put(DoctorAdsController());
+  const AboutAppScreen({super.key});
   openwhatsapp({
     required BuildContext context,
     required String number,
