@@ -10,17 +10,22 @@ class AdBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (googleAd.isAdReady) {
-      return Container(
-        alignment: Alignment.center,
-        width: googleAd.adSize.width.toDouble(),
-        height: googleAd.adSize.height.toDouble(),
-        child: AdWidget(ad: googleAd.bannerAd),
-      );
-    }
-    return Container(
-      color: Colors.red,
-      height: 50,
+    return GetBuilder<googleAdsController>(
+      init: googleAdsController(),
+      builder: (controller) {
+        if (controller.isAdReady) {
+          return Container(
+            alignment: Alignment.center,
+            width: controller.adSize.width.toDouble(),
+            height: controller.adSize.height.toDouble(),
+            child: AdWidget(ad: controller.bannerAd),
+          );
+        }
+        return Container(
+          color: Colors.red,
+          height: 50,
+        );
+      },
     );
   }
 }

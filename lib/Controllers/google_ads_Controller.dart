@@ -8,7 +8,7 @@ class googleAdsController extends GetxController {
     if (_testMode) {
       return 'ca-app-pub-3940256099942544/6300978111';
     }
-    return "ca-app-pub-3940256099942544/6300978111";
+    return "ca-app-pub-8864584565181792/2762526644";
   }
 
   late BannerAd bannerAd;
@@ -17,19 +17,23 @@ class googleAdsController extends GetxController {
 
   void createBannerAd() {
     bannerAd = BannerAd(
-        size: adSize,
-        adUnitId: bannerAdUnitId,
-        listener: BannerAdListener(
-          onAdLoaded: ((ad) {
-            isAdReady = true;
-            update();
-          }),
-          onAdFailedToLoad: (ad, error) {
-            print("ads error:>>>>> $error");
-          },
-        ),
-        request: const AdRequest());
+      size: adSize,
+      adUnitId: bannerAdUnitId,
+      listener: BannerAdListener(
+        onAdLoaded: ((ad) {
+          isAdReady = true;
+          update();
+        }),
+        onAdFailedToLoad: (ad, error) {
+          isAdReady = false;
+          update();
+          print("ads error:>>>>> $error");
+        },
+      ),
+      request: const AdRequest(),
+    );
     bannerAd.load();
+    update();
   }
 
   @override

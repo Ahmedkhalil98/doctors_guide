@@ -9,7 +9,9 @@ SharedPreferences? localStorage;
 SharedPreferences? tempStorage;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
+  RequestConfiguration config = RequestConfiguration(
+      testDeviceIds: ['887b672d-9727-4ec3-b8b9-37180495732e']);
+  MobileAds.instance.updateRequestConfiguration(config);
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
