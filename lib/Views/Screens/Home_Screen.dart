@@ -14,7 +14,12 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key) {
+    if (adsController.interstitialAd != null) {
+      adsController.loadInterstitialAd();
+      adsController.interstitialAd?.show();
+    }
+  }
 
   final showDoctorInfo = Get.put(ShowDInfo());
   final adsController = Get.put(DoctorAdsController());
@@ -22,27 +27,61 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: const DrawerWidgets(),
-        appBar: AppBar(
-          title: Text(
-            'قائمة أطباء',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+      drawer: const DrawerWidgets(),
+      appBar: AppBar(
+        title: Text(
+          'قائمة أطباء',
+          style: Theme.of(context).textTheme.bodySmall,
         ),
-        
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
+      ),
+
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.w),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: kGrayColor.withOpacity(0.8),
+                      width: 1.w,
+                    ),
+                  ),
+                  height: 50.h,
+                  child: Obx(
+                    () => DropdownButton(
+                        underline: const SizedBox(),
+                        value: showDoctorInfo.dropdownCity.value,
+                        items: iraq_cities
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (newvalue) {
+                          showDoctorInfo.setSelectedCity(newvalue.toString());
+                        }),
+                  ),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: Container(
                     margin:
-                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 5.w),
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 5.w),
                     padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
                       border: Border.all(
@@ -54,8 +93,8 @@ class HomeScreen extends StatelessWidget {
                     child: Obx(
                       () => DropdownButton(
                           underline: const SizedBox(),
-                          value: showDoctorInfo.dropdownCity.value,
-                          items: iraq_cities
+                          value: showDoctorInfo.dropdownSpecialty.value,
+                          items: specialties
                               .map(
                                 (e) => DropdownMenuItem(
                                   value: e,
@@ -68,185 +107,152 @@ class HomeScreen extends StatelessWidget {
                               )
                               .toList(),
                           onChanged: (newvalue) {
-                            showDoctorInfo.setSelectedCity(newvalue.toString());
+                            showDoctorInfo
+                                .setSelectedSpecialty(newvalue.toString());
                           }),
                     ),
                   ),
-                  Flexible(
-                    flex: 3,
-                    child: Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10.h, horizontal: 5.w),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(
-                          color: kGrayColor.withOpacity(0.8),
-                          width: 1.w,
+                ),
+              ],
+            ),
+            GetBuilder<ShowDInfo>(
+              builder: (controller) {
+                return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                  future: showDoctorInfo.showDoctors(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const LoadingWidget();
+                    }
+                    if (snapshot.data == null) {
+                      return Center(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 110.h,
+                            ),
+                            SizedBox(
+                                width: 300.w,
+                                height: 200.h,
+                                child: Lottie.asset("images/empty.json")),
+                          ],
                         ),
-                      ),
-                      height: 50.h,
-                      child: Obx(
-                        () => DropdownButton(
-                            underline: const SizedBox(),
-                            value: showDoctorInfo.dropdownSpecialty.value,
-                            items: specialties
-                                .map(
-                                  (e) => DropdownMenuItem(
-                                    value: e,
-                                    child: Text(
-                                      e,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            onChanged: (newvalue) {
-                              showDoctorInfo
-                                  .setSelectedSpecialty(newvalue.toString());
-                            }),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              GetBuilder<ShowDInfo>(
-                builder: (controller) {
-                  return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                    future: showDoctorInfo.showDoctors(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const LoadingWidget();
-                      }
-                      if (snapshot.data == null) {
-                        return Center(
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 110.h,
+                      );
+                    }
+                    if (snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 110.h,
+                            ),
+                            SizedBox(
+                                width: 300.w,
+                                height: 200.h,
+                                child: Lottie.asset("images/empty.json")),
+                            Text(
+                              "غير متوفر",
+                              style: TextStyle(
+                                color: kGrayColor,
+                                fontSize: 14.sp,
                               ),
-                              SizedBox(
-                                  width: 300.w,
-                                  height: 200.h,
-                                  child: Lottie.asset("images/empty.json")),
-                            ],
-                          ),
-                        );
-                      }
-                      if (snapshot.data!.docs.isEmpty) {
-                        return Center(
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 110.h,
-                              ),
-                              SizedBox(
-                                  width: 300.w,
-                                  height: 200.h,
-                                  child: Lottie.asset("images/empty.json")),
-                              Text(
-                                "غير متوفر",
-                                style: TextStyle(
-                                  color: kGrayColor,
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }
-                      List<QueryDocumentSnapshot<Map<String, dynamic>>>
-                          doctors = snapshot.data!.docs;
-                      showDoctorInfo.isLoading = false;
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                    List<QueryDocumentSnapshot<Map<String, dynamic>>> doctors =
+                        snapshot.data!.docs;
+                    showDoctorInfo.isLoading = false;
 
-                      return showDoctorInfo.isLoading
-                          ? const LoadingWidget()
-                          : ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: doctors.length,
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  height: 80.h,
-                                  margin: EdgeInsets.symmetric(
-                                    horizontal: 10.w,
-                                    vertical: 4.h,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: kPrimaryColor,
-                                    borderRadius: BorderRadius.circular(20.r),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ListTile(
-                                        onTap: () {
-                                          adsController.initInterstitial();
-                                          Get.to(DoctorDetailsInfo(
-                                            phoneNumber: doctors[index]
-                                                ['phoneNumber'],
-                                            doctorName: doctors[index]
-                                                ['fullName'],
-                                          ));
-                                        },
-                                        leading: Container(
-                                          width: 50.w,
-                                          height: 100.h,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(30.r),
-                                              image: DecorationImage(
-                                                  image: NetworkImage(
-                                                    doctors[index]['imageUrl'],
-                                                  ),
-                                                  fit: BoxFit.cover)),
-                                        ),
-                                        subtitle:
-                                            Text(doctors[index]['specialty']),
-                                        trailing: Container(
-                                          padding: EdgeInsets.all(8.w),
-                                          decoration: BoxDecoration(
-                                            color: cityColorFun(
-                                                doctors[index]['city']),
+                    return showDoctorInfo.isLoading
+                        ? const LoadingWidget()
+                        : ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: doctors.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                height: 80.h,
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: 10.w,
+                                  vertical: 4.h,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: kPrimaryColor,
+                                  borderRadius: BorderRadius.circular(20.r),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ListTile(
+                                      onTap: () {
+                                        if (adsController.interstitialAd !=
+                                            null) {
+                                          adsController.interstitialAd?.show();
+                                        }
+                                        Get.to(DoctorDetailsInfo(
+                                          phoneNumber: doctors[index]
+                                              ['phoneNumber'],
+                                          doctorName: doctors[index]
+                                              ['fullName'],
+                                        ));
+                                      },
+                                      leading: Container(
+                                        width: 50.w,
+                                        height: 100.h,
+                                        decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(10.r),
-                                          ),
-                                          child: Text(
-                                            doctors[index]['city'],
-                                          ),
+                                                BorderRadius.circular(30.r),
+                                            image: DecorationImage(
+                                                image: NetworkImage(
+                                                  doctors[index]['imageUrl'],
+                                                ),
+                                                fit: BoxFit.cover)),
+                                      ),
+                                      subtitle:
+                                          Text(doctors[index]['specialty']),
+                                      trailing: Container(
+                                        padding: EdgeInsets.all(8.w),
+                                        decoration: BoxDecoration(
+                                          color: cityColorFun(
+                                              doctors[index]['city']),
+                                          borderRadius:
+                                              BorderRadius.circular(10.r),
                                         ),
-                                        title: Text(
-                                          doctors[index]['fullName'],
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall,
+                                        child: Text(
+                                          doctors[index]['city'],
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
+                                      title: Text(
+                                        doctors[index]['fullName'],
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                  },
+                );
+              },
+            ),
+          ],
         ),
-        //ToDo : your problem here
-      bottomNavigationBar:GetBuilder<DoctorAdsController>(
-        init: DoctorAdsController(),
-        builder: ((controller) {
-          return controller.bannerWidget();
-        }),
       ),
-        );
+      //ToDo : your problem here
+      bottomNavigationBar: adsController.bannerAd != null
+          ? GetBuilder<DoctorAdsController>(
+              init: DoctorAdsController(),
+              builder: ((controller) {
+                return controller.bannerWidget();
+              }),
+            )
+          : Container(),
+    );
   }
 }

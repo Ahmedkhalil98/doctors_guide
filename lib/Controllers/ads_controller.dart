@@ -4,81 +4,66 @@ import 'package:get/state_manager.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class DoctorAdsController extends GetxController {
-  late BannerAd bannerAd;
+  BannerAd? bannerAd;
   bool isBannerReady = false;
-  late InterstitialAd interstitialAd;
+
+  InterstitialAd? interstitialAd;
   bool isInterstitialready = false;
 
   @override
   void onInit() {
-    initAds();
     initBanner();
+    loadInterstitialAd();
     super.onInit();
   }
 
   @override
   void dispose() {
-    interstitialAd.dispose();
-    bannerAd.dispose();
     super.dispose();
   }
 
-  Future<InitializationStatus> initAds() {
-    return MobileAds.instance.initialize();
-  }
-
-  void initInterstitial() {
+  void loadInterstitialAd() {
     InterstitialAd.load(
       adUnitId: AdsManager.getInterstitialId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {},
+          );
           interstitialAd = ad;
-          isInterstitialready = true;
-          interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
-              onAdDismissedFullScreenContent: ((ad) {}),
-              onAdFailedToShowFullScreenContent: (ad, error) {
-                print("==>${error.toString()}");
-              });
-          update();
         },
-        onAdFailedToLoad: (LoadAdError error) {
-          isInterstitialready = false;
-          update();
+        onAdFailedToLoad: (err) {
+          print(
+              '++++++++++++++++++++++++ Failed to load an interstitial ad: ${err.message}');
         },
       ),
     );
-    interstitialAd.show();
   }
 
   void initBanner() {
-    bannerAd = BannerAd(
-      size: AdSize.banner,
+    BannerAd(
       adUnitId: AdsManager.getBannerId,
       request: const AdRequest(),
-      listener: BannerAdListener(onAdLoaded: (Ad ad) {
-        isBannerReady = true;
-        update();
-      }, onAdFailedToLoad: (Ad ad, LoadAdError error) {
-        isBannerReady = false;
-        //toDo : read error here
-        print("=>>> ${error.toString()} <<==");
-        update();
-      }),
-    );
-    bannerAd.load();
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          bannerAd = ad as BannerAd;
+        },
+        onAdFailedToLoad: (ad, err) {
+          print(
+              '====================Failed to load a banner ad: ${err.message}');
+          ad.dispose();
+        },
+      ),
+    ).load();
   }
 
   Widget bannerWidget() {
-    if (!isBannerReady) {
-      return Container(
-        width: bannerAd.size.width.toDouble(),
-        height: bannerAd.size.height.toDouble(),
-        margin: const EdgeInsets.all(10.0),
-        child: AdWidget(ad: bannerAd),
-      );
-    } else {
-      return Container();
-    }
+    return SizedBox(
+      width: bannerAd!.size.width.toDouble(),
+      height: bannerAd!.size.height.toDouble(),
+      child: AdWidget(ad: bannerAd!),
+    );
   }
 }
