@@ -24,11 +24,13 @@ class Editable extends GetxController {
   late String userId;
   XFile? image;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  RxBool isLoading = false.obs;
 
   final loginController = Get.put(LogInDoctorController());
   final timeController = Get.put(TimeController());
   void setValueFun(
       List<QueryDocumentSnapshot<Map<String, dynamic>>> doctorInfo, int index) {
+    // isLoading.value = true;
     loginController.fullName.text = doctorInfo[index]['fullName'];
     loginController.phoneNumber.text =
         doctorInfo[index]['phoneNumber'].toString();
@@ -47,6 +49,7 @@ class Editable extends GetxController {
         LatLng(double.parse(splitString[0]), double.parse(splitString[1]));
     selectedWorkingDays = doctorInfo[index]['workingDays'];
     getposition();
+    // isLoading.value = false;
   }
 
   Future getPermission() async {
@@ -90,7 +93,6 @@ class Editable extends GetxController {
   @override
   void onInit() {
     getPermission();
-
     super.onInit();
   }
 
@@ -102,6 +104,7 @@ class Editable extends GetxController {
   }
 
   pressSaveChange() async {
+    isLoading.value = true;
     if (image == null) {
       DoctorInfoModel doctorData = DoctorInfoModel(
         fullName: loginController.fullName.text,
@@ -116,6 +119,7 @@ class Editable extends GetxController {
         latLong:
             "${latAndLng.latitude.toString()},${latAndLng.longitude.toString()}",
         imageUrl: imageUrl,
+        doctorCode: tempStorage!.getString('doctorCode')!,
       );
 
       _firestore
@@ -128,7 +132,7 @@ class Editable extends GetxController {
       await desertRef.delete();
       File file = File(image!.path);
       var refStorage = FirebaseStorage.instance
-          .ref("DoctorsImages/${loginController.phoneNumber}");
+          .ref("DoctorsImages/${loginController.phoneNumber.text}");
       await refStorage.putFile(file);
       refStorage.getDownloadURL().then((newImageUrl) {
         DoctorInfoModel doctorData = DoctorInfoModel(
@@ -144,6 +148,7 @@ class Editable extends GetxController {
           latLong:
               "${latAndLng.latitude.toString()},${latAndLng.longitude.toString()}",
           imageUrl: newImageUrl,
+          doctorCode: tempStorage!.getString('doctorCode')!,
         );
         localStorage!.setString("doctorImageUrl", newImageUrl);
         _firestore
@@ -152,9 +157,16 @@ class Editable extends GetxController {
             .update(doctorData.toMap());
       });
     }
+
     localStorage!.setString("doctorName", loginController.fullName.text);
     localStorage!
         .setString("doctorPhoneNumber", loginController.phoneNumber.text);
+    isLoading.value = false;
     Get.to(() => HomeScreen());
+
+    loginController.phoneNumber.clear();
+    loginController.fullName.clear();
+    loginController.address.clear();
+    loginController.price.clear();
   }
 }

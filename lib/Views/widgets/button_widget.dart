@@ -24,14 +24,13 @@ class MyButtonWidget extends StatelessWidget {
             BoxShadow(
               color: kGrayColor,
               spreadRadius: 0.5,
-              blurRadius: 1,
             )
           ],
           borderRadius: BorderRadius.circular(10.r)),
       child: Text(
         btntitle,
         style: TextStyle(
-          fontSize: 18.sp,
+          fontSize: 16.sp,
           color: kWhiteColor,
           fontWeight: FontWeight.bold,
         ),

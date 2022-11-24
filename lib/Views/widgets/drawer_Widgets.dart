@@ -84,7 +84,7 @@ class DrawerWidgets extends StatelessWidget {
                 contentPadding: const EdgeInsets.all(0),
                 title: SwitchListTile(
                     activeColor: kPrimaryColor,
-                    value: controller.isLightModeSelected,
+                    value: localStorage!.getBool("doctorTheme") ?? false,
                     title: Text(
                       "الوضع المظلم",
                       style: TextStyle(fontSize: 14.sp),
@@ -105,7 +105,7 @@ class DrawerWidgets extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Get.to(() =>  ContactWithUs());
+              Get.to(() => const ContactWithUs());
             },
             child: const DrawerCard(
               icon: Icons.call,
@@ -118,7 +118,7 @@ class DrawerWidgets extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Get.to(
-                () =>  AboutAppScreen(),
+                () => AboutAppScreen(),
               );
             },
             child: const DrawerCard(icon: Icons.info, title: 'حول التطبيق'),

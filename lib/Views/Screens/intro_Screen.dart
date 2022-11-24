@@ -63,6 +63,7 @@ class IntroScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
                                   //ToDo:
+                                  localStorage!.setBool('doctorTheme', true);
                                   localStorage!.setString("role", "user");
                                   Get.to(() => HomeScreen());
                                 },
@@ -73,6 +74,7 @@ class IntroScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
+                                  localStorage!.setBool('doctorTheme', true);
                                   Get.to(() => LogInAsADoctor());
                                 },
                                 child: MyButtonWidget(

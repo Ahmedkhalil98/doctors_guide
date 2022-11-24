@@ -78,6 +78,7 @@ class LogInDoctorController extends GetxController {
         );
 
         localStorage!.setString("doctorImageUrl", imageUrl);
+
         return _firestore
             .collection("DoctorInformation")
             .add(doctorData.toMap())
@@ -86,6 +87,7 @@ class LogInDoctorController extends GetxController {
               "تم بنجاح", "تم اضافة معلوماتك ,قم باعادة تشغيل التطبيق ");
         }).catchError((e) {
           Get.snackbar("خطأ", "$e");
+          print("==>> $e");
         });
       });
     }
@@ -136,12 +138,13 @@ class LogInDoctorController extends GetxController {
                   .update({
                 'isLogin': "true",
               });
-              tempStorage!.setString("doctorCode", code.text);
+
               localStorage!.setString("role", "adminInRegister");
               Get.offAll(() => RegisterDoctorInfo());
             } else {
               Get.snackbar("خطأ", "الكود الذي ادخلته خطأ !");
             }
+            tempStorage!.setString("doctorCode", code.text);
             code.clear();
           }
         }

@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doctors_guide/Controllers/ads_controller.dart';
 import 'package:doctors_guide/Controllers/show_doctor_info_controller.dart';
 import 'package:doctors_guide/Views/Screens/doctor_details_info.dart';
+import 'package:doctors_guide/Views/widgets/adBanner_widget.dart';
 import 'package:doctors_guide/Views/widgets/drawer_Widgets.dart';
 import 'package:doctors_guide/Views/widgets/loading_widget.dart';
 import 'package:doctors_guide/constants/Colors.dart';
@@ -22,7 +22,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   final showDoctorInfo = Get.put(ShowDInfo());
-  final adsController = Get.put(DoctorAdsController());
   Random colorIndex = Random();
   @override
   Widget build(BuildContext context) {
@@ -92,6 +91,7 @@ class HomeScreen extends StatelessWidget {
                     height: 50.h,
                     child: Obx(
                       () => DropdownButton(
+                          isExpanded: true,
                           underline: const SizedBox(),
                           value: showDoctorInfo.dropdownSpecialty.value,
                           items: specialties
@@ -188,10 +188,14 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     ListTile(
                                       onTap: () {
+<<<<<<< HEAD
                                         if (adsController.interstitialAd !=
                                             null) {
                                           adsController.interstitialAd?.show();
                                         }
+=======
+                                        // adsController.initInterstitial();
+>>>>>>> 04baf43c1e0df5ed55260f7a30079834937a20da
                                         Get.to(DoctorDetailsInfo(
                                           phoneNumber: doctors[index]
                                               ['phoneNumber'],
@@ -211,6 +215,7 @@ class HomeScreen extends StatelessWidget {
                                                 ),
                                                 fit: BoxFit.cover)),
                                       ),
+<<<<<<< HEAD
                                       subtitle:
                                           Text(doctors[index]['specialty']),
                                       trailing: Container(
@@ -225,6 +230,26 @@ class HomeScreen extends StatelessWidget {
                                           doctors[index]['city'],
                                         ),
                                       ),
+=======
+                                      subtitle: Text(
+                                        doctors[index]['specialty'],
+                                        style: TextStyle(
+                                          fontSize: 12.sp,
+                                        ),
+                                      ),
+                                      trailing: Container(
+                                        padding: EdgeInsets.all(8.w),
+                                        decoration: BoxDecoration(
+                                          color: cityColorFun(
+                                              doctors[index]['city']),
+                                          borderRadius:
+                                              BorderRadius.circular(10.r),
+                                        ),
+                                        child: Text(
+                                          doctors[index]['city'],
+                                        ),
+                                      ),
+>>>>>>> 04baf43c1e0df5ed55260f7a30079834937a20da
                                       title: Text(
                                         doctors[index]['fullName'],
                                         style: Theme.of(context)
@@ -244,6 +269,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+<<<<<<< HEAD
       //ToDo : your problem here
       bottomNavigationBar: adsController.bannerAd != null
           ? GetBuilder<DoctorAdsController>(
@@ -253,6 +279,10 @@ class HomeScreen extends StatelessWidget {
               }),
             )
           : Container(),
+=======
+      //ToDo : google ads
+      bottomNavigationBar: AdBanner(),
+>>>>>>> 04baf43c1e0df5ed55260f7a30079834937a20da
     );
   }
 }
